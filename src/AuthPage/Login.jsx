@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import './auth.css'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import iconImage from '/public/worldImage.png'
-import TopBar from '../LandingPage/TopBar'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { API_URL } from '../App';
@@ -13,7 +11,7 @@ function Login() {
   const [type,setType] = useState(true) 
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
-  let token = sessionStorage.getItem(token)
+  
 
 
   const handleLogin = async (e) => {
