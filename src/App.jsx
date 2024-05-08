@@ -6,6 +6,8 @@ import SignUp from './pages/AuthPage/SignUp'
 import ForgotPassword from './pages/AuthPage/ForgotPassword'
 import ResetPassword from './pages/AuthPage/ResetPassword'
 import Complaint from './pages/AppPage/Complaint'
+import DefaultPage from './components/DefaultPage'
+import Dashboard from './pages/AppPage/Dashboard'
 
 // export  const API_URL ="http://localhost:8001"
 export const API_URL = "https://rural-development-be.onrender.com"
@@ -21,9 +23,10 @@ function App() {
       <Route path='/forgot-password' element={<ForgotPassword/>}/>
       <Route path='/reset-password/:token' element={<ResetPassword/>}/>
       <Route path='/complaint' element={<Complaint/>}/>
+      <Route path='/dashboard' element={<Dashboard/>}/>
 
       
-      <Route path='*' element={<Navigate to='/landing-page'/>}/>
+      <Route path='*' element={<DefaultPage/>}/>
 
 
    </Routes>

@@ -1,0 +1,44 @@
+
+
+.default-page{
+    color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.default-page>div{
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.oops{
+    font-size: 120px;
+    font-weight: 900;
+    text-align: center;
+    color: transparent;
+    background-image: url("https://www.hindustantimes.com/ht-img/img/2023/11/23/550x309/karsten-wurth-UbGYPMbMYP8-unsplash_1699169681948_1700715017707.jpg");
+    background-clip: text;
+    background-size: cover;
+}
+.not-found{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.not-found>button{
+    padding: 13px;
+    color: white;
+    font-weight: 900;
+    border-radius: 19px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 1px rgb(3, 39, 116);
+    background-color: rgb(19, 75, 195);
+}
