@@ -27,7 +27,6 @@ function App() {
 
       
       <Route path='*' element={<Navigate to='/landing-page'/>}/>
-      <Route path='' element={<Navigate to='/landing-page'/>}/>
 
 
    </Routes>
