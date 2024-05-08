@@ -4,7 +4,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-image: url("https://digitallearning.eletsonline.com/wp-content/uploads/2017/04/News-2.jpg");
+    /* background-image: url("https://digitallearning.eletsonline.com/wp-content/uploads/2017/04/News-2.jpg"); */
     background-size: cover;
     
 }
@@ -14,6 +14,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    background-image: url("https://media.istockphoto.com/id/1089592832/vector/studio-room-blurred-background-soft-gradient-pastel-with-lighting-well-use-as-business.jpg?s=612x612&w=0&k=20&c=nm5mtV7RsQvvcRIIcbZkhxqOwK0sVIjbIjnNVd2ORew=");
+    background-position: center;
+    background-size: cover;
+}
+    
+.login-container-left{
+    flex: 1;
+    border: 1px solid black;
+    height: 100vh;
+    background-image: url("https://worldruraldevelopmentday.org/wp-content/uploads/2023/07/World-Rural-Development-Day.jpg");
+    background-position: center;
+    background-size: cover;
 }
 .login-container{
     display: flex;
@@ -24,7 +37,8 @@
     box-shadow: 0px 0px 5px;
     border-radius: 10px;
     margin: 20px;
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(50px);
+
 }
 .login-container>input{
     padding: 15px;

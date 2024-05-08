@@ -4,7 +4,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
-import { API_URL } from '../App';
+import { API_URL } from '../../App';
 import toast from 'react-hot-toast';
 function Login() {
   let navigate = useNavigate()
@@ -46,6 +46,10 @@ function Login() {
   return <>
 
   <div className="login-page">
+
+    {/* <div className="login-container-left">
+
+    </div> */}
 
         <div className="login-container-right">
             <form onSubmit={handleLogin} className='login-container'>

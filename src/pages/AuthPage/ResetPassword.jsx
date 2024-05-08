@@ -5,7 +5,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { API_URL } from '../App';
+import {API_URL} from '../../App'
 
 
 function ResetPassword() {
@@ -34,7 +34,7 @@ function ResetPassword() {
 
         <div className="login-container-right">
             <form onSubmit={handleReset} className='login-container'>
-              <h1 style={{color:"white"}}>Reset Password   </h1>
+              <h1 style={{color:"gray"}}>Reset Password   </h1>
               <h3>Welcome to Rural Developement </h3>
               <label htmlFor="email">Email :</label>
               <input value={email} onChange={(e)=>setEmail(e.target.value)} type="email" name='email' />
@@ -45,7 +45,6 @@ function ResetPassword() {
                 <VisibilityOffIcon className='eye-icon'/>}
                 </div>
               <button type='submit'>Submit</button>
-              {/* <span>Forgot Password?</span> */}
               <h4>Remember Your Password! <span onClick={()=>navigate('/login')}>Click to Login ...</span>   </h4>
 
 

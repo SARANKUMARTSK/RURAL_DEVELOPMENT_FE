@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import './auth.css'
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { API_URL } from '../App';
+import {API_URL} from '../../App'
+
 
 
 function ForgotPassword() {
@@ -20,7 +19,7 @@ function ForgotPassword() {
       let res = await axios.post(`${API_URL}/user/forgotPassword`, {email});
       toast.success(res.data.message)
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error(error.response.data.message);
     }
   };
@@ -31,7 +30,7 @@ function ForgotPassword() {
 
         <div className="login-container-right">
             <form className='login-container' onSubmit={handleForgot}>
-                <h1 style={{color:"white"}}>Reset Password</h1>
+                <h1 style={{color:"gray"}}>Reset Password</h1>
                 
               <h3>Welcome Back to Rural Developement </h3>
               <label htmlFor="name">Name :</label>
