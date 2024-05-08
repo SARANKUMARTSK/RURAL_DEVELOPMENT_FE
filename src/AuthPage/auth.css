@@ -1,0 +1,198 @@
+.login-page{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://digitallearning.eletsonline.com/wp-content/uploads/2017/04/News-2.jpg");
+    background-size: cover;
+    
+}
+
+.login-container-right{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    min-width: 300px;
+    min-height: 400px;
+    box-shadow: 0px 0px 5px;
+    border-radius: 10px;
+    margin: 20px;
+    backdrop-filter: blur(30px);
+}
+.login-container>input{
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+.login-container>span{
+    margin-top: 18px;
+    text-align: end;
+    color: darkblue;
+    text-decoration: underline dotted;
+    font-weight: 600;
+}
+.password-input{
+    position: relative;
+}
+.eye-icon{
+    position: absolute;
+    top: 54%; 
+    left: 82%; 
+    transform: translateY(-50%);
+}
+.login-container>h3,h4{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.login-container>h4>span{
+    color: darkblue;
+    cursor: pointer;
+    text-decoration: underline dotted;
+}
+.login-container>label{
+    font-weight: 600;
+}
+.login-container>button{
+    font-weight: 900;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-top: 18px;
+    background-color: white;
+    box-shadow: 0px 0px 5px #0071c2;
+    color: #0071c2;
+    cursor: pointer;
+}
+.login-container>button:hover{
+    background-color: #0071c2;
+    color: white;
+}
+
+/* ..................................................................................................................... */
+
+/* Signup  */
+
+.signup-page{
+    min-height: 100vh;
+}
+.signup-page>h3{
+    margin: 20px;
+}
+.signup-head{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+.signup-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.signup-main-container{
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 10px;
+}
+.signup-left-container{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 10px;
+}
+.signup-right-container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.signup-left-container>input{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 3px gray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 400px;
+}
+.doorNo{
+    max-width: 100px;
+    display: block;
+}
+.street{
+    min-width: 500px;
+    display: block;
+}
+.locality{
+    min-width: 500px;
+    display: block;
+}
+.city{
+    min-width: 500px;
+    display: block;
+}
+.district{
+    min-width: 500px;
+    display: block;
+}
+.state{
+    min-width: 500px;
+    display: block;
+}
+.pinCode{
+    min-width: 500px;
+    display: block;
+}
+.address-container>input{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 3px gray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 400px;
+}
+.gender-container{
+    margin: 20px;
+    display: flex;
+    gap: 5px;
+}
+.address-container{
+    padding: 15px;
+}
+.signup-button{
+    padding: 15px;
+    border-radius: 0px 5px 5px 0px;
+    border: none;
+    background-color:gray;
+    color: white;
+    font-weight: 900;
+}
+.star-span{
+    color: red;
+    font-weight: 900;
+}
+.signup-page>h3{
+    color: gray;
+    font-weight: 900;
+    border-bottom: 2px solid gray;
+    padding: 5px;
+}
+
