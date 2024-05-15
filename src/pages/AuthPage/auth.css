@@ -1,3 +1,6 @@
+:root{
+    --blue-color:#2B35AF;
+}
 .login-page{
     display: flex;
     min-height: 100vh;
@@ -54,7 +57,7 @@
 .login-container>span{
     margin-top: 18px;
     text-align: end;
-    color: darkblue;
+    color: var(--blue-color);
     text-decoration: underline dotted;
     font-weight: 600;
 }
@@ -72,7 +75,7 @@
     margin-bottom: 10px;
 }
 .login-container>h4>span{
-    color: darkblue;
+    color: var(--blue-color);
     cursor: pointer;
     text-decoration: underline dotted;
 }
@@ -87,12 +90,12 @@
     outline: none;
     margin-top: 18px;
     background-color: white;
-    box-shadow: 0px 0px 5px #0071c2;
-    color: #0071c2;
+    box-shadow: 0px 0px 5px var(--blue-color);
+    color: var(--blue-color);
     cursor: pointer;
 }
 .login-container>button:hover{
-    background-color: #0071c2;
+    background-color: var(--blue-color);
     color: white;
 }
 
@@ -195,7 +198,7 @@
     padding: 15px;
     border-radius: 0px 5px 5px 0px;
     border: none;
-    background-color:gray;
+    background-color:var(--blue-color);
     color: white;
     font-weight: 900;
 }

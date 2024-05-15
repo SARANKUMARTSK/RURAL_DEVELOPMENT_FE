@@ -1,4 +1,4 @@
-
+/* Error Page  */
 
 .default-page{
     color: gray;
@@ -40,5 +40,5 @@
     border: none;
     outline: none;
     box-shadow: 0px 0px 1px rgb(3, 39, 116);
-    background-color: rgb(19, 75, 195);
+    background: linear-gradient(222deg, rgba(4,78,150,1) 0%, rgba(5,29,247,1) 100%);
 }

@@ -1,0 +1,381 @@
+:root{
+    --blue-color:#2B35AF;
+}
+
+.complaint-top{
+    background: white;
+    height: 80px;
+    border: 1px double white;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 15px;
+    align-items: center;
+    color: var(--blue-color);
+
+}
+.logout-button{
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: none;
+    outline: 2px double red;
+    background-color: white;
+    color: var(--blue-color);
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-container{
+    display: flex;
+    gap: 10px;
+}
+.logout-button:hover{
+    color: white;
+    background-color: red;
+    text-shadow: 0px 0px 5px gray;
+    box-shadow: 0px 0px 10px gray;
+}
+.home-button{
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: none;
+    outline: 2px double green;
+    background-color: white;
+    color: var(--blue-color);
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home-button:hover{
+    color: white;
+    background-color: green;
+    text-shadow: 0px 0px 5px gray;
+    box-shadow: 0px 0px 10px gray;
+}
+.complaint-form{
+    margin: 5px;
+    border: 3px double var(--blue-color);
+    min-height: 100vh;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.complaint-form>form{
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    min-width: 1024px;
+}
+.complaint-personal-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.complaint-personal-details>input{
+    padding: 15px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 5px;
+    color: gray;
+    font-weight: 600;
+}
+.complaint-address-details{
+    display: flex;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+.complaint-address-details>select{
+    padding: 15px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 5px;
+    color: gray;
+    font-weight: 600;
+    min-width: 330px;
+}
+.complaint-address-details>input{
+    padding: 15px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 5px;
+    color: gray;
+    font-weight: 600;
+    min-width: 290px;
+}
+.complaint-form>form>h3{
+    color: gray;
+    font-weight: 900;
+    margin: 15px 0px 10px 0px;
+}
+.complaint-form>form>h3>span{
+    color: red;
+    font-weight: 900;
+}
+.complaint-form>form>input{
+    padding: 15px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 5px;
+    color: gray;
+    font-weight: 600;
+    margin-top: 15px;
+}
+.complaint-form>form>select{
+    padding: 15px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 5px;
+    color: gray;
+    font-weight: 600;
+    margin-top: 15px;
+}
+.complaint-form>form>textarea{
+    min-height: 150px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 5px;
+    color: gray;
+    font-weight: 600;
+    margin-top: 15px;
+}
+.complaint-image-container{
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 5px gray;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.complaint-image-container>div>input{
+    flex: 1;
+    color: red;
+    font-weight: 900;
+}
+.complaint-image-container>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.complaint-image-container>div>img{
+    flex: 1;
+    height: 250px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px gray;
+}
+.submit-button-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.submit-button-center>button{
+    color: var(--blue-color);
+    font-weight: 900;
+    padding: 10px 18px;
+    border-radius: 5px;
+    border: 1px solid black;
+    outline: none;
+    background-color: white;
+    min-width: 200px;
+}
+.submit-button-center>button:hover{
+    background-color: var(--blue-color);
+    color: white;
+}
+@media screen and (max-width:1080px) {
+    .complaint-form>form{
+        min-width: auto;
+    }
+}
+@media screen and (max-width:740px) {
+    .complaint-image-container{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .complaint-address-details>select{
+        width: 100% !important;
+    }
+}
+@media screen and (max-width:420px) {
+    .complaint-image-container>div>img{
+        width: 300px;
+    }
+}
+
+/* Track Complaint Page  */
+
+.track-form-container>form{
+    border: 3px double var(--blue-color);
+    min-height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px; 
+    gap: 20px;   
+    color: gray;
+    font-weight: 900;
+}
+.track-form-container{
+    width: 100%;
+}
+.track-form-container>form>h3,p{
+    text-align: center;
+    color: var(--blue-color);
+}
+.search-input-container>input{
+    padding: 15px;
+    border: none;
+    outline: 2px double var(--blue-color);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px gray;
+    font-weight: 400;
+    color: blue;
+    font-size: 15px;
+    min-width: 400px;
+}
+.trackComplaint{
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    flex-direction: column;
+}
+.complaint-view{
+    min-height: 60vh;
+    display: flex;
+}
+.tracking-left-container{
+    flex: 1;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tracking-left-container>img{
+    height: 250px;
+    width: 320px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+.tracking-right-container{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.search-input-container{
+    display: flex;
+    position: relative;
+}
+.search-input-container>button{
+    position: absolute;
+    right: 3px;
+    top: 1.6px;
+    padding: 8px;
+    width: 60px;
+    background-color: var(--blue-color);
+    color: white;
+    font-weight: 900;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+.tracking-right-container>input,textarea{
+    padding: 15px;
+    width: 90%;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 5px;
+    outline: none;
+    margin-top: 10px;
+    color: gray;
+    font-size: 15px;
+}
+.tracking-right-container>textarea{
+    min-height: 200px;
+}
+.tracking-right-container>div{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.tracking-right-container>div>input{
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 5px;
+    outline: none;
+    margin-top: 15px;
+    color: gray;
+    font-size: 15px;
+    min-width: 300px;
+}
+.tracking-right-container>label{
+    margin-top: 15px;
+}
+.status-inputs>input{
+    background-color: rgb(244, 154, 154);
+    color: var(--blue-color);
+    font-weight: 900;
+    text-align: center;
+}
+.status-action-button{
+    display: flex;
+    margin: 20px;
+}
+.status-action-button>button{
+    border-radius: 5px;
+    font-weight: 900;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-button{
+    color: green;
+    background-color: white;
+    border: 2px solid green;
+    opacity: 0.5;
+}
+.delete-button{
+    color: red;
+    background-color: white;
+    border: 2px solid red;
+    opacity: 0.5;
+}
+.edit-button:hover{
+    background-color: green;
+    color: white;
+    opacity: 1;
+}
+.delete-button:hover{
+    background-color: red;
+    color: white;
+    opacity: 1;
+}
+@media screen and (max-width:715px) {
+    .complaint-view{
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .tracking-right-container>div>input{
+        width: 90%;
+    }
+}
+@media screen and (max-width:480px) {
+    .search-input-container>input{
+        min-width: 250px;
+    }
+}
+
+
