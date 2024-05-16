@@ -42,3 +42,84 @@
     box-shadow: 0px 0px 1px rgb(3, 39, 116);
     background: linear-gradient(222deg, rgba(4,78,150,1) 0%, rgba(5,29,247,1) 100%);
 }
+
+/* Sales Card */
+.sales-card{
+    display: flex;
+    box-shadow: 0px 0px 10px;
+    max-width: 700px;
+    border-radius: 10px;
+}
+.sales-card-left{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 350px;
+}
+.sales-card-right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 340px;
+    padding: 10px;
+    gap: 5px;
+}
+.sales-card-left>img{
+    height: 250px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px;
+    margin: 15px;
+}
+.sales-card-address{
+    display: flex;
+    gap: 10px;
+}
+.sales-card-address>img{
+    height: 50px;
+    width: 50px;
+}
+.sales-card-address>div{
+    display: flex;
+    flex-direction: column;
+    color: gray;
+}
+.sales-card-right>p{
+    text-align:start ;
+    font-size: 17px;
+    color: gray;
+}
+.sales-card-right>p>span{
+    text-align:start ;
+    font-size: 30px;
+    color: green;
+    font-weight: 900;
+}
+.sales-card-right>h2{
+    color: red;
+}
+.sales-card-right>span{
+    color: red;
+    font-weight: 600;
+}
+.space-around{
+    display: flex;
+    justify-content: space-around;
+}
+.edit-sales-button{
+    padding: 10px;
+    border-radius: 7px;
+    color: green;
+    background-color: white;
+    border: none;
+    outline: none;
+}
+.delete-sales-button{
+    padding: 10px 10px;
+    border-radius: 7px;background-color: red;
+    border: none;
+    background-color: white;
+    outline: none;
+    color: red;
+}
