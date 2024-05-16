@@ -31,7 +31,7 @@ function Login() {
         sessionStorage.setItem("role", res.data.role);
         sessionStorage.setItem("userId", res.data.id);
         toast.success(res.data.message || "Login Successfull");
-          navigate(`/complaint/${res.data.id}`);
+          navigate(`/landing-page`);
         
        
       } else {

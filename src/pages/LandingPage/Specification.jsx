@@ -1,5 +1,4 @@
 import React from 'react'
-import LanguageIcon from '@mui/icons-material/Language';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import WaterIcon from '@mui/icons-material/Water';
@@ -8,21 +7,39 @@ import iconImage from '/public/worldImage.png'
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import EditRoadIcon from '@mui/icons-material/EditRoad';
 import LocalHospitalOutlinedIcon from '@mui/icons-material/LocalHospitalOutlined';
-import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlined';
 import LinkIcon from '@mui/icons-material/Link';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import DoneIcon from '@mui/icons-material/Done';
+
+
 function Specification() {
+  const navigate = useNavigate()
+  let userId = sessionStorage.getItem('userId')
+  let userName = sessionStorage.getItem('name')
+
+  const handleComplaint = ()=>{
+    if(userId){
+      navigate(`/add-complaint/${userId}`)
+      toast.success(`Welcome ${userName} , Register Your Complaint Here...`)
+    }else{
+      toast.error("Please LOGIN to Regiter Complaint  ")
+      navigate('/login')
+    }
+  }
   return (
     <div className='specification-page'>
       <div className='specification-container-head'>
         <div className="spacification-container">
           <div>Online Services</div>
           <ul>
-            <li><LinkIcon/> Raise Complaints </li>
+            <li onClick={()=>handleComplaint()}><LinkIcon/> Raise Complaints & Track With Your Complaint Id <DoneIcon/></li>
+            <li onClick={()=>navigate('/view-contact')}><LinkIcon/> Get All Officials Contact <DoneIcon/></li>
+            <li onClick={()=>navigate('/gallery')}><LinkIcon/> Recent Activity By Gallery <DoneIcon/></li>
+            <li><LinkIcon/> Waste Pickup & Track With Your Tracking Id </li>
+            <li><LinkIcon/> Market Place For Formers & Buyers</li>
+            <li><LinkIcon/> Food Donation & Surples Management</li>
             <li><LinkIcon/> Government Announcements</li>
-            <li><LinkIcon/> Schemes</li>
-            <li><LinkIcon/> Loan Announcements and Benifits</li>
-            <li><LinkIcon/> Waste Management</li>
-            <li><LinkIcon/> Market Place for Your Products</li>
           </ul>
         </div>
 

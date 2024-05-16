@@ -28,8 +28,8 @@ import ViewAnnouncement from './pages/AppPage/announcement/ViewAnnouncement'
 import AddImage from './pages/AppPage/gallery/AddImage'
 import ViewImage from './pages/AppPage/gallery/ViewImage'
 import DetailedAnnouncement from './pages/AppPage/announcement/DetailedAnnouncement'
-export  const API_URL ="http://localhost:8001"
-// export const API_URL = "https://rural-development-be.onrender.com"
+// export  const API_URL ="http://localhost:8001"
+export const API_URL = "https://rural-development-be.onrender.com"
 
 
 function App() {
@@ -45,9 +45,9 @@ function App() {
       <Route path='/reset-password/:token' element={<ResetPassword/>}/>
 
       {/* Complaint Pages  */}
-      <Route path='/complaint/:id' element={<Complaint/>}/>
+      <Route path='/add-complaint/:id' element={<Complaint/>}/>
       <Route path='/track-complaint/:referenceLink' element={<TrackComplaint/>}/>
-      <Route path='/edit-complaint' element={<EditComplaint/>}/>
+      <Route path='/edit-complaint/:id' element={<EditComplaint/>}/>
 
       {/* Product Pages  */}
       <Route path='/add-sales-product' element={<AddSales/>}/>
@@ -56,7 +56,7 @@ function App() {
 
       {/* Contact Page  */}
       <Route path='add-contact' element={<AddContact/>}/>
-      <Route path='edit-contact' element={<EditContact/>}/>
+      <Route path='edit-contact/:id' element={<EditContact/>}/>
       <Route path='view-contact' element={<Contact/>}/>
 
       {/* Donation Page  */}

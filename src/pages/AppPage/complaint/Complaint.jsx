@@ -45,6 +45,7 @@ function Complaint() {
       
       let res = await axios.post(`${API_URL}/complaints/${userId}`,formData)
       toast.success(res.data.message)
+      navigate('/landing-page')
     } catch (error) {
       toast.error(error.message)
     }
@@ -56,6 +57,7 @@ function Complaint() {
   const handleLogout = ()=>{
     sessionStorage.clear();
     navigate('/landing-page')
+    toast.success("Logout Successfull")
   }
 
   return <>
@@ -113,7 +115,7 @@ function Complaint() {
               <div>
                 {
                  imageFile===null?<img src="http://www.listercarterhomes.com/wp-content/uploads/2013/11/dummy-image-square.jpg"/>:
-                 <img src={URL.createObjectURL(imageFile)}  />
+                 <img src={URL.createObjectURL(imageFile)} />
                 }
                   
               </div>
