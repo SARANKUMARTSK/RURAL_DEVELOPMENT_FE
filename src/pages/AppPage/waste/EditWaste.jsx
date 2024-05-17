@@ -1,48 +1,153 @@
-import React from 'react'
-import Topbar from '../../../components/TopBar'
-import '../app.css'
-function EditWaste() {
-  return <>
-    <Topbar/>
-    <div className='add-waste-page'>
-      <form>
-         <div className="add-waste-left">
-         <img src="https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg" alt="" />
-         <input type="file" accept="image/*"/>
-         </div>
-   
-         <div className="add-waste-right">
-              <div className="personal-details">
-                <input type="text" placeholder='Your Name' />
-                <input type="text" placeholder='Email' />
-                <input type="text" placeholder='Phone Number'/>
-              </div>
-              <div className="waste-details">
-                <select>
-                  <option value="">Select Type</option>
-                  <option value="">Plastic-Waste</option>
-                  <option value="">Electrical-Waste</option>
-                  <option value="">Agro-Waste</option>
-                </select>
-                <textarea className='add-waste-desc' placeholder='Enter About Waste Material Including Your Address'></textarea>
-                <input type="text" placeholder='Quantity' />
-                <select>
-                  <option value="">Select Your City</option>
-                  <option value="">Pollachi</option>
-                  <option value="">Anaimalai</option>
-                </select>
-                <select>
-                  <option value="">Select District</option>
-                  <option value="">Coimbatore</option>
-                  <option value="">Tiruppur</option>
-                </select> 
-              </div>
+import React, { useEffect, useState } from 'react';
+import Topbar from '../../../components/TopBar';
+import '../app.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { API_URL } from '../../../App';
+import toast from 'react-hot-toast';
 
-         </div>
-         <button className='add-waste-button'>Submit</button>
-      </form>
-    </div>
-  </>
+function EditWaste() {
+  const navigate = useNavigate();
+  const userId = sessionStorage.getItem('userId');
+  const { id } = useParams();
+
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [type, setType] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [description, setDescription] = useState('');
+  const [locality, setLocality] = useState('');
+  const [city, setCity] = useState('');
+  const [district, setDistrict] = useState('');
+  const [imageFile, setImageFile] = useState(null);
+  const [existingImage, setExistingImage] = useState('');
+
+  const fetchData = async () => {
+    try {
+      let res = await axios.get(`${API_URL}/waste/${id}`);
+      let { waste } = res.data;
+      setUserName(waste.userName);
+      setEmail(waste.email);
+      setPhoneNumber(waste.phoneNumber);
+      setType(waste.type);
+      setQuantity(waste.quantity);
+      setDescription(waste.description);
+      setCity(waste.city);
+      setDistrict(waste.district);
+      setLocality(waste.locality);
+      setExistingImage(waste.imageFile);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleFileChange = (e) => {
+    setImageFile(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append('userName', userName);
+      formData.append('email', email);
+      formData.append('phoneNumber', phoneNumber);
+      formData.append('type', type);
+      formData.append('quantity', quantity);
+      formData.append('description', description);
+      formData.append('locality', locality);
+      formData.append('city', city);
+      formData.append('district', district);
+      if (imageFile) {
+        formData.append('imageFile', imageFile);
+      }
+
+      let res = await axios.put(`${API_URL}/waste/${id}`, formData);
+      toast.success(res.data.message);
+      navigate('/'); // Navigate to a different page after successful submission
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <>
+      <Topbar />
+      <div className='add-waste-page'>
+        <form onSubmit={handleSubmit}>
+          <div className="add-waste-left">
+            <img src={`${API_URL}/images/${existingImage}`} alt="Waste" />
+            <input type="file" accept="image/*" onChange={handleFileChange} />
+          </div>
+
+          <div className="add-waste-right">
+            <div className="personal-details">
+              <input
+                type="text"
+                placeholder='Your Name'
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder='Email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder='Phone Number'
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+            </div>
+            <div className="waste-details">
+              <select value={type} onChange={(e) => setType(e.target.value)}>
+                <option value="">Select Type</option>
+                <option value="Plastic-Waste">Plastic-Waste</option>
+                <option value="Electrical-Waste">Electrical-Waste</option>
+                <option value="Agro-Waste">Agro-Waste</option>
+              </select>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className='add-waste-desc'
+                placeholder='Enter About Waste Material Including Your Address'
+              />
+              <input
+                type="text"
+                placeholder='Quantity'
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+              />
+              <select value={district} onChange={(e) => setDistrict(e.target.value)}>
+                <option value="">Select District</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Tiruppur">Tiruppur</option>
+              </select>
+              <select value={city} onChange={(e) => setCity(e.target.value)}>
+                <option value="">Select Your City</option>
+                <option value="Pollachi">Pollachi</option>
+                <option value="Udumalpet">Udumalpet</option>
+              </select>
+              <select value={locality} onChange={(e) => setLocality(e.target.value)}>
+                <option value="">Select Village</option>
+                <option value="Anaimalai">Anaimalai</option>
+                <option value="Kaliyapuram">Kaliyapuram</option>
+                <option value="Odayakulam">Odayakulam</option>
+              </select>
+            </div>
+          </div>
+          <button className='add-waste-button'>Submit</button>
+        </form>
+      </div>
+    </>
+  );
 }
 
-export default EditWaste
+export default EditWaste;

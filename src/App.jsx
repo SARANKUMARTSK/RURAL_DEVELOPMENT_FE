@@ -28,6 +28,7 @@ import ViewAnnouncement from './pages/AppPage/announcement/ViewAnnouncement'
 import AddImage from './pages/AppPage/gallery/AddImage'
 import ViewImage from './pages/AppPage/gallery/ViewImage'
 import DetailedAnnouncement from './pages/AppPage/announcement/DetailedAnnouncement'
+import UserProduct from './pages/AppPage/salesProducts/UserProduct'
 // export  const API_URL ="http://localhost:8001"
 export const API_URL = "https://rural-development-be.onrender.com"
 
@@ -50,9 +51,10 @@ function App() {
       <Route path='/edit-complaint/:id' element={<EditComplaint/>}/>
 
       {/* Product Pages  */}
-      <Route path='/add-sales-product' element={<AddSales/>}/>
-      <Route path='/view-sales-product' element={<ViewSales/>}/>
-      <Route path='/edit-sales-product' element={<EditSales/>}/>
+      <Route path='/add-sales-product/:id' element={<AddSales/>}/>
+      <Route path='/view-sales-product/:id' element={<ViewSales/>}/>
+      <Route path='/edit-sales-product/:id' element={<EditSales/>}/>
+      <Route path='/user-sales-product/:id' element={<UserProduct/>}/>
 
       {/* Contact Page  */}
       <Route path='add-contact' element={<AddContact/>}/>
@@ -65,9 +67,9 @@ function App() {
       <Route path='add-donation' element={<AddDonation/>}/>
 
       {/* Waste Page  */}
-      <Route path='add-waste' element={<AddWaste/>}/>
-      <Route path='edit-waste' element={<EditWaste/>}/>
-      <Route path='track-waste' element={<TrackWaste/>}/>
+      <Route path='add-waste/:id' element={<AddWaste/>}/>
+      <Route path='edit-waste/:id' element={<EditWaste/>}/>
+      <Route path='track-waste/:referenceLink' element={<TrackWaste/>}/>
 
       {/* Announcement Page  */}
       <Route path='add-announcement' element={<AddAnnouncement/>}/>

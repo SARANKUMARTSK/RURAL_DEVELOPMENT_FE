@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Topbar from '../../../components/TopBar'
 function EditDonation() {
-  return (
-    <div>EditDonation</div>
-  )
+  return <>
+  <Topbar/>
+  </>
 }
 
 export default EditDonation

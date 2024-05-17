@@ -16,9 +16,9 @@ function About() {
     </div>
 
     <div className="about-right-container">
-      <div className="documents"><ReceiptLongIcon/>Documents</div>
-      <div className="contacts"><ContactPageIcon/>Contacts</div>
-      <div className="gallery"><CollectionsIcon/>Gallery</div>
+      {/* <div className="documents"><ReceiptLongIcon/>Documents</div> */}
+      <div className="contacts" onClick={()=>navigate('/signup')}><ContactPageIcon/>Signup</div>
+      {/* <div className="gallery"><CollectionsIcon/>Gallery</div> */}
       <div onClick={()=>navigate('/login')} className="login"><ExitToAppIcon/>Login</div>
 
     </div>

@@ -1,5 +1,5 @@
 :root{
-    --blue-color:#2B35AF;
+    --blue-color:rgb(5, 108, 82);
 }
 .login-page{
     display: flex;
@@ -18,7 +18,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url("https://media.istockphoto.com/id/1089592832/vector/studio-room-blurred-background-soft-gradient-pastel-with-lighting-well-use-as-business.jpg?s=612x612&w=0&k=20&c=nm5mtV7RsQvvcRIIcbZkhxqOwK0sVIjbIjnNVd2ORew=");
+    background-color: var(--blue-color);
+    /* background-image: url("https://media.istockphoto.com/id/1089592832/vector/studio-room-blurred-background-soft-gradient-pastel-with-lighting-well-use-as-business.jpg?s=612x612&w=0&k=20&c=nm5mtV7RsQvvcRIIcbZkhxqOwK0sVIjbIjnNVd2ORew="); */
     background-position: center;
     background-size: cover;
 }
@@ -37,11 +38,11 @@
     padding: 20px;
     min-width: 300px;
     min-height: 400px;
-    box-shadow: 0px 0px 5px;
+    box-shadow: 0px 0px 25px;
     border-radius: 10px;
     margin: 20px;
     backdrop-filter: blur(50px);
-
+    background-color: white;
 }
 .login-container>input{
     padding: 15px;
@@ -89,14 +90,15 @@
     border: none;
     outline: none;
     margin-top: 18px;
-    background-color: white;
+    background-color: var(--blue-color);
     box-shadow: 0px 0px 5px var(--blue-color);
-    color: var(--blue-color);
+    color: white;
     cursor: pointer;
 }
 .login-container>button:hover{
-    background-color: var(--blue-color);
-    color: white;
+    background-color: white;
+    color: var(--blue-color);
+    box-shadow: 0px 0px 10px var(--blue-color);
 }
 
 /* ..................................................................................................................... */
@@ -123,7 +125,7 @@
 .signup-main-container{
     display: flex;
     flex-direction: row;
-    box-shadow: 0px 0px 5px gray;
+    box-shadow: 0px 0px 5px var(--blue-color);
     border-radius: 10px;
 }
 .signup-left-container{
@@ -196,7 +198,7 @@
 }
 .signup-button{
     padding: 15px;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 10px 10px 0px;
     border: none;
     background-color:var(--blue-color);
     color: white;

@@ -1,9 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Topbar from '../../../components/TopBar'
+import Navbar from '../../../components/Navbar'
 import '../app.css'
+import { useNavigate, useParams } from 'react-router-dom'
+import axios from 'axios'
+import { API_URL } from '../../../App'
+import toast from 'react-hot-toast'
+
 function AddSales() {
+
+  const navigate = useNavigate()
+  const [name,setName] = useState("")
+  const [email,setEmail] = useState("")
+  const [phoneNumber,setPhoneNumber] = useState("")
+  const [product,setProduct] = useState("")
+  const [description,setDescription] = useState("")
+  const [quantity,setQuantity] = useState("")
+  const [unit,setUnit] = useState("")
+  const [price,setPrice] = useState("")
+  const [imageFile,setImageFile] = useState(null)
+  const [locality,setLocality] = useState("")
+  const [city,setCity] = useState("")
+  const [district,setDistrict] = useState("")
+  const [state,setState] = useState("")
+  const {id} = useParams()
+  const userId = sessionStorage.getItem('userId')
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    try {
+      let formData = new FormData();
+      formData.append("name",name)
+      formData.append("email",email)
+      formData.append("phoneNumber",phoneNumber)
+      formData.append("product",product)
+      formData.append("description",description)
+      formData.append("quantity",quantity)
+      formData.append("unit",unit)
+      formData.append("price",price)
+      formData.append("imageFile",imageFile)
+      formData.append("locality",locality)
+      formData.append("city",city)
+      formData.append("district",district)
+      formData.append("state",state)
+      formData.append('userId',userId)
+      
+      let res = await axios.post(`${API_URL}/products`,formData)
+      toast.success(res.data.message)
+      navigate('/landing-page')
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return <>
   <Topbar/>
+  <Navbar/>
   <div className="add-sales-page">
 
     <div className="add-sales-left-container">
@@ -14,48 +65,48 @@ function AddSales() {
     </div>
 
     <div className="add-sales-right-container">
-        <form className="add-sales-form">
+        <form className="add-sales-form" onSubmit={handleSubmit}>
           <h3>Add Your Agriculture Product for sale</h3>
          <div className="add-sales-personal">
-              <input type="text" placeholder='Your Name' />
-              <input type="text" placeholder='Email' />
-              <input type="text" placeholder='PhoneNumber' />
+              <input type="text" placeholder='Your Name' onChange={(e)=>setName(e.target.value)} />
+              <input type="text" placeholder='Email' onChange={(e)=>setEmail(e.target.value)}/>
+              <input type="text" placeholder='PhoneNumber' onChange={(e)=>setPhoneNumber(e.target.value)}/>
          </div>
           <div className="add-sales-product">
               <div>
-                <input type="text" placeholder='Product Name' />
-                <input type="text" placeholder='Unit Of Measurement' />
-                <input type="text" placeholder='Product Available Qty' />
-                <input type="text" placeholder='Price Per Unit' />
+                <input type="text" placeholder='Product Name' onChange={(e)=>setProduct(e.target.value)} />
+                <input type="text" placeholder='Unit Of Measurement' onChange={(e)=>setUnit(e.target.value)} />
+                <input type="text" placeholder='Product Available Qty' onChange={(e)=>setQuantity(e.target.value)}/>
+                <input type="text" placeholder='Price Per Unit' onChange={(e)=>setPrice(e.target.value)}/>
               </div>
-              <textarea className='sales-product-description' name="description" placeholder='Product Description'></textarea>
+              <textarea className='sales-product-description' onChange={(e)=>setDescription(e.target.value)} name="description" placeholder='Product Description'></textarea>
           </div>
           <div className="add-sales-address">
-              <select type="text">
+              <select type="text" onChange={(e)=>setState(e.target.value)}>
                 <option value="">State</option>
-                <option value="tamilnadu">Tamilnadu</option>
+                <option value="Tamilnadu">Tamilnadu</option>
               </select>
-              <select type="text">
+              <select type="text" onChange={(e)=>setDistrict(e.target.value)}>
                 <option value="">District</option>
-                <option value="coimbatore">Coimbatore</option>
+                <option value="Coimbatore">Coimbatore</option>
               </select>
-              <select type="text">
+              <select type="text" onChange={(e)=>setCity(e.target.value)}>
                 <option value="">City</option>
-                <option value="pollachi">Pollachi</option>
+                <option value="Pollachi">Pollachi</option>
+                <option value="Anaimalai">Anaimalai</option>
+                <option value="Udumalpet">Udumalpet</option>
+                <option value="Dharapuram">Dharapuram</option>
               </select>
-              <select type="text">
+              <select type="text" onChange={(e)=>setLocality(e.target.value)} >
                 <option value="">Village</option>
-                <option value="anaimalai">Anaimalai</option>
+                <option value="Kaliyapuram">Kaliyapuram</option>
+                <option value="Odayakulam">Odayakulam</option>
               </select>
           </div>
 
           <div className="add-sales-flex-container">
-              <select type="text">
-                <option value="">Select Status</option>
-                <option value="Available">Available</option>
-                <option value="Currently UnAvailable">Un-Available</option>
-              </select>
-              <input type="file" accept="image/*" />
+             
+              <input type="file" accept="image/*" onChange={(e)=>setImageFile(e.target.files[0])} />
           </div>
 
          <div className="center">

@@ -1,5 +1,5 @@
 :root{
-    --blue-color:#2B35AF;
+    --blue-color:rgb(5, 108, 82);
 }
 
 .complaint-top{
@@ -559,6 +559,29 @@
     justify-content: space-between;
     align-items: center;
 }
+@media screen and (max-width:965px) {
+    .view-sales-search-bar{
+        /* flex-direction: column; */
+        gap: 20px;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+}
+.sales-nav-buttons{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid var(--blue-color);
+    background-color: white;
+    color: var(--blue-color);
+    font-weight: 600;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.sales-nav-buttons:hover{
+    background-color: var(--blue-color);
+    color: white;
+}
 .sales-search-input{
     position: relative;
     margin-right: 20px;
@@ -573,6 +596,11 @@
     font-weight: 600;
     background-color: white;
     box-shadow: 0px 0px 5px;
+}
+@media screen and (max-width:500px) {
+    .sales-search-input>input{
+        max-width: 250px;
+    }
 }
 .sales-search-input>button{
     padding: 6px;
@@ -1016,6 +1044,7 @@
     align-items: center;
     gap: 25px;
     padding: 20px;
+    min-height: 60vh;
 }
 .announcement-link-container{
     display: flex;
@@ -1034,6 +1063,10 @@
     font-weight: 600;
     border-radius: 5px;
 }
+.announcement-link-container>button>a{
+    color: inherit;
+}
+
 .announcement-link-container>button:hover{
     background-color: white;
     box-shadow: 0px 0px 5px var(--blue-color);
@@ -1056,3 +1089,50 @@
     height: 100%;
     width: 100%;
 }
+
+/* Donation Page  */
+.add-donation-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-donation-page>form{
+    display: flex;
+    max-width: 1024px;
+    justify-content: center;
+    align-items: center;
+}
+.add-donation-left>img{
+    flex: 1;
+   margin: 10px;
+   height: 100%;
+   width: 100%;
+   border-radius: 20px;
+   box-shadow: 0px 0px 5px var(--blue-color);
+}
+.add-donation-right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+.add-donation-right>div>input,select,.add-donation-right>input{
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 5px var(--blue-color);
+    min-width: 280px;
+    margin: 5px;
+    color: gray;
+    font-weight: 600;
+    outline: none;
+}
+.add-donation-right>textarea{
+    box-shadow: 0px 0px 5px var(--blue-color);
+    width: 96%;
+    margin: 5px;
+    color: gray;
+    font-weight: 600;
+}
+

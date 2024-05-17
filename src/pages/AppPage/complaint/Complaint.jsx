@@ -17,7 +17,7 @@ function Complaint() {
   let [locality,setLocality] = useState("")
   let [city,setCity] = useState("")
   let [district,setDistrict] = useState("")
-  let [state,setState] = useState("")
+  let [state,setState] = useState("") 
   let [pincode,setPincode] = useState("")
   let [department,setDepartment] = useState("")
   let [title,setTitle] = useState("")

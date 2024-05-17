@@ -1,24 +1,58 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TopBar from '../../../components/TopBar'
-import SearchIcon from '@mui/icons-material/Search';
 import '../app.css'
 import SalesCard from '../../../components/SalesCard';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { API_URL } from '../../../App';
+import HomeIcon from '@mui/icons-material/Home';
+
 function ViewSales() {
+  const navigate = useNavigate()
+  const userId = sessionStorage.getItem('userId')
+
+  const [city,setCity] = useState("")
+  const [data,setData] = useState([])
+  
+  const fetchData = async()=>{
+    try {
+      let res = await axios.get(`${API_URL}/products`)
+      let data = res.data.product
+      setData(data.filter(data=>data.city===(city===""?"Pollachi":city)));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+   fetchData();
+  },[city])
+
   return <>
+
   <TopBar/>
     <div className="view-sales-search-bar">
-        <select>
+        <select onChange={(e)=>setCity(e.target.value)}>
           <option value="">Select City Name</option>
-          <option value="">Pollachi</option>
-          <option value="">Anaimalai</option>
+          <option value="Pollachi">Pollachi</option>
+          <option value="Anaimalai">Anaimalai</option>
+          <option value="Udumalpet">Udumalpet</option>
+          <option value="Dharapuram">Dharapuram</option>
         </select>
-        <div className="sales-search-input">
-              <button><SearchIcon/></button>
-              <input type="text"  placeholder='Search Product'/>
-        </div>
+
+        {
+          userId? 
+          <div>
+            <button onClick={()=>navigate(`/user-sales-product/${userId}`)} className='sales-nav-buttons'>Your Products</button>
+            <button className='sales-nav-buttons' onClick={()=>navigate(`/add-sales-product/${userId}`)}>Add New +</button>
+            <button className='sales-nav-buttons' onClick={()=>navigate(`/landing-page`)}>Home</button>
+          </div>:""
+        }
+
+        
     </div>
     <div className='view-sales-page'>
-      <SalesCard/>
+      <SalesCard data={data}/>
     </div>
   
   </>
