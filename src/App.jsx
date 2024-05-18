@@ -29,6 +29,12 @@ import AddImage from './pages/AppPage/gallery/AddImage'
 import ViewImage from './pages/AppPage/gallery/ViewImage'
 import DetailedAnnouncement from './pages/AppPage/announcement/DetailedAnnouncement'
 import UserProduct from './pages/AppPage/salesProducts/UserProduct'
+import Home from './pages/AdminPage/Home'
+import ComplaintList from './pages/AdminPage/ComplaintList'
+import WasteList from './pages/AdminPage/WasteList'
+import User from './pages/AdminPage/User'
+import ContactList from './pages/AdminPage/ContactList'
+
 // export  const API_URL ="http://localhost:8001"
 export const API_URL = "https://rural-development-be.onrender.com"
 
@@ -39,6 +45,19 @@ function App() {
    <Routes>
       <Route path='/landing-page' element={<LandingPage/>}/>
 
+      {/* Admin Pages  */}
+      <Route path='/dashboard' element={<Dashboard/>}>
+        <Route path='home' element={<Home/>}/>
+        <Route path='complaints' element={<ComplaintList/>}/>
+        <Route path='waste-collection' element={<WasteList/>}/>
+        <Route path='users' element={<User/>}/>
+        <Route path='contacts' element={<ContactList/>}/>
+
+        <Route path='' element={<Navigate to={"home"}/>}/>
+
+      </Route>
+
+      
       {/* Auth Pages  */}
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<SignUp/>}/>
@@ -82,8 +101,7 @@ function App() {
       <Route path='gallery' element={<ViewImage/>}/>
        
 
-      {/* Admin Pages  */}
-      <Route path='/dashboard' element={<Dashboard/>}/>
+   
 
       {/* Default Routes  */}
       <Route path='' element={<Navigate to={'/landing-page'}/>}/>

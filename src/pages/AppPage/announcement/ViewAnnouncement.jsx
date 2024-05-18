@@ -7,6 +7,7 @@ import Navbar from '../../../components/Navbar'
 function ViewAnnouncement() {
 
   const [data,setData] = useState([])
+  const addButton = true;
 
   const fetchAnnouncement = async()=>{
     try {
@@ -23,13 +24,14 @@ function ViewAnnouncement() {
   },[])
   return <>
   <Topbar/>
-  <Navbar/>
+  <Navbar addButton={addButton}/>
+
   <div className="announcement-page">
 
 
    {
     data.map((e,i)=>{
-      return  <div className="announcement-link-container">
+      return  <div key={i} className="announcement-link-container">
       <h3>{e.title} </h3>
       <button><a href={`${API_URL}/images/${e.imageFile}`}>CLICK HERE</a></button>
     </div>

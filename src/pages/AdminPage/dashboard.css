@@ -1,0 +1,244 @@
+:root{
+    --blue-color:rgb(5, 108, 82);
+}
+
+.dashboard-wrapper{
+    display: flex;
+}
+.sidebar-wrapper{
+    flex: 0.88;
+}
+.content-wrapper{
+    flex: 5;
+}
+.container-fluid{
+    padding: 10px;
+}
+
+/* Sidebar  */
+.sidebar{
+    min-height: 100vh;
+    height: 100%;
+    background: rgb(36, 245, 106);
+    background: linear-gradient(40deg, rgb(1, 130, 27) 0%, rgba(11,117,43,1) 100%);
+    display: flex;
+    flex-direction: column;
+}
+.sidebar>ul{
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+.sidebar>ul>li{
+    display: flex;
+    gap: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    opacity: 0.5 ;
+    align-items: center;
+}
+.sidebar>ul>li>p{
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+}
+.sidebar>ul>li:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+@media screen and (max-width:1100px) {
+    .sidebar>ul>li{
+        flex-direction: column;
+        align-items: left;
+    }
+    .sidebar>ul>li>p{
+        font-size: 12px;
+    }
+}
+.dashboard-nav{
+    color: white !important;
+    opacity: 1 !important;
+}
+.app-icon-dashboard{
+    text-shadow: 0px 0px 2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 9px;
+    margin-bottom: 10px;
+    margin-left: 0px !important;
+    font-size: 18px !important;
+    color: white !important;
+    opacity: 1 !important;
+}
+.app-icon-dashboard>p{
+    font-weight: 900 !important;
+    font-size: 20px !important;
+}
+.app-icon-dashboard>i>svg{
+    font-size: 45px !important;
+}
+.sidebar-hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+    opacity: 0.1;
+    margin-left: 10px;
+}
+.sidebar-heading{
+    text-align: start;  
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: white;
+    opacity: 0.7;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+
+/* Dashboard Topbar  */
+.dashboard-topbar{
+    min-height: 80px;
+    background-color: white;
+    display: flex;
+    justify-content: end;
+    box-shadow: 0px 0px 7px ;
+}
+.topbar-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.right-border{
+    border-right: 2px solid gray;
+    margin: 10px;
+}
+.topbar-name>p{
+    padding-right: 20px;    
+}
+.profile-container-topbar{
+    display: flex;
+    margin-right: 20px;
+    gap: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.profile-container-topbar>img{
+    height: 20px;
+    width: 20px;
+}
+
+/* Home  */
+
+.home-sub-heading{
+    color: var(--blue-color);
+    margin: 20px;
+}   
+.dashboard-card-container{
+    margin-top: 30px;
+    margin-left: 30px;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+.dashboard-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    height: 108px;
+    width: 250px;
+    box-shadow: 0px 0px 5px  var(--blue-color);
+}
+
+.border-left-red{
+    border-left: 6px solid red ;
+}
+.border-left-orange{
+    border-left: 6px solid orange ;
+}
+.border-left-green{
+    border-left: 6px solid green;
+}
+.card-left{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-left>span{
+    font-size: 20px;
+    font-weight: 900;
+}
+.color-red{
+    color: red;
+}
+.color-orange{
+    color: orange;
+}
+.color-green{
+    color: green;
+}
+.color-gray{
+    color: gray;
+    text-shadow: 0px 0px 1px black;
+}
+.card-right{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-right>i>svg{
+    color: gray;
+    font-size: 40px;
+}
+@media screen and (max-width:480px) {
+    .right-border{
+        display: none;
+    }
+    .sidebar>ul>li{
+        margin-left: 0px;
+    }
+    .sidebar-heading{
+        margin-left: 5px !important;
+        font-size: 12px !important;
+    }
+    
+}
+
+/* Add Contact & Contact - ADMIN */
+.add-contact-button{
+    display: flex;
+    justify-content: end;
+    margin: 20px;
+}
+.add-contact-button>button{
+    color: var(--blue-color);
+    font-weight: 900;
+    padding: 8px 20px;
+    border: 2px solid var(--blue-color);
+    border-radius: 5px;
+    background-color: white;
+}
+.add-contact-button>button:hover{
+    color: white;
+    background-color: var(--blue-color);
+    box-shadow: 0px 0px 5px var(--blue-color);
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+

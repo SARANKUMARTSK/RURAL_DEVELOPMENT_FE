@@ -5,10 +5,12 @@ import AttachEmailIcon from '@mui/icons-material/AttachEmail';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import FaxIcon from '@mui/icons-material/Fax';
 import BadgeIcon from '@mui/icons-material/Badge';
+import Navbar from '../../../components/Navbar';
 
 function AddContact() {
   return<>
   <Topbar/>
+  <Navbar/>
   <div className="add-contact-page">
 
     <div className="add-contact-left-container">

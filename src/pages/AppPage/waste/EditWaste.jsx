@@ -10,7 +10,7 @@ function EditWaste() {
   const navigate = useNavigate();
   const userId = sessionStorage.getItem('userId');
   const { id } = useParams();
-
+  const role = sessionStorage.getItem('role')
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -22,6 +22,8 @@ function EditWaste() {
   const [district, setDistrict] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const [existingImage, setExistingImage] = useState('');
+  const [status,setStatus] = useState('')
+  const [assignedTo,setAssignedTo] = useState('')
 
   const fetchData = async () => {
     try {
@@ -37,6 +39,8 @@ function EditWaste() {
       setDistrict(waste.district);
       setLocality(waste.locality);
       setExistingImage(waste.imageFile);
+      setStatus(waste.status);
+      setAssignedTo(waste.assignedTo)
     } catch (error) {
       console.log(error);
     }
@@ -63,13 +67,15 @@ function EditWaste() {
       formData.append('locality', locality);
       formData.append('city', city);
       formData.append('district', district);
+      formData.append('status', status);
+      formData.append('assignedTo', assignedTo);
       if (imageFile) {
         formData.append('imageFile', imageFile);
       }
 
       let res = await axios.put(`${API_URL}/waste/${id}`, formData);
       toast.success(res.data.message);
-      navigate('/'); // Navigate to a different page after successful submission
+      navigate('/landing-page'); 
     } catch (error) {
       console.log(error);
     }
@@ -141,6 +147,20 @@ function EditWaste() {
                 <option value="Kaliyapuram">Kaliyapuram</option>
                 <option value="Odayakulam">Odayakulam</option>
               </select>
+              {
+            role==="Admin"&&<select value={status} onChange={(e)=>setStatus(e.target.value)} >
+            <option value="">Select Status</option>
+            <option value="Registered">Registered</option>
+            <option value="Registered">Assigned</option>
+            <option value="Registered">Solved</option>
+         </select>
+          }
+
+          {
+            role==="Admin"&&
+          <input type="text" placeholder='Complaint Status' value={assignedTo} onChange={(e)=>setTitle(e.target.value)}/>
+
+          }
             </div>
           </div>
           <button className='add-waste-button'>Submit</button>

@@ -9,7 +9,7 @@
 
 
 /* TopBar  */
-.topbar{
+.topbar-landing-page{
     background-color: var(--blue-color);
     padding: 10px 0px;
     display: flex;

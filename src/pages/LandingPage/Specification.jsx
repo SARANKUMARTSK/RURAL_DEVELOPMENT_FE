@@ -17,6 +17,8 @@ function Specification() {
   const navigate = useNavigate()
   let userId = sessionStorage.getItem('userId')
   let userName = sessionStorage.getItem('name')
+  let role = sessionStorage.getItem('role')
+
 
   const handleComplaint = ()=>{
     if(userId){
@@ -45,6 +47,15 @@ function Specification() {
       navigate('/login')
     }
   }
+
+
+  const handleDashboard = ()=>{
+    if(role==="Admin"){
+      navigate('/dashboard')
+    }else{
+      toast.error('You Are Not Allowed')
+    }
+  }
   return (
     <div className='specification-page'>
       <div className='specification-container-head'>
@@ -56,9 +67,8 @@ function Specification() {
             <li onClick={()=>navigate('/gallery')}><LinkIcon/> Recent Activity By Gallery <DoneIcon/></li>
             <li onClick={()=>handleWasteQuery()}><LinkIcon/> Waste Pickup & Track With Your Tracking Id <DoneIcon/></li>
             <li onClick={()=>handleSalesProduct()}><LinkIcon/> Market Place For Formers & Buyers <DoneIcon/></li>
-            {/* <li><LinkIcon/> Food Donation & Surples Management</li> */}
-            <li><LinkIcon onClick={()=>navigate('/view-announcement')}/> Government Announcements <DoneIcon/></li>
-            <li><LinkIcon/>Staff Login</li>
+            <li onClick={()=>navigate('/view-announcement')}><LinkIcon/> Government Announcements <DoneIcon/></li>
+            <li onClick={()=>handleDashboard()}><LinkIcon/>Officials Login <DoneIcon/></li>
           </ul>
         </div>
 

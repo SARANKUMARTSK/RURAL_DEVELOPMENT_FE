@@ -14,7 +14,7 @@ function TopBar() {
   const navigate = useNavigate()
     
   return <>
-  <div className="topbar">
+  <div className="topbar-landing-page">
     <div className='topbar-left'>
         <img src="https://www.meskp.org/wp-content/uploads/2020/01/Rural-Development-1.jpg"  />
     </div>
@@ -22,18 +22,6 @@ function TopBar() {
         <h1>Rural Development and Waste Management</h1>
     </div>
   </div>
-
-  
-  {/* <div className="nav-bar">
-    <ul>
-      <li><HomeIcon/>Home</li>
-      <li><ReceiptLongIcon/>Documents</li>
-      <li><ContactPageIcon/>Contacts </li>
-      <li><CollectionsIcon/>Gallery</li>
-      <li onClick={()=>navigate('/login')}>Login<AdminPanelSettingsIcon/></li>
-    </ul>
-  </div> */}
-
   
   </>
 }

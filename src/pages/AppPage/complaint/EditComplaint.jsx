@@ -11,7 +11,7 @@ function EditComplaint() {
     const navigate = useNavigate();
     const { id } = useParams();
     const userId = sessionStorage.getItem("userId");
-
+    const role = sessionStorage.getItem('role')
     const [userName, setUserName] = useState("");
     const [userEmail, setUserEmail] = useState("");
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
@@ -25,7 +25,8 @@ function EditComplaint() {
     const [description, setDescription] = useState("");
     const [imageFile, setImageFile] = useState( );
     const [image, setImage] = useState("");
-
+    const [status,setStatus] = useState('')
+    const [assignedTo,setAssignedTo] = useState('')
    
 
     const fetchComplaintData = async () => {
@@ -44,6 +45,8 @@ function EditComplaint() {
             setTitle(complaint.title);
             setDescription(complaint.description);
             setImage(complaint.imageFile);
+            setStatus(complaint.status)
+            setAssignedTo(complaint.assignedTo)
         } catch (error) {
             console.error(error);
         }
@@ -70,6 +73,8 @@ function EditComplaint() {
             formData.append('title', title);
             formData.append('description', description);
             formData.append('userId', userId);
+            formData.append('status', status);
+            formData.append('assignedTo', assignedTo);
 
             const response = await axios.put(`${API_URL}/complaints/${id}`, formData);
             toast.success(response.data.message);
@@ -135,6 +140,24 @@ function EditComplaint() {
             <option value="Water-Board">Water-Board</option>
           </select>
           <input type="text" placeholder='Complaint Title' value={title} onChange={(e)=>setTitle(e.target.value)}/>
+
+
+          {
+            role==="Admin"&&<select value={status} onChange={(e)=>setStatus(e.target.value)} >
+            <option value="">Select Status</option>
+            <option value="Registered">Registered</option>
+            <option value="Registered">Assigned</option>
+            <option value="Registered">Solved</option>
+         </select>
+          }
+
+          {
+            role==="Admin"&&
+          <input type="text" placeholder='Complaint Status' value={assignedTo} onChange={(e)=>setTitle(e.target.value)}/>
+
+          }
+
+
           <textarea type="text" placeholder='Enter About Your Complaint' value={description} onChange={(e)=>setDescription(e.target.value)} />
           <h3>Attach Complaint Image : <span>*</span></h3>
           <div className="complaint-image-container">
