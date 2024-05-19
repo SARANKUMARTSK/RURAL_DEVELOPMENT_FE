@@ -12,6 +12,7 @@ import toast from 'react-hot-toast';
 function TrackWaste() {
 
   const navigate = useNavigate()
+  const token = sessionStorage.getItem('token')
   const userId = sessionStorage.getItem('userId')
   const [userName,setUserName] = useState("")
   const [email,setEmail] = useState("")
@@ -30,7 +31,12 @@ function TrackWaste() {
   const [wasteId,setWasteId] = useState()
   const fetchWasteData = async()=>{
     try {
-      let res = await axios.get(`${API_URL}/waste/track/${referenceLink}`)
+      let res = await axios.get(`${API_URL}/waste/track/${referenceLink}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       let {waste} = res.data
       setUserName(waste.userName)
       setEmail(waste.email)
@@ -58,7 +64,12 @@ function TrackWaste() {
 
   const handleDelete = async()=>{
     try {
-      let res = await axios.delete(`${API_URL}/waste/${wasteId}`)
+      let res = await axios.delete(`${API_URL}/waste/${wasteId}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       toast.success(res.data.message)
       navigate('/landing-page')
     } catch (error) {

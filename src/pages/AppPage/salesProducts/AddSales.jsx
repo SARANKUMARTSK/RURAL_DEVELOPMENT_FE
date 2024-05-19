@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 function AddSales() {
 
   const navigate = useNavigate()
+  const token = sessionStorage.getItem('token')
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [phoneNumber,setPhoneNumber] = useState("")
@@ -44,7 +45,12 @@ function AddSales() {
       formData.append("state",state)
       formData.append('userId',userId)
       
-      let res = await axios.post(`${API_URL}/products`,formData)
+      let res = await axios.post(`${API_URL}/products`,formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       toast.success(res.data.message)
       navigate('/landing-page')
     } catch (error) {

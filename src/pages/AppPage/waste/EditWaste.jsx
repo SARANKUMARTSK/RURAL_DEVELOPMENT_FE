@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 
 function EditWaste() {
   const navigate = useNavigate();
+  const token = sessionStorage.getItem('token')
   const userId = sessionStorage.getItem('userId');
   const { id } = useParams();
   const role = sessionStorage.getItem('role')
@@ -27,7 +28,12 @@ function EditWaste() {
 
   const fetchData = async () => {
     try {
-      let res = await axios.get(`${API_URL}/waste/${id}`);
+      let res = await axios.get(`${API_URL}/waste/${id}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    });
       let { waste } = res.data;
       setUserName(waste.userName);
       setEmail(waste.email);
@@ -73,7 +79,12 @@ function EditWaste() {
         formData.append('imageFile', imageFile);
       }
 
-      let res = await axios.put(`${API_URL}/waste/${id}`, formData);
+      let res = await axios.put(`${API_URL}/waste/${id}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    });
       toast.success(res.data.message);
       navigate('/landing-page'); 
     } catch (error) {

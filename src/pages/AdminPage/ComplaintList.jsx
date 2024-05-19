@@ -16,10 +16,15 @@ function ComplaintList() {
     
     const [data,setData] = useState([])
     const navigate = useNavigate()
-
+    const token = sessionStorage.getItem('token')
       const fetchComplaints = async()=>{
         try {
-          let res = await axios.get(`${API_URL}/complaints`)
+          let res = await axios.get(`${API_URL}/complaints`, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}` 
+            }
+        })
           setData(res.data.complaint)
         } catch (error) {
           console.log(error);
@@ -36,7 +41,12 @@ function ComplaintList() {
 
       const handleDelete=async(row)=>{
       try {
-        let res = await axios.delete(`${API_URL}/complaints/${row._id}`)
+        let res = await axios.delete(`${API_URL}/complaints/${row._id}`, {
+          headers: {
+              'Content-Type': 'multipart/form-data',
+              'Authorization': `Bearer ${token}` 
+          }
+      })
         toast.success(res.data.message)
       } catch (error) {
         console.log(error);

@@ -13,11 +13,16 @@ function SalesCard({ data }) {
     const userId = sessionStorage.getItem('userId');
     const navigate = useNavigate();
   
-
+    const token = sessionStorage.getItem('token')
 
     const handleDelete = async (e) => {
         try {
-            let res = await axios.delete(`${API_URL}/products/${e._id}`);
+            let res = await axios.delete(`${API_URL}/products/${e._id}`, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}` 
+                }
+            });
             toast.success(res.data.message);
             setData(data.filter(item => item._id !== e._id));
         } catch (error) {

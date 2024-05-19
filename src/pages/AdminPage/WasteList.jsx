@@ -16,10 +16,16 @@ function WasteList() {
     const navigate = useNavigate()
 
     const [data,setData] = useState([])
+    const token = sessionStorage.getItem('token')
 
     const fetchWasteQueries = async()=>{
       try {
-        let res = await axios.get(`${API_URL}/waste`)
+        let res = await axios.get(`${API_URL}/waste`, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}` 
+            }
+        })
         setData(res.data.waste)
       } catch (error) {
         console.log(error);
@@ -33,7 +39,12 @@ function WasteList() {
 
     const handleDelete = async(row)=>{
       try {
-        let res = await axios.delete(`${API_URL}/waste/${row._id}`)
+        let res = await axios.delete(`${API_URL}/waste/${row._id}`, {
+          headers: {
+              'Content-Type': 'multipart/form-data',
+              'Authorization': `Bearer ${token}` 
+          }
+      })
         toast.success(res.data.message)
       } catch (error) {
         console.log(error);

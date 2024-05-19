@@ -48,6 +48,7 @@
     padding: 15px;
     font-size: 15px;
     font-weight: 600;
+    max-width: 280px;
     border: none;
     outline: none;
     box-shadow: 0px 0px 5px;
@@ -215,3 +216,46 @@
     padding: 5px;
 }
 
+.dot-span {
+    font-weight: 900;
+    font-size: 40px;
+    display: inline-block;
+   }
+   .loading-content {
+    font-weight: 900;
+    font-size: 20px;
+   }
+   .loading-button {
+    max-height: 45px;
+    font-weight: 900;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-top: 18px;
+    background-color: var(--blue-color);
+    box-shadow: 0px 0px 5px var(--blue-color);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .dot-span1 {
+    animation: loading 1s infinite ease-in-out;
+   }
+   .dot-span2 {
+    animation: loading 1s infinite ease-in-out 0.2s;
+   }
+   .dot-span3 {
+    animation: loading 1s infinite ease-in-out 0.4s;
+   }
+   @keyframes loading {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+
+   }

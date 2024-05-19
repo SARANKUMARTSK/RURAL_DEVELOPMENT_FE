@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 
 function AddAnnouncement() {
   const navigate =useNavigate()
+  const token = sessionStorage.getItem('token')
   const handleLogout = ()=>{
     sessionStorage.clear();
     navigate('/landing-page')
@@ -32,7 +33,12 @@ function AddAnnouncement() {
       formData.append('endingDate',endingDate)
       formData.append('description',description)
       formData.append('imageFile',imageFile)
-      let res = await axios.post(`${API_URL}/announcement`,formData)
+      let res = await axios.post(`${API_URL}/announcement`,formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       toast.success(res.data.message)
       navigate('/landing-page')
     } catch (error) {

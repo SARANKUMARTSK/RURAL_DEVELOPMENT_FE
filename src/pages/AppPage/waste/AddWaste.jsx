@@ -9,6 +9,7 @@ import toast from 'react-hot-toast'
 function AddWaste() {
 
   const navigate = useNavigate()
+  const token = sessionStorage.getItem('token')
   const userId = sessionStorage.getItem('userId')
   const [userName,setUserName] = useState("")
   const [email,setEmail] = useState("")
@@ -38,7 +39,12 @@ function AddWaste() {
       formData.append('imageFile', imageFile);
       formData.append('userId', userId);
 
-      let res = await axios.post(`${API_URL}/waste/${userId}`,formData)
+      let res = await axios.post(`${API_URL}/waste/${userId}`,formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       toast.success(res.data.message);
       navigate('/landing-page')
      } catch (error) {

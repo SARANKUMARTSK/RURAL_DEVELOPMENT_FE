@@ -6,7 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { API_URL } from '../../App';
 import toast from 'react-hot-toast';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+
+
 function Login() {
+
+  let [loading , setLoading ] = useState(false)
+
   let navigate = useNavigate()
   const [type,setType] = useState(true) 
   const [email,setEmail] = useState("")
@@ -16,7 +22,9 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    
     try {
+      setLoading(true)
       let data = {
         email,
         password,
@@ -32,12 +40,13 @@ function Login() {
         sessionStorage.setItem("userId", res.data.id);
         toast.success(res.data.message || "Login Successfull");
           navigate(`/landing-page`);
-        
+        setLoading(false)
        
       } else {
         toast.error("You are not allowed");
       }
     } catch (error) {
+      setLoading(false)
       console.log(error);
       toast.error(error.response.data.message)
     }
@@ -63,12 +72,18 @@ function Login() {
                   { type? <VisibilityIcon className='eye-icon'/>:
                 <VisibilityOffIcon className='eye-icon'/>}
                 </div>
-              <button type='submit'>Login</button>
+              {
+                loading?<button type='submit' className='loading-button'>Loading<span class="dot-span dot-span1">.</span>
+                    <span class="dot-span dot-span2">.</span>
+                    <span class="dot-span dot-span3">.</span></button>:<button type='submit'>Login</button>
+              }
               <span onClick={()=>navigate('/forgot-password')}>Forgot Password?</span>
 
             </form>
         </div>
   </div>
+
+  
   </>
 }
 

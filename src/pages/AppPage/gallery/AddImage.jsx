@@ -11,6 +11,7 @@ import Navbar from '../../../components/Navbar';
   function AddImage() {
     const[imageFile,setImageFile]=useState(null)
     const [event,setEvent] = useState('')
+    const token = sessionStorage.getItem('token')
 
     const navigate = useNavigate()
 
@@ -20,7 +21,12 @@ import Navbar from '../../../components/Navbar';
         const formData = new FormData();
         formData.append('event', event);
         formData.append('imageFile', imageFile);
-        let res = await axios.post(`${API_URL}/gallery`,formData)
+        let res = await axios.post(`${API_URL}/gallery`,formData, {
+          headers: {
+              'Content-Type': 'multipart/form-data',
+              'Authorization': `Bearer ${token}` 
+          }
+      })
         toast.success(res.data.message)
         navigate('/landing-page')
       } catch (error) {

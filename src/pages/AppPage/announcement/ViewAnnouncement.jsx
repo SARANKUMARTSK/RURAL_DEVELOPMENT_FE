@@ -8,10 +8,15 @@ function ViewAnnouncement() {
 
   const [data,setData] = useState([])
   const addButton = true;
-
+  const token = sessionStorage.getItem('token')
   const fetchAnnouncement = async()=>{
     try {
-      let res = await axios.get(`${API_URL}/announcement`)
+      let res = await axios.get(`${API_URL}/announcement`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       setData(res.data.announcement)
     } catch (error) {
       console.log(error);

@@ -11,6 +11,8 @@ function Complaint() {
 
   const navigate = useNavigate()
   let userId = sessionStorage.getItem("userId")
+  const token = sessionStorage.getItem('token')
+
   let [userName,setUserName] = useState("")
   let [userEmail,setUserEmail] = useState("")
   let [userPhoneNumber,setUserPhoneNumber] = useState("")
@@ -43,7 +45,12 @@ function Complaint() {
       formData.append('description', description);
       formData.append('userId', userId);
       
-      let res = await axios.post(`${API_URL}/complaints/${userId}`,formData)
+      let res = await axios.post(`${API_URL}/complaints/${userId}`,formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}` 
+            }
+        })
       toast.success(res.data.message)
       navigate('/landing-page')
     } catch (error) {

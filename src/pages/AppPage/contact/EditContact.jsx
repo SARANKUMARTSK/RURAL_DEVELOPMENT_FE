@@ -13,6 +13,7 @@ import Navbar from '../../../components/Navbar';
 
 function EditContact() {
   const navigate = useNavigate();
+  const token = sessionStorage.getItem('token')
   const [name,setName] = useState("");
   const [email,setEmail] = useState("");
   const [phoneNumber,setPhoneNumber] = useState("");
@@ -27,7 +28,12 @@ function EditContact() {
 
   const fetchContactData = async()=>{
     try {
-      let response = await axios.get(`${API_URL}/contacts/${id}`)
+      let response = await axios.get(`${API_URL}/contacts/${id}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       const {contact} = response.data;
       setName(contact.name)
       setEmail(contact.email)
@@ -66,7 +72,12 @@ function EditContact() {
             pincode
           }
 
-          let res = await axios.put(`${API_URL}/contacts/${id}`,formData)
+          let res = await axios.put(`${API_URL}/contacts/${id}`,formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}` 
+            }
+        })
           toast.success(res.data.message)
           navigate('/view-contact')
         } catch (error) {

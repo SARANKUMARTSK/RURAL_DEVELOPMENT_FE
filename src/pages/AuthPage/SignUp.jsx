@@ -17,11 +17,12 @@ function SignUp() {
    let [state,setState] = useState("")
    let [pincode,setPincode] = useState("")
    let [gender ,setGender] = useState("")
-
+   const [loading,setLoading] = useState(false)
    const navigate = useNavigate()
 
    const handleSignup = async(e)=>{
       e.preventDefault();
+      setLoading(true)
       try {
          let data = {
             name,email,password,phoneNumber,gender, "address.doorNo":doorNo, "address.street":street , 
@@ -30,9 +31,11 @@ function SignUp() {
          }
          let res = await axios.post(`${API_URL}/user`,data)
          toast.success("Signup Success")
+         setLoading(false)
          navigate('/login')
       } catch (error) {
          console.log(error);
+         setLoading(false)
          toast.error(error.response.data.message)
       }
    }
@@ -124,7 +127,11 @@ function SignUp() {
 
 
 
-          <button className='signup-button'>Submit</button>
+          {
+            loading?<button type='submit' className='loading-button signup-button'>Loading<span class="dot-span dot-span1">.</span>
+            <span class="dot-span dot-span2">.</span>
+            <span class="dot-span dot-span3">.</span></button>:<button className='signup-button'>Submit</button>
+          }
            
         </form>
 

@@ -8,6 +8,7 @@ import {API_URL} from '../../App'
 
 
 function ForgotPassword() {
+  const token = sessionStorage.getItem('token')
   const navigate = useNavigate()
   const [type,setType] = useState(true) 
 
@@ -16,7 +17,12 @@ function ForgotPassword() {
   const handleForgot = async (e) => {
     e.preventDefault();
     try {
-      let res = await axios.post(`${API_URL}/user/forgotPassword`, {email});
+      let res = await axios.post(`${API_URL}/user/forgotPassword`, {email}, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    });
       toast.success(res.data.message)
     } catch (error) {
       // console.log(error);

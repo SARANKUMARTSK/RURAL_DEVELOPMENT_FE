@@ -10,10 +10,15 @@ function ViewImage() {
 
   const role = sessionStorage.getItem('role')
   let [image , setImage] = useState([])
-
+  const token = sessionStorage.getItem('token')
   const fetchImages = async()=>{
      try {
-      let images = await axios.get(`${API_URL}/gallery`)
+      let images = await axios.get(`${API_URL}/gallery`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       setImage(images.data.photos)
      } catch (error) {
       console.log(error);
@@ -26,7 +31,12 @@ function ViewImage() {
 
   const handleDelete = async(e)=>{
     try {
-      let res = await axios.delete(`${API_URL}/gallery/${e._id}`)
+      let res = await axios.delete(`${API_URL}/gallery/${e._id}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       toast.success(res.data.message)
     } catch (error) {
       console.log(error);

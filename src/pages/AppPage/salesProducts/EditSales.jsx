@@ -9,6 +9,7 @@ import toast from 'react-hot-toast'
 function EditSales() {
 
   const navigate = useNavigate()
+  const token = sessionStorage.getItem('token')
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [phoneNumber,setPhoneNumber] = useState("")
@@ -27,7 +28,12 @@ function EditSales() {
   const userId = sessionStorage.getItem('userId')
   const fetchProductData = async()=>{
     try {
-      let res = await axios.get(`${API_URL}/products/${id}`)
+      let res = await axios.get(`${API_URL}/products/${id}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       const {product} = res.data;
       setName(product.name)
       setEmail(product.email)
@@ -73,7 +79,12 @@ function EditSales() {
       formData.append("status",status)
       formData.append("userId",userId)
 
-    let res = await axios.put(`${API_URL}/products/${id}`,formData)
+    let res = await axios.put(`${API_URL}/products/${id}`,formData, {
+      headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}` 
+      }
+  })
     toast.success(res.data.message)
     navigate('/landing-page')
    } catch (error) {

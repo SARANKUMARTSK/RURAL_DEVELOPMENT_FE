@@ -17,9 +17,15 @@ import Navbar from '../../../components/Navbar';
 function Contacts() {
 
   const [data,setData] = useState([])
+  const token = sessionStorage.getItem('token')
   const navigate = useNavigate()
   const fetchContactDetails = async()=>{
-     let res = await axios.get(`${API_URL}/contacts`)
+     let res = await axios.get(`${API_URL}/contacts`, {
+      headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}` 
+      }
+  })
      setData(res.data.contact);
   }
   useEffect(()=>{
@@ -30,7 +36,12 @@ function Contacts() {
 
   const handleDelete = async(row)=>{
     try {
-      let res = await axios.delete(`${API_URL}/contacts/${row._id}`)
+      let res = await axios.delete(`${API_URL}/contacts/${row._id}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       toast.success(res.data.message)
     } catch (error) {
       console.log(error);

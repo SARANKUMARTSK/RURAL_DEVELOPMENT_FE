@@ -10,13 +10,19 @@ import HomeIcon from '@mui/icons-material/Home';
 function ViewSales() {
   const navigate = useNavigate()
   const userId = sessionStorage.getItem('userId')
+  const token = sessionStorage.getItem('token')
 
   const [city,setCity] = useState("")
   const [data,setData] = useState([])
   
   const fetchData = async()=>{
     try {
-      let res = await axios.get(`${API_URL}/products`)
+      let res = await axios.get(`${API_URL}/products`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       let data = res.data.product
       setData(data.filter(data=>data.city===(city===""?"Pollachi":city)));
     } catch (error) {

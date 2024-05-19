@@ -12,10 +12,16 @@ function Home() {
     const [wasteCount, setWasteCount] = useState(0);
     const [wasteRegistered, setWasteRegistered] = useState(0);
     const [wasteAssigned, setWasteAssigned] = useState(0);
+    const token = sessionStorage.getItem('token')
 
     const fetchComplaints = async () => {
         try {
-            const res = await axios.get(`${API_URL}/complaints`);
+            const res = await axios.get(`${API_URL}/complaints`, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}` 
+            }
+        });
             const data = res.data.complaint;
             setComplaintsCount(data.length);
             setRegistered(data.filter(item => item.status === "Registered").length);
@@ -27,7 +33,12 @@ function Home() {
 
     const fetchWasteQueries = async () => {
         try {
-            const res = await axios.get(`${API_URL}/waste`);
+            const res = await axios.get(`${API_URL}/waste`, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}` 
+                }
+            });
             const data = res.data.waste;
             setWasteCount(data.length);
             setWasteRegistered(data.filter(item => item.status === "Registered").length);

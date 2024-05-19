@@ -12,6 +12,7 @@ import toast from 'react-hot-toast';
 function TrackComplaint() {
 
   const navigate = useNavigate()
+  const token = sessionStorage.getItem('token')
   const [userName, setUserName] = useState("")
   const [userEmail,setUserEmail] = useState("")
   const [userPhoneNumber,setUserPhoneNumber] = useState("")
@@ -25,7 +26,12 @@ function TrackComplaint() {
 
   const fetchStatus = async()=>{
     try {
-      let complaint = await axios.get(`${API_URL}/complaints/${referenceLink}`)
+      let complaint = await axios.get(`${API_URL}/complaints/${referenceLink}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       
        setUserName(complaint.data.complaint.userName)
        setUserEmail(complaint.data.complaint.userEmail)
@@ -48,7 +54,12 @@ function TrackComplaint() {
 
   const handleDelete = async()=>{
     try {
-      let res = await axios.delete(`${API_URL}/complaints/${complaintId}`)
+      let res = await axios.delete(`${API_URL}/complaints/${complaintId}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       toast.success(res.data.message)
       navigate('/landing-page')
     } catch (error) {

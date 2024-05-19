@@ -11,6 +11,8 @@ function EditComplaint() {
     const navigate = useNavigate();
     const { id } = useParams();
     const userId = sessionStorage.getItem("userId");
+    const token = sessionStorage.getItem('token')
+
     const role = sessionStorage.getItem('role')
     const [userName, setUserName] = useState("");
     const [userEmail, setUserEmail] = useState("");
@@ -31,7 +33,12 @@ function EditComplaint() {
 
     const fetchComplaintData = async () => {
         try {
-            const response = await axios.get(`${API_URL}/complaints/byId/${id}`);
+            const response = await axios.get(`${API_URL}/complaints/byId/${id}`, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}` 
+            }
+        });
             const { complaint } = response.data;
             setUserName(complaint.userName);
             setUserEmail(complaint.userEmail);
@@ -76,7 +83,12 @@ function EditComplaint() {
             formData.append('status', status);
             formData.append('assignedTo', assignedTo);
 
-            const response = await axios.put(`${API_URL}/complaints/${id}`, formData);
+            const response = await axios.put(`${API_URL}/complaints/${id}`, formData, {
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+                  'Authorization': `Bearer ${token}` 
+              }
+          });
             toast.success(response.data.message);
             navigate('/landing-page')
         } catch (error) {

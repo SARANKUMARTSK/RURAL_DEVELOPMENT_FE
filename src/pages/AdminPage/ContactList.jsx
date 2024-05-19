@@ -14,12 +14,17 @@ import { useNavigate } from 'react-router-dom';
 
 function ContactList() {
 
-
-
+   
+  const token = sessionStorage.getItem('token')
   const [data,setData] = useState([])
   const navigate = useNavigate()
   const fetchContactDetails = async()=>{
-     let res = await axios.get(`${API_URL}/contacts`)
+     let res = await axios.get(`${API_URL}/contacts`, {
+      headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}` 
+      }
+  })
      setData(res.data.contact);
   }
   useEffect(()=>{
@@ -30,7 +35,12 @@ function ContactList() {
 
   const handleDelete = async(row)=>{
     try {
-      let res = await axios.delete(`${API_URL}/contacts/${row._id}`)
+      let res = await axios.delete(`${API_URL}/contacts/${row._id}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       toast.success(res.data.message)
     } catch (error) {
       console.log(error);
@@ -39,7 +49,12 @@ function ContactList() {
 
   const handleEdit = async(row)=>{
     try {
-      navigate(`/edit-contact/${row._id}`)
+      navigate(`/edit-contact/${row._id}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
     } catch (error) {
       console.log(error);
     }
