@@ -11,7 +11,7 @@ import Navbar from '../../../components/Navbar';
   function AddImage() {
     const[imageFile,setImageFile]=useState(null)
     const [event,setEvent] = useState('')
-    const token = sessionStorage.getItem('token')
+    const token = localStorage.getItem('token')
 
     const navigate = useNavigate()
 

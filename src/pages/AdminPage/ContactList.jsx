@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 function ContactList() {
 
    
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const [data,setData] = useState([])
   const navigate = useNavigate()
   const fetchContactDetails = async()=>{
@@ -31,7 +31,7 @@ function ContactList() {
     fetchContactDetails();
   },[data])
 
-  const role = sessionStorage.getItem('role')
+  const role = localStorage.getItem('role')
 
   const handleDelete = async(row)=>{
     try {

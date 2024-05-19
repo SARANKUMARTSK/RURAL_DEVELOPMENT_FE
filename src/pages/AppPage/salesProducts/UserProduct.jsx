@@ -6,8 +6,8 @@ import axios from 'axios'
 import { API_URL } from '../../../App'
 
 function UserProduct() {
-    const userId = sessionStorage.getItem('userId')
-    const token = sessionStorage.getItem('token')
+    const userId = localStorage.getItem('userId')
+    const token = localStorage.getItem('token')
     const [data,setData] = useState([])
     const fetchData = async()=>{
         try {

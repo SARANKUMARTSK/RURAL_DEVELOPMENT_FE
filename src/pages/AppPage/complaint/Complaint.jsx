@@ -10,8 +10,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 function Complaint() {
 
   const navigate = useNavigate()
-  let userId = sessionStorage.getItem("userId")
-  const token = sessionStorage.getItem('token')
+  let userId = localStorage.getItem("userId")
+  const token = localStorage.getItem('token')
 
   let [userName,setUserName] = useState("")
   let [userEmail,setUserEmail] = useState("")
@@ -62,7 +62,7 @@ function Complaint() {
   };
 
   const handleLogout = ()=>{
-    sessionStorage.clear();
+    localStorage.clear();
     navigate('/landing-page')
     toast.success("Logout Successfull")
   }

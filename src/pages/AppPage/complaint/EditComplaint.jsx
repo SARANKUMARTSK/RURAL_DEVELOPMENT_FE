@@ -10,10 +10,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 function EditComplaint() {
     const navigate = useNavigate();
     const { id } = useParams();
-    const userId = sessionStorage.getItem("userId");
-    const token = sessionStorage.getItem('token')
+    const userId = localStorage.getItem("userId");
+    const token = localStorage.getItem('token')
 
-    const role = sessionStorage.getItem('role')
+    const role = localStorage.getItem('role')
     const [userName, setUserName] = useState("");
     const [userEmail, setUserEmail] = useState("");
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
@@ -102,7 +102,7 @@ function EditComplaint() {
     };
 
     const handleLogout = () => {
-        sessionStorage.clear();
+        localStorage.clear();
         navigate('/landing-page');
     };
 

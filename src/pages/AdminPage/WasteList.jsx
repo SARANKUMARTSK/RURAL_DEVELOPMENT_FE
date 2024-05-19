@@ -16,7 +16,7 @@ function WasteList() {
     const navigate = useNavigate()
 
     const [data,setData] = useState([])
-    const token = sessionStorage.getItem('token')
+    const token = localStorage.getItem('token')
 
     const fetchWasteQueries = async()=>{
       try {

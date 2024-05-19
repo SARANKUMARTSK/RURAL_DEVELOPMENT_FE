@@ -33,11 +33,11 @@ function Login() {
       let res = await axios.post(`${API_URL}/user/login`, data);
      
       if (res.status === 200) {
-        sessionStorage.setItem("token", res.data.token);
-        sessionStorage.setItem("name", res.data.name);
-        sessionStorage.setItem("email", res.data.email);
-        sessionStorage.setItem("role", res.data.role);
-        sessionStorage.setItem("userId", res.data.id);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("name", res.data.name);
+        localStorage.setItem("email", res.data.email);
+        localStorage.setItem("role", res.data.role);
+        localStorage.setItem("userId", res.data.id);
         toast.success(res.data.message || "Login Successfull");
           navigate(`/landing-page`);
         setLoading(false)

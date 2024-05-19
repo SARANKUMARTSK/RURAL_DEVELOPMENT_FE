@@ -13,7 +13,7 @@ import Navbar from '../../../components/Navbar';
 
 function EditContact() {
   const navigate = useNavigate();
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const [name,setName] = useState("");
   const [email,setEmail] = useState("");
   const [phoneNumber,setPhoneNumber] = useState("");

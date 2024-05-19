@@ -9,8 +9,8 @@ import HomeIcon from '@mui/icons-material/Home';
 
 function ViewSales() {
   const navigate = useNavigate()
-  const userId = sessionStorage.getItem('userId')
-  const token = sessionStorage.getItem('token')
+  const userId = localStorage.getItem('userId')
+  const token = localStorage.getItem('token')
 
   const [city,setCity] = useState("")
   const [data,setData] = useState([])

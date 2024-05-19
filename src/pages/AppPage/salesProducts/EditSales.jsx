@@ -9,7 +9,7 @@ import toast from 'react-hot-toast'
 function EditSales() {
 
   const navigate = useNavigate()
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [phoneNumber,setPhoneNumber] = useState("")
@@ -25,7 +25,7 @@ function EditSales() {
   const [state,setState] = useState("")
   const [status,setStatus] = useState("")
   const {id} = useParams()
-  const userId = sessionStorage.getItem('userId')
+  const userId = localStorage.getItem('userId')
   const fetchProductData = async()=>{
     try {
       let res = await axios.get(`${API_URL}/products/${id}`, {

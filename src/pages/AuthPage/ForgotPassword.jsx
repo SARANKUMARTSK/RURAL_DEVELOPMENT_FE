@@ -8,7 +8,7 @@ import {API_URL} from '../../App'
 
 
 function ForgotPassword() {
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const navigate = useNavigate()
   const [type,setType] = useState(true) 
 

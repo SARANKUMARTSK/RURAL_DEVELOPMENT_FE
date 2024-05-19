@@ -10,7 +10,7 @@ import toast from 'react-hot-toast'
 function AddSales() {
 
   const navigate = useNavigate()
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [phoneNumber,setPhoneNumber] = useState("")
@@ -25,7 +25,7 @@ function AddSales() {
   const [district,setDistrict] = useState("")
   const [state,setState] = useState("")
   const {id} = useParams()
-  const userId = sessionStorage.getItem('userId')
+  const userId = localStorage.getItem('userId')
   const handleSubmit = async(e)=>{
     e.preventDefault();
     try {

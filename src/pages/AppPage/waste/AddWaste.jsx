@@ -9,8 +9,8 @@ import toast from 'react-hot-toast'
 function AddWaste() {
 
   const navigate = useNavigate()
-  const token = sessionStorage.getItem('token')
-  const userId = sessionStorage.getItem('userId')
+  const token = localStorage.getItem('token')
+  const userId = localStorage.getItem('userId')
   const [userName,setUserName] = useState("")
   const [email,setEmail] = useState("")
   const [phoneNumber,setPhoneNumber] = useState("")

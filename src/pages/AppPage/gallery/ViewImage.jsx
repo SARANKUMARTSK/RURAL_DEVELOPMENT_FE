@@ -11,9 +11,9 @@ import { useNavigate } from 'react-router-dom';
 
 function ViewImage() {
   const navigate = useNavigate()
-  const role = sessionStorage.getItem('role')
+  const role = localStorage.getItem('role')
   let [image , setImage] = useState([])
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const fetchImages = async()=>{
      try {
       let images = await axios.get(`${API_URL}/gallery`, {

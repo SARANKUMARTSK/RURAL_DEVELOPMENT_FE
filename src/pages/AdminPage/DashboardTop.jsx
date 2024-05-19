@@ -2,7 +2,7 @@ import React from 'react'
 
 function DashboardTop() {
 
-  const name = sessionStorage.getItem('name')
+  const name = localStorage.getItem('name')
   const date = new Date()
   const dayList = ["SUNDAY" , "MONDAY" , "TUESDAY" , "WEDNESDAY" , "THURSDAY", "FRIDAY" , "SATURDAY"]
   const monthList = ["JANUARY" ,"FEBRUARY" , "MARCH" , "APRIL" , "MAY" , "JUNE" , "JULY" , "AUGUST" , "SEPTEMBER" , "OCTOBER" , "NOVEMBER" , "DECEMBER"]

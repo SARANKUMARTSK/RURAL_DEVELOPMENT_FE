@@ -17,7 +17,7 @@ import Navbar from '../../../components/Navbar';
 function Contacts() {
 
   const [data,setData] = useState([])
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const navigate = useNavigate()
   const fetchContactDetails = async()=>{
      let res = await axios.get(`${API_URL}/contacts`, {
@@ -32,7 +32,7 @@ function Contacts() {
     fetchContactDetails();
   },[data])
 
-  const role = sessionStorage.getItem('role')
+  const role = localStorage.getItem('role')
 
   const handleDelete = async(row)=>{
     try {

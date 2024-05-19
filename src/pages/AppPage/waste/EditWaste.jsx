@@ -8,10 +8,10 @@ import toast from 'react-hot-toast';
 
 function EditWaste() {
   const navigate = useNavigate();
-  const token = sessionStorage.getItem('token')
-  const userId = sessionStorage.getItem('userId');
+  const token = localStorage.getItem('token')
+  const userId = localStorage.getItem('userId');
   const { id } = useParams();
-  const role = sessionStorage.getItem('role')
+  const role = localStorage.getItem('role')
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');

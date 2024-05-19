@@ -12,7 +12,7 @@ function Home() {
     const [wasteCount, setWasteCount] = useState(0);
     const [wasteRegistered, setWasteRegistered] = useState(0);
     const [wasteAssigned, setWasteAssigned] = useState(0);
-    const token = sessionStorage.getItem('token')
+    const token = localStorage.getItem('token')
 
     const fetchComplaints = async () => {
         try {

@@ -16,7 +16,7 @@ function ComplaintList() {
     
     const [data,setData] = useState([])
     const navigate = useNavigate()
-    const token = sessionStorage.getItem('token')
+    const token = localStorage.getItem('token')
       const fetchComplaints = async()=>{
         try {
           let res = await axios.get(`${API_URL}/complaints`, {

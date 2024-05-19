@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 function Sidebar() {
     const navigate = useNavigate()
     const handleLogout = ()=>{
-        sessionStorage.clear();
+        localStorage.clear();
         navigate('/landing-page')
     }
   return <>

@@ -12,7 +12,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 function AddContact() {
-  const token = sessionStorage.getItem('token');
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({

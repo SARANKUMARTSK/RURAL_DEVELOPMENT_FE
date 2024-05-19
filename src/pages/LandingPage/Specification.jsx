@@ -15,9 +15,9 @@ import DoneIcon from '@mui/icons-material/Done';
 
 function Specification() {
   const navigate = useNavigate()
-  let userId = sessionStorage.getItem('userId')
-  let userName = sessionStorage.getItem('name')
-  let role = sessionStorage.getItem('role')
+  let userId = localStorage.getItem('userId')
+  let userName = localStorage.getItem('name')
+  let role = localStorage.getItem('role')
 
 
   const handleComplaint = ()=>{

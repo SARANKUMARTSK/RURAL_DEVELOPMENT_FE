@@ -9,9 +9,9 @@ import toast from 'react-hot-toast';
 
 function AddAnnouncement() {
   const navigate =useNavigate()
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const handleLogout = ()=>{
-    sessionStorage.clear();
+    localStorage.clear();
     navigate('/landing-page')
   }
 

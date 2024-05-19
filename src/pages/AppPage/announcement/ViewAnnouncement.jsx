@@ -8,7 +8,7 @@ function ViewAnnouncement() {
 
   const [data,setData] = useState([])
   const addButton = true;
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const fetchAnnouncement = async()=>{
     try {
       let res = await axios.get(`${API_URL}/announcement`, {

@@ -5,9 +5,9 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { useNavigate } from 'react-router-dom';
 function EditAnnouncement() {
   const navigate =useNavigate()
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const handleLogout = ()=>{
-    sessionStorage.clear();
+    localStorage.clear();
     navigate('/landing-page')
   }
   return <>
