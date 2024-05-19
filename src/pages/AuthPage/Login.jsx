@@ -73,9 +73,9 @@ function Login() {
                 <VisibilityOffIcon className='eye-icon'/>}
                 </div>
               {
-                loading?<button type='submit' className='loading-button'>Loading<span class="dot-span dot-span1">.</span>
-                    <span class="dot-span dot-span2">.</span>
-                    <span class="dot-span dot-span3">.</span></button>:<button type='submit'>Login</button>
+                loading?<button type='submit' className='loading-button'>Loading<span className="dot-span dot-span1">.</span>
+                    <span className="dot-span dot-span2">.</span>
+                    <span className="dot-span dot-span3">.</span></button>:<button type='submit'>Login</button>
               }
               <span onClick={()=>navigate('/forgot-password')}>Forgot Password?</span>
 

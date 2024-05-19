@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 function ViewImage() {
   const navigate = useNavigate()
   const role = localStorage.getItem('role')
+
   let [image , setImage] = useState([])
   const token = localStorage.getItem('token')
   const fetchImages = async()=>{
@@ -56,7 +57,7 @@ function ViewImage() {
         <button onClick={()=>navigate('/landing-page')}><HomeIcon/> Home</button>
       </div>
       <div className='image-gallery'>
-          {
+          { 
             image.map((e,i)=>{
               return <div key={i} className="image-item">
              <img src={`${API_URL}/images/${e.imageFile}`} alt={e.imageFile} />

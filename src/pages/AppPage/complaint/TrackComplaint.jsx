@@ -32,6 +32,7 @@ function TrackComplaint() {
             'Authorization': `Bearer ${token}` 
         }
     })
+    
       
        setUserName(complaint.data.complaint.userName)
        setUserEmail(complaint.data.complaint.userEmail)
@@ -50,7 +51,7 @@ function TrackComplaint() {
 
   useEffect(()=>{
     fetchStatus()
-  })
+  },[])
 
   const handleDelete = async()=>{
     try {
@@ -81,7 +82,7 @@ function TrackComplaint() {
             <p>Track Your Complaint by your Complaint id here...</p>
             <label htmlFor="trackingId">Only You can Track Your Complaints:</label>
             <div className="search-input-container">
-                  <input type="text" value={referenceLink}  placeholder='tracking id'/>
+                  <input type="text" value={referenceLink} readOnly placeholder='tracking id'/>
                   <button><SearchIcon/></button>
             </div>
         </form>

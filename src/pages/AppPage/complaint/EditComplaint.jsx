@@ -133,6 +133,7 @@ function EditComplaint() {
           <select type="text" placeholder='City' value={city} onChange={(e)=>setCity(e.target.value)}>
             <option value="">Choose City</option>
             <option value="Pollachi">Pollachi</option>
+            <option value="Udumalpet">Udumalpet</option>
           </select>
           <select type="text" placeholder='District' value={district} onChange={(e)=>setDistrict(e.target.value)}>
             <option value="">Choose District</option>
@@ -154,20 +155,18 @@ function EditComplaint() {
           <input type="text" placeholder='Complaint Title' value={title} onChange={(e)=>setTitle(e.target.value)}/>
 
 
-          {
-            role==="Admin"&&<select value={status} onChange={(e)=>setStatus(e.target.value)} >
-            <option value="">Select Status</option>
+          <select type="text" placeholder='Status' value={status} onChange={(e)=>setStatus(e.target.value)}>
+            <option value="">Choose Status</option>
             <option value="Registered">Registered</option>
-            <option value="Registered">Assigned</option>
-            <option value="Registered">Solved</option>
-         </select>
-          }
+            <option value="Assigned">Assigned</option>
+            <option value="Not-Assigned">Not-Assigned</option>
+          </select>
+          
 
-          {
-            role==="Admin"&&
-          <input type="text" placeholder='Complaint Status' value={assignedTo} onChange={(e)=>setTitle(e.target.value)}/>
+          
+          <input type="text" placeholder='Complaint Status' value={assignedTo} onChange={(e)=>setAssignedTo(e.target.value)}/>
 
-          }
+          
 
 
           <textarea type="text" placeholder='Enter About Your Complaint' value={description} onChange={(e)=>setDescription(e.target.value)} />
