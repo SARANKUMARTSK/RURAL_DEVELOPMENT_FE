@@ -91,14 +91,28 @@ function Complaint() {
           <select type="text" placeholder='Village' onChange={(e)=>setLocality(e.target.value)} >
             <option value="">Choose Village *</option>
             <option value="Anaimalai">Anaimalai</option>
+            <option value="Udumalpet">Udumalpet</option>
+            <option value="Odayakulam">Odayakulam</option>
+            <option value="Sethumadai">Sethumadai</option>
+            <option value="Aaliyar">Aaliyar</option>
+            <option value="Amaravathi">Amaravathi</option>
+            <option value="Kurichikottai">Kurichikottai</option>
+            <option value="Panjapatty">Panjapatty</option>
           </select>
           <select type="text" placeholder='City' onChange={(e)=>setCity(e.target.value)}>
             <option value="">Choose City</option>
             <option value="Pollachi">Pollachi</option>
+            <option value="Dharapuram">Dharapuram</option>
+            <option value="Gundadam">Gundadam</option>
+            <option value="Madathukulam">Madathukulam</option>
+            <option value="Palani">Palani</option>
+            <option value="Kinathukadavu">Kinathukadavu</option>
           </select>
           <select type="text" placeholder='District' onChange={(e)=>setDistrict(e.target.value)}>
             <option value="">Choose District</option>
             <option value="Coimbatore">Coimbatore</option>
+            <option value="Tirupur">Tirupur</option>
+            
           </select>
           <select type="text" placeholder='State' onChange={(e)=>setState(e.target.value)}>
             <option value="">Choose State</option>
@@ -112,6 +126,8 @@ function Complaint() {
           <select type="text" onChange={(e)=>setDepartment(e.target.value)}>
             <option value="">Select Department</option>
             <option value="Water-Board">Water-Board</option>
+            <option value="Water-Board">Electric-Board</option>
+            <option value="Water-Board">General Panjayath</option>
           </select>
           <input type="text" placeholder='Complaint Title' onChange={(e)=>setTitle(e.target.value)}/>
           <textarea type="text" placeholder='Enter About Your Complaint' onChange={(e)=>setDescription(e.target.value)} />
