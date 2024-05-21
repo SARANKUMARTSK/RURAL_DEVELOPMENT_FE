@@ -83,6 +83,7 @@ function Complaint() {
        <div className="complaint-personal-details">
           <input type="text" placeholder='Name' onChange={(e)=>setUserName(e.target.value)} />
           <input type="text" placeholder='Email' onChange={(e)=>setUserEmail(e.target.value)}/>
+          <small style={{color:"gray",marginLeft:"20px"}}>please Enter valid email to Track Your Complaint </small>
           <input type="text" placeholder='Phone Number' onChange={(e)=>setUserPhoneNumber(e.target.value)}/>
        </div>
        <h3>Locality :<span>*</span></h3>

@@ -32,7 +32,9 @@ function ViewAnnouncement() {
   <Navbar addButton={addButton}/>
 
   <div className="announcement-page">
-
+        {
+            !data.length?<h2>No data found </h2>:""
+        }
 
    {
     data.map((e,i)=>{

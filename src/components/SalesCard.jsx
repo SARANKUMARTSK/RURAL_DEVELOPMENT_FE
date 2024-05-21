@@ -36,6 +36,10 @@ function SalesCard({ data }) {
 
     return (
         <>
+
+        {
+            !data.length?<h2>No data found </h2>:""
+        }
             {data.map((e, i) => (
                 <div key={i} className="sales-card">
                     <div className="sales-card-left">

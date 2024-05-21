@@ -77,6 +77,7 @@ function AddWaste() {
                 <input type="text" placeholder='Your Name' onChange={(e)=>setUserName(e.target.value)} />
                 <input type="text" placeholder='Email' onChange={(e)=>setEmail(e.target.value)}  />
                 <input type="text" placeholder='Phone Number' onChange={(e)=>setPhoneNumber(e.target.value)} />
+                <small style={{color:"gray",marginLeft:"20px"}}>please Enter valid email to Track Your Complaint </small>
               </div>
               <div className="waste-details">
                 <select onChange={(e)=>setType(e.target.value)} >
