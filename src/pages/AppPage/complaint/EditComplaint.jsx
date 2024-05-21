@@ -64,6 +64,11 @@ function EditComplaint() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(userName==""||userEmail==""||userPhoneNumber==""||imageFile==""||locality==""||city==""||district==""||state==""
+      ||pincode==""||department==""||title==""||description==""
+    ){
+      toast.error("Please Fill All The Fields")
+    }
         try {
             const formData = new FormData();
             formData.append('userName', userName);
@@ -129,15 +134,27 @@ function EditComplaint() {
           <select type="text" placeholder='Village' value={locality}  onChange={(e)=>setLocality(e.target.value)} >
             <option value="">Choose Village *</option>
             <option value="Anaimalai">Anaimalai</option>
+            <option value="Udumalpet">Udumalpet</option>
+            <option value="Odayakulam">Odayakulam</option>
+            <option value="Sethumadai">Sethumadai</option>
+            <option value="Aaliyar">Aaliyar</option>
+            <option value="Amaravathi">Amaravathi</option>
+            <option value="Kurichikottai">Kurichikottai</option>
+            <option value="Panjapatty">Panjapatty</option>
           </select>
           <select type="text" placeholder='City' value={city} onChange={(e)=>setCity(e.target.value)}>
             <option value="">Choose City</option>
             <option value="Pollachi">Pollachi</option>
-            <option value="Udumalpet">Udumalpet</option>
+            <option value="Dharapuram">Dharapuram</option>
+            <option value="Gundadam">Gundadam</option>
+            <option value="Madathukulam">Madathukulam</option>
+            <option value="Palani">Palani</option>
+            <option value="Kinathukadavu">Kinathukadavu</option>
           </select>
           <select type="text" placeholder='District' value={district} onChange={(e)=>setDistrict(e.target.value)}>
             <option value="">Choose District</option>
             <option value="Coimbatore">Coimbatore</option>
+            <option value="Tirupur">Tirupur</option>
           </select>
           <select type="text" placeholder='State' value={state} onChange={(e)=>setState(e.target.value)}>
             <option value="">Choose State</option>
@@ -151,6 +168,8 @@ function EditComplaint() {
           <select type="text" value={department} onChange={(e)=>setDepartment(e.target.value)}>
             <option value="">Select Department</option>
             <option value="Water-Board">Water-Board</option>
+            <option value="Electric-Board">Electric-Board</option>
+            <option value="General Panjayath">General Panjayath</option>
           </select>
           <input type="text" placeholder='Complaint Title' value={title} onChange={(e)=>setTitle(e.target.value)}/>
 
@@ -164,7 +183,7 @@ function EditComplaint() {
           
 
           
-          <input type="text" placeholder='Complaint Status' value={assignedTo} onChange={(e)=>setAssignedTo(e.target.value)}/>
+          <input type="text" placeholder='Assigned to' value={assignedTo} onChange={(e)=>setAssignedTo(e.target.value)}/>
 
           
 

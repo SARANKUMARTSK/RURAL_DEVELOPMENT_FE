@@ -28,6 +28,12 @@ function Complaint() {
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
+
+    if(userName==""||userEmail==""||userPhoneNumber==""||imageFile==""||locality==""||city==""||district==""||state==""
+      ||pincode==""||department==""||title==""||description==""
+    ){
+      toast.error("Please Fill All The Fields")
+    }
     try {
       const formData = new FormData();
       formData.append('userName', userName);
@@ -126,8 +132,8 @@ function Complaint() {
           <select type="text" onChange={(e)=>setDepartment(e.target.value)}>
             <option value="">Select Department</option>
             <option value="Water-Board">Water-Board</option>
-            <option value="Water-Board">Electric-Board</option>
-            <option value="Water-Board">General Panjayath</option>
+            <option value="Electric-Board">Electric-Board</option>
+            <option value="General Panjayath">General Panjayath</option>
           </select>
           <input type="text" placeholder='Complaint Title' onChange={(e)=>setTitle(e.target.value)}/>
           <textarea type="text" placeholder='Enter About Your Complaint' onChange={(e)=>setDescription(e.target.value)} />

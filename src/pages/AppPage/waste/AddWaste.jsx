@@ -24,6 +24,10 @@ function AddWaste() {
 
   
   const handleSubmit = async(e)=>{
+    if(userName==""||email==""||phoneNumber==""||imageFile==""||locality==""||city==""||district==""||description==""
+     ||type==""||quantity==""){
+      toast.error("Please Fill All The Fields")
+    }
      e.preventDefault();
      try {
       const formData = new FormData();
