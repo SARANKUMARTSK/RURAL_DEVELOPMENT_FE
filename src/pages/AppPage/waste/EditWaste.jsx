@@ -163,17 +163,17 @@ function EditWaste() {
                 <option value="Odayakulam">Odayakulam</option>
               </select>
               {
-            role==="Admin"&&<select value={status} onChange={(e)=>setStatus(e.target.value)} >
-            <option value="">Select Status</option>
-            <option value="Registered">Registered</option>
-            <option value="Registered">Assigned</option>
-            <option value="Registered">Solved</option>
-         </select>
+            <select value={status} onChange={(e)=>setStatus(e.target.value)} >
+                <option value="">Select Status</option>
+                <option value="Registered">Registered</option>
+                <option value="Assigned">Assigned</option>
+                <option value="Solved">Solved</option>
+            </select>
           }
 
           {
-            role==="Admin"&&
-          <input type="text" placeholder='Complaint Status' value={assignedTo} onChange={(e)=>setTitle(e.target.value)}/>
+      
+          <input type="text" placeholder='Complaint Status' value={assignedTo} onChange={(e)=>setAssignedTo(e.target.value)}/>
 
           }
             </div>

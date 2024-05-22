@@ -59,6 +59,9 @@ function Complaint() {
         })
       toast.success(res.data.message)
       navigate('/landing-page')
+      setTimeout(()=>{
+        toast.success('Tracking ID Successfully Sent to Your Mail')
+      },5000)
     } catch (error) {
       toast.error(error.message)
     }

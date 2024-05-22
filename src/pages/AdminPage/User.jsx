@@ -36,18 +36,8 @@ function User() {
     },[data])
 
 
-    const handleDelete = async(row)=>{
-      try {
-        let res = await axios.delete(`${API_URL}/user/${row._id}`, {
-          headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': `Bearer ${token}` 
-          }
-      })
-        toast.success(res.data.message)
-      } catch (error) {
-        console.log(error);
-      }
+    const handleEdit = async(row)=>{
+      navigate(`/dashboard/edit-user/${row._id}`)
     }
 
    
@@ -80,6 +70,16 @@ function User() {
             muiTableHeadCellProps: { sx: { color: 'green' } },
           },
           {
+            accessorFn: (row) => (
+              <div style={{marginRight:"20px"}} className={  row.status === 'Active' ? "active-button" : 'inActive-button' }>
+                 {row.status}
+              </div>
+            ),
+            header: "Status",
+            size: 150,
+            muiTableHeadCellProps: { sx: { color: 'green' } },
+          },
+          {
             accessorKey: 'address.city', 
             header: 'City Name',
             muiTableHeadCellProps: { sx: { color: 'green' } },
@@ -88,7 +88,7 @@ function User() {
           {
             accessorFn: (row) => (
               <div>
-                &nbsp;&nbsp;&nbsp;<DeleteIcon className="delete-icon" onClick={()=>handleDelete(row)} />
+                &nbsp;&nbsp;&nbsp;<DriveFileRenameOutlineIcon className="edit-icon" onClick={()=>handleEdit(row)} />
               </div>
             ),
             header: "Action",

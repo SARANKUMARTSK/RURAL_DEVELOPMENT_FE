@@ -8,12 +8,14 @@ import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function Sidebar() {
     const navigate = useNavigate()
     const handleLogout = ()=>{
         localStorage.clear();
         navigate('/landing-page')
+        toast.success('Logout Successfull')
     }
   return <>
   <div className="sidebar">

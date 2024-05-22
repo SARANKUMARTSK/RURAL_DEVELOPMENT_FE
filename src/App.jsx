@@ -34,6 +34,7 @@ import ComplaintList from './pages/AdminPage/ComplaintList'
 import WasteList from './pages/AdminPage/WasteList'
 import User from './pages/AdminPage/User'
 import ContactList from './pages/AdminPage/ContactList'
+import EditUser from './pages/AdminPage/EditUser'
 
 // export  const API_URL ="http://localhost:8001"
 export const API_URL = "https://rural-development-be.onrender.com"
@@ -51,6 +52,7 @@ function App() {
         <Route path='complaints' element={<ComplaintList/>}/>
         <Route path='waste-collection' element={<WasteList/>}/>
         <Route path='users' element={<User/>}/>
+        <Route path='edit-user/:id' element={<EditUser/>}/>
         <Route path='contacts' element={<ContactList/>}/>
 
         <Route path='' element={<Navigate to={"home"}/>}/>
