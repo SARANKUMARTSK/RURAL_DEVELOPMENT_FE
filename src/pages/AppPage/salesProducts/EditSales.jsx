@@ -25,6 +25,7 @@ function EditSales() {
   const [state,setState] = useState("")
   const [status,setStatus] = useState("")
   const {id} = useParams()
+
   const userId = localStorage.getItem('userId')
   const fetchProductData = async()=>{
     try {
@@ -127,19 +128,19 @@ function EditSales() {
           <div className="add-sales-address">
               <select type="text" value={state} onChange={(e)=>setState(e.target.value)}>
                 <option value="">State</option>
-                <option value="tamilnadu">Tamilnadu</option>
+                <option value="Tamilnadu">Tamilnadu</option>
               </select>
               <select type="text" value={district} onChange={(e)=>setDistrict(e.target.value)}>
                 <option value="">District</option>
-                <option value="coimbatore">Coimbatore</option>
+                <option value="Coimbatore">Coimbatore</option>
               </select>
               <select type="text" value={city} onChange={(e)=>setCity(e.target.value)}>
                 <option value="">City</option>
-                <option value="pollachi">Pollachi</option>
+                <option value="Pollachi">Pollachi</option>
               </select>
               <select type="text" value={locality} onChange={(e)=>setLocality(e.target.value)}>
                   <option value="">Village</option>
-                  <option value="anaimalai">Anaimalai</option>
+                  <option value="Anaimalai">Anaimalai</option>
               </select>
           </div>
 
