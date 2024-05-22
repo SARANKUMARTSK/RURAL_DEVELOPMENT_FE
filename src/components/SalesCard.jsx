@@ -10,10 +10,10 @@ import toast from 'react-hot-toast';
 
 function SalesCard({ data }) {
   
-    const userId = sessionStorage.getItem('userId');
+    const userId = localStorage.getItem('userId');
     const navigate = useNavigate();
   
-    const token = sessionStorage.getItem('token')
+    const token = localStorage.getItem('token')
 
     const handleDelete = async (e) => {
         try {

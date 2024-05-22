@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 function Navbar({addButton}) {
-    const role = sessionStorage.getItem('role')
+    const role = localStorage.getItem('role')
     const navigate = useNavigate()
 
     const handleHome = ()=>{
