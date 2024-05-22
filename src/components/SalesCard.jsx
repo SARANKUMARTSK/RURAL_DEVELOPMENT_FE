@@ -12,6 +12,8 @@ function SalesCard({ data }) {
   
     const userId = localStorage.getItem('userId');
     const navigate = useNavigate();
+
+    const role = localStorage.getItem('role')
   
     const token = localStorage.getItem('token')
 
@@ -60,7 +62,7 @@ function SalesCard({ data }) {
                                 <span>{e.phoneNumber}</span>
                             </div>
                         </div>
-                        {userId === e.userId &&
+                        {userId === e.userId || role === "Admin" &&
                             <div className='space-around'>
                                 <button className='edit-sales-button' onClick={() => handleEdit(e)}><DriveFileRenameOutlineIcon /></button>
                                 <button className='delete-sales-button' onClick={() => handleDelete(e)}><DeleteIcon /></button>

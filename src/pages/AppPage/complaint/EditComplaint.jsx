@@ -196,7 +196,7 @@ function EditComplaint() {
               </div>
               <div>
                  <img src={`${API_URL}/images/${image}`} alt={imageFile} />
-              </div>
+              </div>  
 
           </div>
 
