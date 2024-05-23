@@ -9,6 +9,7 @@ import toast from 'react-hot-toast'
 function AddWaste() {
 
   const navigate = useNavigate()
+  const role = localStorage.getItem('role')
   const token = localStorage.getItem('token')
   const userId = localStorage.getItem('userId')
   const [userName,setUserName] = useState("")
@@ -21,12 +22,14 @@ function AddWaste() {
   const [city,setCity] = useState("")
   const [district,setDistrict] = useState("")
   const [imageFile,setImageFile] = useState(null)
-
+  const [loading,setLoading] = useState(false)
   
   const handleSubmit = async(e)=>{
+    setLoading(true)
     if(userName==""||email==""||phoneNumber==""||imageFile==""||locality==""||city==""||district==""||description==""
      ||type==""||quantity==""){
       toast.error("Please Fill All The Fields")
+      setLoading(false)
     }
      e.preventDefault();
      try {
@@ -49,10 +52,12 @@ function AddWaste() {
             'Authorization': `Bearer ${token}` 
         }
     })
+    setLoading(false)
       toast.success(res.data.message);
-      navigate('/landing-page')
+      role=="Admin"?navigate('/dashboard/home'):navigate('/landing-page')
      } catch (error) {
       console.log(error);
+      setLoading(false)
      }
   }
 
@@ -111,7 +116,12 @@ function AddWaste() {
 
          </div>
 
-         <button className='add-waste-button' type='submit'>Submit</button>
+         
+         {
+                loading?<button type='submit' className='loading-button'>Loading<span className="dot-span dot-span1">.</span>
+                    <span className="dot-span dot-span2">.</span>
+                    <span className="dot-span dot-span3">.</span></button>:<button className='add-waste-button' type='submit'>Submit</button>
+              }
       </form>
     </div>
   </>

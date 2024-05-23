@@ -8,6 +8,7 @@ import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { useNavigate } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 import toast from 'react-hot-toast';
 
 function Sidebar() {
@@ -72,6 +73,11 @@ function Sidebar() {
         <li onClick={()=>navigate('/dashboard/users')}>
             <i><PersonSearchIcon/></i>
             <p>Users</p>
+        </li>
+
+        <li onClick={()=>navigate('/landing-page')}>
+            <i><HomeIcon/></i>
+            <p>Home</p>
         </li>
 
         <li onClick={()=>handleLogout()}>

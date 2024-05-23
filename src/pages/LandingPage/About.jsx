@@ -4,9 +4,19 @@ import ContactPageIcon from '@mui/icons-material/ContactPage';
 import CollectionsIcon from '@mui/icons-material/Collections';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useNavigate } from 'react-router-dom';
+import NoAccountsIcon from '@mui/icons-material/NoAccounts';
+import toast from 'react-hot-toast';
 
 function About() {
   let navigate = useNavigate()
+  const name = localStorage.getItem('name')
+
+  const handleLogout = ()=>{
+    localStorage.clear()
+    navigate('/landing-page')
+    toast.success("Logout Successfull")
+  }
+  
   return <>
   <div className="about-page">
     <div className="about-left-container">
@@ -16,10 +26,19 @@ function About() {
     </div>
 
     <div className="about-right-container">
-      {/* <div className="documents"><ReceiptLongIcon/>Documents</div> */}
-      <div className="contacts" onClick={()=>navigate('/signup')}><ContactPageIcon/>Signup</div>
-      {/* <div className="gallery"><CollectionsIcon/>Gallery</div> */}
-      <div onClick={()=>navigate('/login')} className="login"><ExitToAppIcon/>Login</div>
+      {
+        name && <div className='logout-home' onClick={()=>handleLogout()}><NoAccountsIcon/>Logout from <br />&nbsp;&nbsp;&nbsp;&nbsp; {name}</div>
+      }
+      
+     {
+      !name && <div className="contacts" onClick={()=>navigate('/signup')}><ContactPageIcon/>Signup</div>
+     }
+     {
+      !name &&  <div onClick={()=>navigate('/login')} className="login"><ExitToAppIcon/>Login</div>
+     }
+
+      
+      
 
     </div>
     

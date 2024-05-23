@@ -15,7 +15,7 @@ function AddAnnouncement() {
     navigate('/landing-page')
   }
 
-
+  const [loading,setLoading] = useState(false)
   const [from ,setFrom] = useState("")
   const [to ,setTo] = useState("")
   const [title ,setTitle] = useState("")
@@ -24,6 +24,7 @@ function AddAnnouncement() {
   const [imageFile ,setImageFile] = useState(null)
 
   const handleSubmit = async(e)=>{
+    setLoading(true)
     e.preventDefault()
     try {
       let formData = new FormData();
@@ -40,9 +41,11 @@ function AddAnnouncement() {
         }
     })
       toast.success(res.data.message)
-      navigate('/landing-page')
+      setLoading(false)
+      navigate('/view-announcement')
     } catch (error) {
       console.log(error);
+      setLoading(false)
     }
   }
 
@@ -68,8 +71,12 @@ function AddAnnouncement() {
         </div>
         <input type="file" accept="image/*,.pdf" onChange={(e)=>setImageFile(e.target.files[0])}/>
         </div>
-
-        <button type='submit'>Submit</button>
+        {
+                loading?<button type='submit' className='loading-button'>Loading<span className="dot-span dot-span1">.</span>
+                    <span className="dot-span dot-span2">.</span>
+                    <span className="dot-span dot-span3">.</span></button>:<button type='submit'>Submit</button>
+              }
+        
       </form>
     </div>
     </>

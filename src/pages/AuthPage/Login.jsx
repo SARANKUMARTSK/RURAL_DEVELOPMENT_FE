@@ -7,7 +7,7 @@ import axios from 'axios'
 import { API_URL } from '../../App';
 import toast from 'react-hot-toast';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-
+import HomeIcon from '@mui/icons-material/Home';
 
 function Login() {
 
@@ -77,7 +77,9 @@ function Login() {
                     <span className="dot-span dot-span2">.</span>
                     <span className="dot-span dot-span3">.</span></button>:<button type='submit'>Login</button>
               }
-              <span onClick={()=>navigate('/forgot-password')}>Forgot Password?</span>
+              <span style={{cursor:"pointer"}} onClick={()=>navigate('/forgot-password')}>Forgot Password?</span>
+
+              <span onClick={()=>navigate('/landing-page')} style={{display:"flex",justifyContent:"right",alignItems:"center",cursor:"pointer"}}>Go to Home <HomeIcon/> </span>
 
             </form>
         </div>

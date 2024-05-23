@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import Topbar from '../../../components/TopBar'
-import Navbar from '../../../components/Navbar'
 import '../app.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { API_URL } from '../../../App'
 import toast from 'react-hot-toast'
-
+import FastRewindIcon from '@mui/icons-material/FastRewind';
 function AddSales() {
 
   const navigate = useNavigate()
@@ -52,7 +51,7 @@ function AddSales() {
         }
     })
       toast.success(res.data.message)
-      navigate('/landing-page')
+      navigate(`/view-sales-product/${userId}`)
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +59,9 @@ function AddSales() {
 
   return <>
   <Topbar/>
-  <Navbar/>
+  <div className="button-end">
+  <button onClick={()=>navigate(`/view-sales-product/${userId}`)}><FastRewindIcon/>Back </button>
+  </div>
   <div className="add-sales-page">
 
     <div className="add-sales-left-container">

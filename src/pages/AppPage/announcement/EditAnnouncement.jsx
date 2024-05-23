@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TopBar from '../../../components/TopBar'
 import '../app.css'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { useNavigate } from 'react-router-dom';
 function EditAnnouncement() {
   const navigate =useNavigate()
+  const [loading,setLoading] = useState(false)
   const token = localStorage.getItem('token')
   const handleLogout = ()=>{
     localStorage.clear();
@@ -32,8 +33,12 @@ function EditAnnouncement() {
         </div>
         <input type="file" accept="image/*" />
         </div>
-
-        <button>Submit</button>
+        {
+                loading?<button type='submit' className='loading-button'>Loading<span className="dot-span dot-span1">.</span>
+                    <span className="dot-span dot-span2">.</span>
+                    <span className="dot-span dot-span3">.</span></button>:<button type='submit'>Submit</button>
+              }
+        
       </form>
     </div>
     </>

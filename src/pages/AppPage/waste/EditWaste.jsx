@@ -25,7 +25,7 @@ function EditWaste() {
   const [existingImage, setExistingImage] = useState('');
   const [status,setStatus] = useState('')
   const [assignedTo,setAssignedTo] = useState('')
-
+  const [loading,setLoading] = useState(false)
   const fetchData = async () => {
     try {
       let res = await axios.get(`${API_URL}/waste/${id}`, {
@@ -61,6 +61,7 @@ function EditWaste() {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
     if(userName==""||email==""||phoneNumber==""||imageFile==""||locality==""||city==""||district==""||description==""
      ||type==""||quantity==""){
@@ -90,9 +91,11 @@ function EditWaste() {
         }
     });
       toast.success(res.data.message);
-      navigate('/landing-page'); 
+      setLoading(false)
+      role=="Admin"?navigate('/dashboard/home'):navigate('/landing-page') 
     } catch (error) {
       console.log(error);
+      setLoading(false)
     }
   };
 
@@ -178,7 +181,11 @@ function EditWaste() {
           }
             </div>
           </div>
-          <button className='add-waste-button'>Submit</button>
+          {
+                loading?<button type='submit' className='loading-button'>Loading<span className="dot-span dot-span1">.</span>
+                    <span className="dot-span dot-span2">.</span>
+                    <span className="dot-span dot-span3">.</span></button>:<button className='add-waste-button' type='submit'>Submit</button>
+              }
         </form>
       </div>
     </>

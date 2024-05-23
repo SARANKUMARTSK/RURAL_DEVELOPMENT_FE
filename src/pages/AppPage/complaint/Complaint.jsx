@@ -12,7 +12,7 @@ function Complaint() {
   const navigate = useNavigate()
   let userId = localStorage.getItem("userId")
   const token = localStorage.getItem('token')
-
+  const role = localStorage.getItem('role')
   let [userName,setUserName] = useState("")
   let [userEmail,setUserEmail] = useState("")
   let [userPhoneNumber,setUserPhoneNumber] = useState("")
@@ -25,8 +25,9 @@ function Complaint() {
   let [title,setTitle] = useState("")
   let [description,setDescription] = useState("")
   let [imageFile,setImageFile] = useState(null)
-
+  const [loading,setLoading] = useState(false)
   const handleSubmit = async(e)=>{
+    setLoading(true)
     e.preventDefault()
 
     if(userName==""||userEmail==""||userPhoneNumber==""||imageFile==""||locality==""||city==""||district==""||state==""
@@ -58,11 +59,13 @@ function Complaint() {
             }
         })
       toast.success(res.data.message)
-      navigate('/landing-page')
+      setLoading(false)
+      role=="Admin"?navigate('/dashboard/home'):navigate('/landing-page')
       setTimeout(()=>{
         toast.success('Tracking ID Successfully Sent to Your Mail')
       },5000)
     } catch (error) {
+      setLoading(false)
       toast.error(error.message)
     }
   }
@@ -156,7 +159,11 @@ function Complaint() {
           </div>
 
           <div className="submit-button-center">
-            <button type='submit'>Submit</button>
+          {
+                loading?<button type='submit' className='loading-button'>Loading<span className="dot-span dot-span1">.</span>
+                    <span className="dot-span dot-span2">.</span>
+                    <span className="dot-span dot-span3">.</span></button>:<button type='submit'>Submit</button>
+              }
           </div>
         </form>
    </div>

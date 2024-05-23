@@ -8,11 +8,7 @@ function Navbar({addButton}) {
     const navigate = useNavigate()
 
     const handleHome = ()=>{
-      if(role==="Admin"){
-        navigate('/dashboard/home')
-      }else{
         navigate('/landing-page')
-      }
     }
   return <>
   <div className='button-end'>

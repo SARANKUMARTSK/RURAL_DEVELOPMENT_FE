@@ -87,7 +87,7 @@ function EditSales() {
       }
   })
     toast.success(res.data.message)
-    navigate('/landing-page')
+    navigate(`/view-sales-product/${userId}`)
    } catch (error) {
     console.log(error);
    } 

@@ -288,3 +288,12 @@
     background-color:var(--blue-color);
     color: white;
 }
+
+.logout-home>svg{
+    color: red;
+    font-size: 40px !important;
+}
+.logout-home:hover{
+    color: red !important;
+    text-shadow: 1px 1px 1px black;
+}

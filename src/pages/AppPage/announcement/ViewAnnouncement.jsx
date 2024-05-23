@@ -8,7 +8,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import toast from 'react-hot-toast'
 
 function ViewAnnouncement() {
-
+  const role = localStorage.getItem('role')
   const [data,setData] = useState([])
   const addButton = true;
   const token = localStorage.getItem('token')
@@ -52,7 +52,9 @@ function ViewAnnouncement() {
       return  <div key={i} className="announcement-link-container">
       <h3>{e.title} </h3>
       <button><a href={`${API_URL}/images/${e.imageFile}`}>CLICK HERE</a></button>
-      <button className='announcement-delete-icon' onClick={()=>handleDelete(e)}><DeleteOutlineIcon/></button>
+      {
+        role==="Admin"&&<button className='announcement-delete-icon' onClick={()=>handleDelete(e)}><DeleteOutlineIcon/></button>
+      }
     </div>
     })
    }

@@ -29,7 +29,7 @@ function EditComplaint() {
     const [image, setImage] = useState("");
     const [status,setStatus] = useState('')
     const [assignedTo,setAssignedTo] = useState('')
-   
+    const [loading,setLoading] = useState(false)
 
     const fetchComplaintData = async () => {
         try {
@@ -63,6 +63,7 @@ function EditComplaint() {
   }, []);
 
     const handleSubmit = async (e) => {
+      setLoading(true)
         e.preventDefault();
         if(userName==""||userEmail==""||userPhoneNumber==""||imageFile==""||locality==""||city==""||district==""||state==""
       ||pincode==""||department==""||title==""||description==""
@@ -95,9 +96,11 @@ function EditComplaint() {
               }
           });
             toast.success(response.data.message);
-            navigate('/landing-page')
+            setLoading(false)
+            role=="Admin"?navigate('/dashboard/home'):navigate('/landing-page')
         } catch (error) {
             toast.error(error.response.data.message);
+            setLoading(false)
             console.log(error);
         }
     };
@@ -201,7 +204,11 @@ function EditComplaint() {
           </div>
 
           <div className="submit-button-center">
-            <button type='submit'>Submit</button>
+          {
+                loading?<button type='submit' className='loading-button'>Loading<span className="dot-span dot-span1">.</span>
+                    <span className="dot-span dot-span2">.</span>
+                    <span className="dot-span dot-span3">.</span></button>:<button type='submit'>Submit</button>
+              }
           </div>
         </form>
    </div>

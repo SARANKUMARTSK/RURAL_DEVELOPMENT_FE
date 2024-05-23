@@ -24,7 +24,7 @@ function ViewSales() {
         }
     })
       let data = res.data.product
-      setData(data.filter(data=>data.city===(city===""?"Pollachi":city)));
+      city==""?setData(data):setData(data.filter(data=>data.city===city));
     } catch (error) {
       console.log(error);
     }
