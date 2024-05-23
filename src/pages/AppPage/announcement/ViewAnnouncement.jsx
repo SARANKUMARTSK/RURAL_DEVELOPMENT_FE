@@ -4,6 +4,9 @@ import Footer from '../../../components/Footer'
 import axios from 'axios'
 import { API_URL } from '../../../App'
 import Navbar from '../../../components/Navbar'
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import toast from 'react-hot-toast'
+
 function ViewAnnouncement() {
 
   const [data,setData] = useState([])
@@ -22,11 +25,19 @@ function ViewAnnouncement() {
       console.log(error);
     }
   }
+   const handleDelete=async(e)=>{
+    try {
+      let res = await axios.delete(`${API_URL}/announcement/${e._id}`)
+      toast.success(res.data.message)
+    } catch (error) {
+      console.log(error);
+    }
+   }
  
 
   useEffect(()=>{
     fetchAnnouncement();
-  },[])
+  },[data])
   return <>
   <Topbar/>
   <Navbar addButton={addButton}/>
@@ -41,6 +52,7 @@ function ViewAnnouncement() {
       return  <div key={i} className="announcement-link-container">
       <h3>{e.title} </h3>
       <button><a href={`${API_URL}/images/${e.imageFile}`}>CLICK HERE</a></button>
+      <button className='announcement-delete-icon' onClick={()=>handleDelete(e)}><DeleteOutlineIcon/></button>
     </div>
     })
    }

@@ -21,7 +21,7 @@ function Navbar({addButton}) {
       role==="Admin"&&addButton?<button onClick={()=>navigate('/add-announcement')}><AddToPhotosIcon/>Add New</button>:""}
     
     {
-      role==="Admin"&&addButton?<button onClick={()=>navigate('/add-announcement')}><DashboardCustomizeIcon/>Dashboard</button>:""
+      role==="Admin"&&addButton?<button onClick={()=>navigate('/dashboard/home')}><DashboardCustomizeIcon/>Dashboard</button>:""
     }
   
   </div>

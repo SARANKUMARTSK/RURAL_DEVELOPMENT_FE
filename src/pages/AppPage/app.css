@@ -996,6 +996,12 @@
     outline: none;
     border-radius: 5px;
 }
+.announcement-delete-icon{
+    border: none !important;
+    background-color: transparent !important;
+    padding: none !important;
+    color: red !important;
+}
 .announcement-date-container{
     height: 70px;
     padding: 20px;
