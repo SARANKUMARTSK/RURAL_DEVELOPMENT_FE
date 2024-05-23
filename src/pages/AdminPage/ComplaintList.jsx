@@ -33,7 +33,7 @@ function ComplaintList() {
 
       useEffect(()=>{
         fetchComplaints();
-      },[])
+      },[data])
 
       const handleEdit=async(row)=>{
         navigate(`/edit-complaint/${row._id}`)

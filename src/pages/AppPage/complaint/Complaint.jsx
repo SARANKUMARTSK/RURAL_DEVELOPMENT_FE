@@ -29,13 +29,14 @@ function Complaint() {
   const handleSubmit = async(e)=>{
     setLoading(true)
     e.preventDefault()
+    try {
 
-    if(userName==""||userEmail==""||userPhoneNumber==""||imageFile==""||locality==""||city==""||district==""||state==""
+    if(userName==""||userEmail==""||userPhoneNumber==""||imageFile==""||imageFile==null||!imageFile||locality==""||city==""||district==""||state==""
       ||pincode==""||department==""||title==""||description==""
     ){
       toast.error("Please Fill All The Fields")
-    }
-    try {
+      setLoading(false)
+    }else{
       const formData = new FormData();
       formData.append('userName', userName);
       formData.append('userEmail', userEmail);
@@ -64,6 +65,8 @@ function Complaint() {
       setTimeout(()=>{
         toast.success('Tracking ID Successfully Sent to Your Mail')
       },5000)
+    }
+     
     } catch (error) {
       setLoading(false)
       toast.error(error.message)

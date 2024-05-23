@@ -66,10 +66,11 @@ function EditComplaint() {
     const handleSubmit = async (e) => {
       setLoading(true)
         e.preventDefault();
-        if(userName==""||userEmail==""||userPhoneNumber==""||imageFile==""||locality==""||city==""||district==""||state==""
+        if(userName==""||userEmail==""||userPhoneNumber==""||imageFile==""||imageFile==null||!imageFile||locality==""||city==""||district==""||state==""
       ||pincode==""||department==""||title==""||description==""
     ){
       toast.error("Please Fill All The Fields")
+      setLoading(false)
     }
         try {
             const formData = new FormData();
@@ -121,7 +122,7 @@ function EditComplaint() {
    <div className="complaint-top">
     <h2>Edit Your Complaint Here...</h2>
     <div className="button-container">
-    <button className='logout-button' onClick={()=>handleLogout()}>Logout</button>
+    <button className='logout-button' onClick={()=>navigate('/dashboard/complaints')}>Dashboard</button>
     <button className='home-button' onClick={()=>navigate('/landing-page')}><HomeOutlinedIcon/>Home</button>
     </div>
    </div>

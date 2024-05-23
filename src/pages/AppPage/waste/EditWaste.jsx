@@ -63,9 +63,10 @@ function EditWaste() {
   const handleSubmit = async (e) => {
     setLoading(true)
     e.preventDefault();
-    if(userName==""||email==""||phoneNumber==""||imageFile==""||locality==""||city==""||district==""||description==""
+    if(userName==""||email==""||phoneNumber==""||imageFile==""||imageFile==null||!imageFile||locality==""||city==""||district==""||description==""
      ||type==""||quantity==""){
       toast.error("Please Fill All The Fields")
+      setLoading(false)
     }
     try {
       const formData = new FormData();
