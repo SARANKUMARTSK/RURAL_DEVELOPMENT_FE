@@ -195,7 +195,7 @@ function EditComplaint() {
                  <input type="file" accept="image/*"  onChange={handleFileChange} />
               </div>
               <div>
-                 <img src={`${API_URL}/images/${image}`} alt={imageFile} />
+                 <img src={`${API_URL}/images/${image}`} alt={image} />
               </div>  
 
           </div>
