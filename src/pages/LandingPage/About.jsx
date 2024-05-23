@@ -27,7 +27,7 @@ function About() {
 
     <div className="about-right-container">
       {
-        name && <div className='logout-home' onClick={()=>handleLogout()}><NoAccountsIcon/>Logout from <br />&nbsp;&nbsp;&nbsp;&nbsp; {name}</div>
+        name && <div className='logout-home' onClick={()=>handleLogout()}><NoAccountsIcon/>Logout from <br />&nbsp;&nbsp; {name}</div>
       }
       
      {

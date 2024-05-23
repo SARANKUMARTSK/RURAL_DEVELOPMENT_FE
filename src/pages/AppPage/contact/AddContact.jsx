@@ -68,7 +68,7 @@ function AddContact() {
         }
       );
       toast.success(res.data.message);
-      navigate('/dashboard/home');
+      navigate('/dashboard/contacts');
     } catch (error) {
       console.error(error);
       toast.error(error.response?.data?.message || 'An error occurred. Please try again.');

@@ -31,6 +31,7 @@ function EditComplaint() {
     const [assignedTo,setAssignedTo] = useState('')
     const [loading,setLoading] = useState(false)
 
+  
     const fetchComplaintData = async () => {
         try {
             const response = await axios.get(`${API_URL}/complaints/byId/${id}`, {
@@ -97,7 +98,7 @@ function EditComplaint() {
           });
             toast.success(response.data.message);
             setLoading(false)
-            role=="Admin"?navigate('/dashboard/home'):navigate('/landing-page')
+            role=="Admin"?navigate('/dashboard/complaints'):navigate('/landing-page')
         } catch (error) {
             toast.error(error.response.data.message);
             setLoading(false)

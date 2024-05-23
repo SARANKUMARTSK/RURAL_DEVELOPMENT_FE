@@ -79,7 +79,7 @@ function EditContact() {
             }
         })
           toast.success(res.data.message)
-          navigate('/view-contact')
+          navigate('/dashboard/contacts')
         } catch (error) {
           console.log(error);
         }

@@ -42,7 +42,7 @@ function AddAnnouncement() {
     })
       toast.success(res.data.message)
       setLoading(false)
-      navigate('/view-announcement')
+      navigate('/dashboard/home')
     } catch (error) {
       console.log(error);
       setLoading(false)

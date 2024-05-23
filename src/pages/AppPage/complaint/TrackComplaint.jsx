@@ -89,7 +89,7 @@ function TrackComplaint() {
     </div>
     <div className="complaint-view">
         <div className="tracking-left-container">
-              <img src={`${API_URL}/images/${imageFile}`} alt="Dynamic Image" />
+              <img src={`${API_URL}/images/${imageFile}`} alt="Complaint Image" />
         </div>
         <div className="tracking-right-container">
              <div>

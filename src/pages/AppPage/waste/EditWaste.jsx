@@ -92,7 +92,7 @@ function EditWaste() {
     });
       toast.success(res.data.message);
       setLoading(false)
-      role=="Admin"?navigate('/dashboard/home'):navigate('/landing-page') 
+      role=="Admin"?navigate('/dashboard/waste-collection'):navigate('/landing-page') 
     } catch (error) {
       console.log(error);
       setLoading(false)
