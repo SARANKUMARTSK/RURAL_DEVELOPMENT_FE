@@ -1142,3 +1142,50 @@
     font-weight: 600;
 }
 
+/* Library page  */
+.view-library{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+.library-books-list{
+    height: 320px;
+    max-width: 1320px; 
+    display: flex; 
+    overflow: auto;
+    gap: 15px;
+}
+.library-book{
+    border: 1px solid black;
+    min-width:240px;
+    border-radius: 12px;
+    border: 5px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    cursor: pointer;
+}
+.library-book>img{
+    height: 98%;
+    width: 98%;
+    border-radius: 8px;
+}
+.view-library>h2{
+    color: green;
+    text-shadow: 1px 1px 1px black;
+}
+.library-book-see-more{
+    min-width: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px 15px 15px 2px;
+    color: white;
+    font-weight: 900;
+    background-color: var(--blue-color);
+    cursor: pointer;
+}

@@ -68,6 +68,7 @@ function Specification() {
             <li onClick={()=>handleWasteQuery()}><LinkIcon/> Waste Pickup & Track With Your Tracking Id <DoneIcon/></li>
             <li onClick={()=>handleSalesProduct()}><LinkIcon/> Market Place For Formers & Buyers <DoneIcon/></li>
             <li onClick={()=>navigate('/view-announcement')}><LinkIcon/> Government Announcements <DoneIcon/></li>
+            <li onClick={()=>navigate('/view-agro-sales')}><LinkIcon/>Fertilizer Sale <DoneIcon/></li>
             <li onClick={()=>handleDashboard()}><LinkIcon/>Officials Login <DoneIcon/></li>
           </ul>
         </div>

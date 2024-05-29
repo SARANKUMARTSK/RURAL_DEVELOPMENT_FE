@@ -35,6 +35,10 @@ import WasteList from './pages/AdminPage/WasteList'
 import User from './pages/AdminPage/User'
 import ContactList from './pages/AdminPage/ContactList'
 import EditUser from './pages/AdminPage/EditUser'
+import ViewLibrary from './pages/AppPage/library/ViewLibrary'
+import AddAgroSales from './pages/WasteSale/AddAgroSales'
+import WasteSalesPage from './pages/WasteSale/WasteSalesPage'
+import EditAgroSales from './pages/WasteSale/EditAgroSales'
 
 // export  const API_URL ="http://localhost:8001"
 export const API_URL = "https://rural-development-be.onrender.com"
@@ -78,30 +82,37 @@ function App() {
       <Route path='/user-sales-product/:id' element={<UserProduct/>}/>
 
       {/* Contact Page  */}
-      <Route path='add-contact' element={<AddContact/>}/>
-      <Route path='edit-contact/:id' element={<EditContact/>}/>
-      <Route path='view-contact' element={<Contact/>}/>
+      <Route path='/add-contact' element={<AddContact/>}/>
+      <Route path='/edit-contact/:id' element={<EditContact/>}/>
+      <Route path='/view-contact' element={<Contact/>}/>
 
       {/* Donation Page  */}
-      <Route path='view-donation' element={<Donations/>}/>
-      <Route path='edit-donation' element={<EditDonation/>}/>
-      <Route path='add-donation' element={<AddDonation/>}/>
+      <Route path='/view-donation' element={<Donations/>}/>
+      <Route path='/edit-donation' element={<EditDonation/>}/>
+      <Route path='/add-donation' element={<AddDonation/>}/>
 
       {/* Waste Page  */}
-      <Route path='add-waste/:id' element={<AddWaste/>}/>
-      <Route path='edit-waste/:id' element={<EditWaste/>}/>
-      <Route path='track-waste/:referenceLink' element={<TrackWaste/>}/>
+      <Route path='/add-waste/:id' element={<AddWaste/>}/>
+      <Route path='/edit-waste/:id' element={<EditWaste/>}/>
+      <Route path='/track-waste/:referenceLink' element={<TrackWaste/>}/>
 
       {/* Announcement Page  */}
-      <Route path='add-announcement' element={<AddAnnouncement/>}/>
-      <Route path='edit-announcement' element={<EditAnnouncement/>}/>
-      <Route path='view-announcement' element={<ViewAnnouncement/>}/>
-      <Route path='view-announcement/:id' element={<DetailedAnnouncement/>}/>
+      <Route path='/add-announcement' element={<AddAnnouncement/>}/>
+      <Route path='/edit-announcement' element={<EditAnnouncement/>}/>
+      <Route path='/view-announcement' element={<ViewAnnouncement/>}/>
+      <Route path='/view-announcement/:id' element={<DetailedAnnouncement/>}/>
 
        {/* Gallery  */}
-      <Route path='add-image' element={<AddImage/>}/>
-      <Route path='gallery' element={<ViewImage/>}/>
-       
+      <Route path='/add-image' element={<AddImage/>}/>
+      <Route path='/gallery' element={<ViewImage/>}/>
+
+      {/* Library Books  */}
+      <Route path='/library' element={<ViewLibrary/>}/>
+
+      {/* Sales Agro Waste  */}
+      <Route path='/add-agro-sales' element={<AddAgroSales/>}/>
+      <Route path='/view-agro-sales' element={<WasteSalesPage/>}/>
+      <Route path='/edit-agro-sales/:id' element={<EditAgroSales/>}/>
 
    
 
