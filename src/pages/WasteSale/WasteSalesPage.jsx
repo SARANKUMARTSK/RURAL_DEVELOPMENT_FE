@@ -15,6 +15,9 @@ import { useNavigate } from 'react-router-dom';
 
 function SalesPage() {
   const navigate = useNavigate()
+  let userId = localStorage.getItem('userId')
+
+  const token = localStorage.getItem('token')
   const [data, setData] = useState([]);
   const [requiredQty, setRequiredQty] = useState(0);
   const [price, setPrice] = useState(0);
@@ -30,10 +33,34 @@ function SalesPage() {
       console.log(error);
     }
   };
+   const [buyerName,setBuyerName] = useState('')
+   const [buyerPhoneNumber,setBuyerPhoneNumber] = useState('')
+   const [userEmail,setUserEmail] = useState('')
+
+  const getUser = async()=>{
+    try {
+      let res = await axios.get(`${API_URL}/user/${userId}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
+  
+      setBuyerName(res.data.user.name);
+      setBuyerPhoneNumber(res.data.user.phoneNumber)
+      setUserEmail(res.data.user.email)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     fetchSalesData();
   }, [data]);
+
+  useEffect(()=>{
+    getUser();
+  },[])
 
   const handleRequiredQtyChange = (e, itemPrice) => {
     const value = e.target.value;
@@ -42,8 +69,7 @@ function SalesPage() {
     setAmount(value * itemPrice);
   };
 
-  let userId = localStorage.getItem('userId')
-  let userEmail = localStorage.getItem('email')
+  
 
   const handleBuy = async(e) => {
     e.preventDefault();
@@ -67,8 +93,9 @@ function SalesPage() {
         },
         notes:{
           address:"Rural Development Office",
-          userId: userId,
-          userEmail: userEmail
+          userName: buyerName,
+          userEmail: userEmail,
+          userContact: buyerPhoneNumber,
         },
         theme:{
           color:"green"
@@ -120,7 +147,7 @@ function SalesPage() {
         {data.map((e, i) => (
           <div key={i} className="agro-sales-card">
             <div className="agro-sales-card-left">
-              <img src="https://mytrugreenlawn.com/wp-content/uploads/2023/06/AdobeStock_89815181.jpeg" alt="Agro waste" />
+              <img src={`${API_URL}/images/${e.imageFile}`} alt="Agro waste" />
             </div>
 
             <div className="agro-sales-card-right">

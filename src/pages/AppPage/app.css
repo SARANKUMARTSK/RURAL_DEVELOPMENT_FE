@@ -1173,6 +1173,20 @@
     width: 98%;
     border-radius: 8px;
 }
+.library-book>img:hover{
+    opacity: 0.5;
+}
+.library-book-specifications{
+    position: absolute;
+    z-index: 1;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    bottom: 10px;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    min-width: 220px;
+    padding: 5px;
+}
 .view-library>h2{
     color: green;
     text-shadow: 1px 1px 1px black;
