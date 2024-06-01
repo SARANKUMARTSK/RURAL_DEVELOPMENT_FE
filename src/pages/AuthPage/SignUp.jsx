@@ -128,9 +128,11 @@ function SignUp() {
 
 
           {
-            loading?<button type='submit' className='loading-button signup-button'>Loading<span class="dot-span dot-span1">.</span>
-            <span class="dot-span dot-span2">.</span>
-            <span class="dot-span dot-span3">.</span></button>:<button className='signup-button'>Submit</button>
+            loading?<button className='loading-button-add-waste-sales'>Loading
+            <span className='loading-dot1'><FiberManualRecordIcon/></span>
+            <span className='loading-dot2'><FiberManualRecordIcon/></span>
+            <span className='loading-dot3'><FiberManualRecordIcon/></span>
+             </button>:<button className='signup-button'>Submit</button>
           }
            
         </form>

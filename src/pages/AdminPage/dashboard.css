@@ -323,10 +323,207 @@
    box-shadow: 0px 0px 5px ;
 }
 
+/* Assign Complaint  */
+.assign-complaint{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+.assign-complaint>form{
+    display: flex;
+    gap: 30px;
+}
+.assign-farm-left{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: center;
+    gap: 20px;
+}
+.assign-farm-left>img{
+    height: 300px;
+    width: 280px;
+    border-radius: 5px;
+}
+.assign-farm-right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.assign-farm-right>input{
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 5px var(--blue-color);
+    outline: none;
+    font-weight: 600;
+    color: var(--blue-color);
+    width: 280px;
+}
+.assign-farm-right>select{
+    color: var(--blue-color);
+    min-width: 310px;
+}
+.assign-farm-right>button{
+    padding: 10px 10px;
+    border: 2px solid var(--blue-color);
+    background-color: var(--blue-color);
+    color: white;
+    font-weight: 900;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px var(--blue-color);
+    min-width: 150px;
+}
+.assign-farm-right>button:hover{
+    background-color: white;
+    color: var(--blue-color);
+    transition: 300ms;
+}
+.assign-farm-right>label{
+    font-weight: 600;
+    color: var(--blue-color);
+    text-shadow: 0px 0px 1px black;
+}
+.assign-farm-left>label{
+    font-weight: 600;
+    color: var(--blue-color);
+    text-shadow: 0px 0px 1px black;
+}
+.completion-date-input{
+    padding: 15px;
+    width: 280px;
+    box-shadow: 0px 0px 5px var(--blue-color);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-weight: 600;
+    color: var(--blue-color);
+}
 
+.complaint-date-div{
+    border: none;
+    box-shadow: 0px 0px 5px var(--blue-color);
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+}
+.backgroundcolor-red{
+    background-color: red;
+    color: white !important;
+}
+.backgroundcolor-green{
+    color: white !important;
+    background-color: green;
+}
+.backgroundcolor-orange{
+    background-color: orange;
+    color: white !important;
+}
+.muiTable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    overflow: auto;
+}
+/* Detailed View - Complaint  */
 
-
-
+.complaint-detailed-view{
+    display: flex;
+    min-height: 70vh;
+    justify-content: center;
+    align-items: center;
+}
+.complaint-detailed-view-card{
+    display: flex;
+}
+.detailed-view-card-left{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.detailed-view-card-right{
+    padding: 15px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.detailed-view-card-right>p{
+    font-weight: 600;
+    font-size: 20px;
+}
+.detailed-view-card-left>img{
+    height: 300px;
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px black;
+}
+.detailed-view-sub-container{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+.complaint-person{
+    color: gray;
+}
+.detailed-view-sub-container>div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;   
+    font-size: 17px;
+    justify-content: center;
+}
+.detailed-view-sub-container>div>div>span{
+    color: var(--blue-color);
+    font-weight: 900;
+}
+.detailed-view-sub-container>div>div{
+    color: gray;
+    font-weight: 600;
+}
+.space-between{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+.back-button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid var(--blue-color);
+    background-color: white;
+    color: var(--blue-color);
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.back-button:hover{
+    background-color: var(--blue-color);
+    color: white;
+    box-shadow: 0px 0px 5px var(--blue-color);
+}
+@media screen and (max-width:970px) {
+        .complaint-detailed-view-card{
+            flex-direction: column;
+        }
+}
+@media screen and (max-width:630px) {
+    .detailed-view-sub-container>div{
+        font-size: small !important;
+        
+    }
+}
 
 
 

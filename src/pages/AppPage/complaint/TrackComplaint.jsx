@@ -109,10 +109,7 @@ function TrackComplaint() {
                 <input type="text" value={status} onChange={(e)=>setStatus(e.target.value)}></input>
                 <input type="text" value={assignedTo} onChange={(e)=>setAssignedTo(e.target.value)}></input>
              </div>
-             <div className='status-action-button'>
-                <button onClick={()=>handleEdit()} className='edit-button'><DriveFileRenameOutlineIcon/></button>
-                <button onClick={()=>handleDelete()} className='delete-button'><DeleteIcon/></button>
-             </div>
+             
              
         </div>
     </div>

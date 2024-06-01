@@ -4,19 +4,31 @@ import {
   MaterialReactTable,
   useMaterialReactTable,
 } from 'material-react-table';
+import { format, subDays } from 'date-fns';
 import DeleteIcon from "@mui/icons-material/Delete";
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import axios from 'axios'
 import {API_URL} from '../../App'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import PreviewRoundedIcon from '@mui/icons-material/PreviewRounded';
 
 function ComplaintList() {
 
+  const today = new Date();
+  const formattedToday = format(today, 'yyyy-MM-dd');
+
+  const yesterday = subDays(today, 1);
+  const formattedYesterday = format(yesterday, 'yyyy-MM-dd');
+
+  const dayBefore = subDays(today, 2);
+  const formattedDayBefore = format(dayBefore, 'yyyy-MM-dd');
+
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
     
-    const [data,setData] = useState([])
-    const navigate = useNavigate()
-    const token = localStorage.getItem('token')
+
       const fetchComplaints = async()=>{
         try {
           let res = await axios.get(`${API_URL}/complaints`, {
@@ -33,10 +45,10 @@ function ComplaintList() {
 
       useEffect(()=>{
         fetchComplaints();
-      },[data])
+      },[])
 
       const handleEdit=async(row)=>{
-        navigate(`/edit-complaint/${row._id}`)
+        navigate(`/dashboard/assign-complaint/${row._id}`)
       }
 
       const handleDelete=async(row)=>{
@@ -57,28 +69,8 @@ function ComplaintList() {
       const columns = useMemo(
         () => [
           {
-            accessorKey: 'userName',
-            header: 'Name',
-            muiTableHeadCellProps: { sx: { color: 'green' } }, 
-          },
-          {
-            accessorKey: 'userPhoneNumber', 
-            header: 'Phone Number',
-            muiTableHeadCellProps: { sx: { color: 'green' } },
-          },
-          {
-            accessorKey: 'district', 
-            header: 'District',
-            muiTableHeadCellProps: { sx: { color: 'green' } },
-          },
-          {
-            accessorKey: 'city', 
-            header: 'City',
-            muiTableHeadCellProps: { sx: { color: 'green' } },
-          },
-          {
-            accessorKey: 'department', 
-            header: 'Departmant',
+            accessorKey: 'userName', 
+            header: 'Complainter Name',
             muiTableHeadCellProps: { sx: { color: 'green' } },
           },
           {
@@ -87,16 +79,67 @@ function ComplaintList() {
             muiTableHeadCellProps: { sx: { color: 'green' } },
           },
           {
-            accessorKey: 'status', 
-            header: 'Status',
+            accessorFn: (row) => {
+              const complaintDate = row.createdAt.split('T')[0];
+              let backgroundColor = '';
+    
+              if (complaintDate === formattedToday) {
+                backgroundColor = 'backgroundcolor-green';
+              } else if (complaintDate === formattedYesterday) {
+                backgroundColor = 'backgroundcolor-orange';
+              } else if (complaintDate <= formattedDayBefore) {
+                backgroundColor = 'backgroundcolor-red';
+              }
+    
+              return (
+                <div className={`complaint-date-div ${backgroundColor}`}>
+                  {complaintDate}
+                </div>
+              );
+            },
+            header: "Complaint Date",
+            size: 150,
             muiTableHeadCellProps: { sx: { color: 'green' } },
+          },
+          {
+            accessorKey: 'department', 
+            header: 'Departmant',
+            muiTableHeadCellProps: { sx: { color: 'green' } },
+          },
+          {
+            accessorKey: 'locality', 
+            header: 'Village',
+            muiTableHeadCellProps: { sx: { color: 'green' } },
+          },
+          {
+            accessorKey: 'city', 
+            header: 'City',
+            muiTableHeadCellProps: { sx: { color: 'green' } },
+          },
+          {
+            accessorFn: (row) => {
+              return (
+                <div className={`complaint-date-div ${row.status=="Assigned"?"backgroundcolor-green":""}
+                ${row.status=="Registered"?"backgroundcolor-orange":""}`}>
+                  {row.status}
+                </div>
+              );
+            },
+            header: "Status",
+            size: 150,
+            muiTableHeadCellProps: { sx: { color: 'green' } },
+          },
+          {
+            accessorKey: 'assignedTo',
+            header: 'Assigned Person',
+            muiTableHeadCellProps: { sx: { color: 'green' } }, 
           },
           {
             accessorFn: (row) => (
               <div>
-                <DeleteIcon className="delete-icon" onClick={()=>handleDelete(row)} />
+                <DriveFileRenameOutlineIcon onClick={()=>handleEdit(row)} className="delete-icon" />
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <DriveFileRenameOutlineIcon onClick={()=>handleEdit(row)} className="edit-icon" />
+                <PreviewRoundedIcon onClick={()=>navigate(`/dashboard/complaint-detailed-view/${row._id}`)} className='edit-icon'/>
               </div>
             ),
             header: "Action",
@@ -115,6 +158,7 @@ function ComplaintList() {
       });
 
   return <>
+  <div className='muiTable'>
   <MaterialReactTable
         columns={columns}
         data={data}
@@ -139,8 +183,9 @@ function ComplaintList() {
           maxSize: 9,
           size: 180,
         }}
-      />        
+      />  </div>      
   </>
 }
 
 export default ComplaintList
+

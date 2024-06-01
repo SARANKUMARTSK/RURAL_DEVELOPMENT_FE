@@ -16,9 +16,6 @@ import EditSales from './pages/AppPage/salesProducts/EditSales'
 import AddContact from './pages/AppPage/contact/AddContact'
 import EditContact from './pages/AppPage/contact/EditContact'
 import Contact from './pages/AppPage/contact/Contacts'
-import Donations from './pages/AppPage/donation/Donations'
-import EditDonation from './pages/AppPage/donation/EditDonation'
-import AddDonation from './pages/AppPage/donation/AddDonation'
 import AddWaste from './pages/AppPage/waste/AddWaste'
 import EditWaste from './pages/AppPage/waste/EditWaste'
 import TrackWaste from './pages/AppPage/waste/TrackWaste'
@@ -35,13 +32,14 @@ import WasteList from './pages/AdminPage/WasteList'
 import User from './pages/AdminPage/User'
 import ContactList from './pages/AdminPage/ContactList'
 import EditUser from './pages/AdminPage/EditUser'
-import ViewLibrary from './pages/AppPage/library/ViewLibrary'
-import AddAgroSales from './pages/WasteSale/AddAgroSales'
-import WasteSalesPage from './pages/WasteSale/WasteSalesPage'
-import EditAgroSales from './pages/WasteSale/EditAgroSales'
+import YourComplaints from './pages/AppPage/complaint/YourComplaints'
+import AssignComplaint from './pages/AdminPage/AssignComplaint'
+import ComplaintView from './pages/AdminPage/ComplaintView'
 
-// export  const API_URL ="http://localhost:8001"
-export const API_URL = "https://rural-development-be.onrender.com"
+
+
+export  const API_URL ="http://localhost:8001"
+// export const API_URL = "https://rural-development-be.onrender.com"
 
 
 function App() {
@@ -54,13 +52,13 @@ function App() {
       <Route path='/dashboard' element={<Dashboard/>}>
         <Route path='home' element={<Home/>}/>
         <Route path='complaints' element={<ComplaintList/>}/>
+        <Route path='complaint-detailed-view/:id' element={<ComplaintView/>}/>
         <Route path='waste-collection' element={<WasteList/>}/>
         <Route path='users' element={<User/>}/>
         <Route path='edit-user/:id' element={<EditUser/>}/>
         <Route path='contacts' element={<ContactList/>}/>
-
+        <Route path='assign-complaint/:id' element={<AssignComplaint/>}/>
         <Route path='' element={<Navigate to={"home"}/>}/>
-
       </Route>
 
       
@@ -74,6 +72,7 @@ function App() {
       <Route path='/add-complaint/:id' element={<Complaint/>}/>
       <Route path='/track-complaint/:referenceLink' element={<TrackComplaint/>}/>
       <Route path='/edit-complaint/:id' element={<EditComplaint/>}/>
+      <Route path='/your-complaints/:id' element={<YourComplaints/>}/>
 
       {/* Product Pages  */}
       <Route path='/add-sales-product/:id' element={<AddSales/>}/>
@@ -86,10 +85,7 @@ function App() {
       <Route path='/edit-contact/:id' element={<EditContact/>}/>
       <Route path='/view-contact' element={<Contact/>}/>
 
-      {/* Donation Page  */}
-      <Route path='/view-donation' element={<Donations/>}/>
-      <Route path='/edit-donation' element={<EditDonation/>}/>
-      <Route path='/add-donation' element={<AddDonation/>}/>
+    
 
       {/* Waste Page  */}
       <Route path='/add-waste/:id' element={<AddWaste/>}/>
@@ -105,16 +101,6 @@ function App() {
        {/* Gallery  */}
       <Route path='/add-image' element={<AddImage/>}/>
       <Route path='/gallery' element={<ViewImage/>}/>
-
-      {/* Library Books  */}
-      <Route path='/library' element={<ViewLibrary/>}/>
-
-      {/* Sales Agro Waste  */}
-      <Route path='/add-agro-sales' element={<AddAgroSales/>}/>
-      <Route path='/view-agro-sales' element={<WasteSalesPage/>}/>
-      <Route path='/edit-agro-sales/:id' element={<EditAgroSales/>}/>
-
-   
 
       {/* Default Routes  */}
       <Route path='' element={<Navigate to={'/landing-page'}/>}/>

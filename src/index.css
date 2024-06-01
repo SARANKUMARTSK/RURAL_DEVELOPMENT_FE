@@ -2,3 +2,29 @@
 *{
     font-family:'Times New Roman', Times, serif;
 } */
+
+.loading-button-add-waste-sales{
+    background-color: white !important;
+    color: red !important;
+}
+.loading-button-add-waste-sales>span>svg{
+    font-size: 8px;
+}
+.loading-dot1>svg{
+    animation: dotLoading 1s infinite ease ;
+}
+.loading-dot2>svg{
+    animation: dotLoading 1s infinite ease 0.4s;
+}
+.loading-dot3>svg{
+    animation: dotLoading 1s infinite ease  0.9s;
+}
+@keyframes dotLoading {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+
+   }

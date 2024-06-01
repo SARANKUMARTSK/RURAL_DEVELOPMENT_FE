@@ -11,6 +11,7 @@ import LinkIcon from '@mui/icons-material/Link';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import DoneIcon from '@mui/icons-material/Done';
+import LockPersonIcon from '@mui/icons-material/LockPerson';
 
 
 function Specification() {
@@ -68,9 +69,8 @@ function Specification() {
             <li onClick={()=>handleWasteQuery()}><LinkIcon/> Waste Pickup & Track With Your Tracking Id <DoneIcon/></li>
             <li onClick={()=>handleSalesProduct()}><LinkIcon/> Market Place For Formers & Buyers <DoneIcon/></li>
             <li onClick={()=>navigate('/view-announcement')}><LinkIcon/> Government Announcements <DoneIcon/></li>
-            <li onClick={()=>navigate('/library')}><LinkIcon/>Online Library <DoneIcon/></li>
-            <li onClick={()=>navigate('/view-agro-sales')}><LinkIcon/>Fertilizer Sale <DoneIcon/></li>
-            <li onClick={()=>handleDashboard()}><LinkIcon/>Officials Login <DoneIcon/></li>
+            <li onClick={()=>handleDashboard()}><LinkIcon/>Officials Login <LockPersonIcon/></li>
+            
           </ul>
         </div>
 

@@ -6,8 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { API_URL } from '../../App';
 import toast from 'react-hot-toast';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import HomeIcon from '@mui/icons-material/Home';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+
 
 function Login() {
 
@@ -73,9 +74,11 @@ function Login() {
                 <VisibilityOffIcon className='eye-icon'/>}
                 </div>
               {
-                loading?<button type='submit' className='loading-button'>Loading<span className="dot-span dot-span1">.</span>
-                    <span className="dot-span dot-span2">.</span>
-                    <span className="dot-span dot-span3">.</span></button>:<button type='submit'>Login</button>
+                loading?<button className='loading-button-add-waste-sales'>Loading
+                <span className='loading-dot1'><FiberManualRecordIcon/></span>
+                <span className='loading-dot2'><FiberManualRecordIcon/></span>
+                <span className='loading-dot3'><FiberManualRecordIcon/></span>
+                 </button>:<button type='submit'>Login</button>
               }
               <span style={{cursor:"pointer"}} onClick={()=>navigate('/forgot-password')}>Forgot Password?</span>
 

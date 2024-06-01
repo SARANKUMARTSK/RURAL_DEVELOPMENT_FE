@@ -378,6 +378,85 @@
     }
 }
 
+/* Your Complaint Page  */
+.your-complaints{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.your-complaint-card{
+    display: flex;
+    min-height: 300px;
+    width: 1024px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px;
+}
+@media screen and (max-width:1035px) {
+    .your-complaint-card{
+        flex-direction: column;
+        width: 100%;
+        box-shadow: none;
+    }
+}
+@media screen and (max-width:730px) {
+    .comlaint-sub-container{
+        font-size: small;
+    }
+}
+.complaiint-card-left{
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.complaiint-card-left>img{
+   max-height: 300px;
+   border-radius: 10px 0px 0px 10px;
+    width: 340px;
+}
+.complaiint-card-right{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+.complaiint-card-right>h3{
+    text-align: center;
+    color: var(--blue-color);
+    text-shadow: 0px 1px 1px black;
+}
+.complaiint-card-right>p{
+    font-weight: 600;
+    font-size: 17px;
+}
+.comlaint-sub-container{
+    display: flex;
+    justify-content: space-around;
+}
+.comlaint-sub-container>div{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-weight: 600;
+}
+.comlaint-sub-container>div>div>span{
+    color: var(--blue-color);
+    font-weight: 900;
+}
+.complaint-action-button{
+    display: flex;
+    justify-content: space-evenly;
+}
+.complaint-action-button>button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
 
 /* Add Sales Page  */
 

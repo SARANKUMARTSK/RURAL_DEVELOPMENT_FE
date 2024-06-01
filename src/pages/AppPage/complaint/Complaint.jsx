@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import { API_URL } from '../../../App';
 import { useNavigate, useParams } from 'react-router-dom';
+import BallotIcon from '@mui/icons-material/Ballot';
 
 function Complaint() {
 
@@ -61,7 +62,7 @@ function Complaint() {
         })
       toast.success(res.data.message)
       setLoading(false)
-      role=="Admin"?navigate('/dashboard/home'):navigate('/landing-page')
+      role=="Admin"?navigate('/dashboard/home'):navigate(`/your-complaints/${userId}`)
       setTimeout(()=>{
         toast.success('Tracking ID Successfully Sent to Your Mail')
       },5000)
@@ -88,7 +89,7 @@ function Complaint() {
    <div className="complaint-top">
     <h2>Register Your Complaint Here...</h2>
     <div className="button-container">
-    <button className='logout-button' onClick={()=>handleLogout()}>Logout</button>
+    <button className='home-button' onClick={()=>navigate(`/your-complaints/${userId}`)}><BallotIcon/> Complaints</button>
     <button className='home-button' onClick={()=>navigate('/landing-page')}><HomeOutlinedIcon/>Home</button>
     </div>
    </div>
