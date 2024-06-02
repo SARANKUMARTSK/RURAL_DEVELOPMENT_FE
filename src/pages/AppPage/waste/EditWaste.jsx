@@ -103,6 +103,9 @@ function EditWaste() {
   return (
     <>
       <Topbar />
+      <nav className='button-end'>
+        <button onClick={()=>navigate(`/your-queries/${userId}`)}>Back</button>
+      </nav>
       <div className='add-waste-page'>
         <form onSubmit={handleSubmit}>
           <div className="add-waste-left">
@@ -142,7 +145,7 @@ function EditWaste() {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className='add-waste-desc'
-                placeholder='Enter About Waste Material Including Your Address'
+                placeholder='Enter About Waste Material Including Your Address / Waste Bin - Number'
               />
               <input
                 type="text"
@@ -166,20 +169,6 @@ function EditWaste() {
                 <option value="Kaliyapuram">Kaliyapuram</option>
                 <option value="Odayakulam">Odayakulam</option>
               </select>
-              {
-            <select value={status} onChange={(e)=>setStatus(e.target.value)} >
-                <option value="">Select Status</option>
-                <option value="Registered">Registered</option>
-                <option value="Assigned">Assigned</option>
-                <option value="Solved">Solved</option>
-            </select>
-          }
-
-          {
-      
-          <input type="text" placeholder='Complaint Status' value={assignedTo} onChange={(e)=>setAssignedTo(e.target.value)}/>
-
-          }
             </div>
           </div>
           {

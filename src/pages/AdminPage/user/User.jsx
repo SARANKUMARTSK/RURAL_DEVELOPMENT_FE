@@ -6,61 +6,53 @@ import {
 } from 'material-react-table';
 import DeleteIcon from "@mui/icons-material/Delete";
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { API_URL } from '../../App';
+import { API_URL } from '../../../App';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
-function WasteList() {
+function User() {
 
-    const navigate = useNavigate()
 
     const [data,setData] = useState([])
     const token = localStorage.getItem('token')
-
-    const fetchWasteQueries = async()=>{
+    const navigate = useNavigate()
+    const fetchUserData = async()=>{
       try {
-        let res = await axios.get(`${API_URL}/waste`, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                'Authorization': `Bearer ${token}` 
-            }
-        })
-        setData(res.data.waste)
+        let res = await axios.get(`${API_URL}/user`, {
+          headers: {
+              'Content-Type': 'multipart/form-data',
+              'Authorization': `Bearer ${token}` 
+          }
+      })
+        setData(res.data.user);
       } catch (error) {
         console.log(error);
       }
     }
 
     useEffect(()=>{
-       fetchWasteQueries();
+      fetchUserData();
     },[data])
 
 
-    const handleDelete = async(row)=>{
-      try {
-        let res = await axios.delete(`${API_URL}/waste/${row._id}`, {
-          headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': `Bearer ${token}` 
-          }
-      })
-        toast.success(res.data.message)
-      } catch (error) {
-        console.log(error);
-      }
+    const handleEdit = async(row)=>{
+      navigate(`/dashboard/edit-user/${row._id}`)
     }
 
-    const handleEdit = async(row)=>{
-      navigate(`/edit-waste/${row._id}`)
-    }
+   
 
       const columns = useMemo(
         () => [
           {
-            accessorKey: 'userName',
+            accessorKey: 'name',
             header: 'Name',
             muiTableHeadCellProps: { sx: { color: 'green' } }, 
+          },
+          {
+            accessorKey: 'email', 
+            header: 'Email Id',
+            muiTableHeadCellProps: { sx: { color: 'green' } },
           },
           {
             accessorKey: 'phoneNumber', 
@@ -68,36 +60,35 @@ function WasteList() {
             muiTableHeadCellProps: { sx: { color: 'green' } },
           },
           {
-            accessorKey: 'district', 
-            header: 'District',
+            accessorKey: 'gender', 
+            header: 'Gender',
             muiTableHeadCellProps: { sx: { color: 'green' } },
           },
           {
-            accessorKey: 'city', 
-            header: 'City',
-            muiTableHeadCellProps: { sx: { color: 'green' } },
-          },
-          {
-            accessorKey: 'type', 
-            header: 'Type',
-            muiTableHeadCellProps: { sx: { color: 'green' } },
-          },
-          {
-            accessorKey: 'quantity', 
-            header: 'Quantity',
-            muiTableHeadCellProps: { sx: { color: 'green' } },
-          },
-          {
-            accessorKey: 'status', 
-            header: 'Status',
+            accessorKey: 'role', 
+            header: 'Role',
             muiTableHeadCellProps: { sx: { color: 'green' } },
           },
           {
             accessorFn: (row) => (
+              <div style={{marginRight:"20px"}} className={  row.status === 'Active' ? "active-button" : 'inActive-button' }>
+                 {row.status}
+              </div>
+            ),
+            header: "Status",
+            size: 150,
+            muiTableHeadCellProps: { sx: { color: 'green' } },
+          },
+          {
+            accessorKey: 'address.city', 
+            header: 'City Name',
+            muiTableHeadCellProps: { sx: { color: 'green' } },
+          },
+          
+          {
+            accessorFn: (row) => (
               <div>
-                <DeleteIcon className="delete-icon" onClick={()=>handleDelete(row)} />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <DriveFileRenameOutlineIcon onClick={()=>handleEdit(row)} className="edit-icon" />
+                &nbsp;&nbsp;&nbsp;<DriveFileRenameOutlineIcon className="edit-icon" onClick={()=>handleEdit(row)} />
               </div>
             ),
             header: "Action",
@@ -144,4 +135,4 @@ function WasteList() {
   </>
 }
 
-export default WasteList
+export default User

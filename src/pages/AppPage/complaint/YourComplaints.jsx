@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../../App';
 import toast from 'react-hot-toast';
+
 function YourComplaints() {
     const navigate = useNavigate()
     const {id} = useParams()
@@ -61,6 +62,8 @@ function YourComplaints() {
                         <div><span>Name : </span>{e.userName}</div>
                         <div><span>Email : </span>{e.userEmail}</div>
                         <div><span>Phone Number : </span>{e.userPhoneNumber}</div>
+                        <div><span>Village : </span>{e.locality}</div>
+                        <div><span>City : </span>{e.city}</div>
                         <div><span>Complaint Date : </span>{e.createdAt.split('T')[0]}</div>
                     </div>
                     <div>

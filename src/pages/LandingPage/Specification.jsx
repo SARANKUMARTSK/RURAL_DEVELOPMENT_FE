@@ -63,10 +63,11 @@ function Specification() {
         <div className="spacification-container">
           <div>Online Services</div>
           <ul>
-            <li onClick={()=>handleComplaint()}><LinkIcon/> Raise Complaints & Track With Your Complaint Id <DoneIcon/></li>
-            <li onClick={()=>navigate('/view-contact')}><LinkIcon/> Get All Officials Contact <DoneIcon/></li>
+            <li onClick={()=>handleComplaint()}><LinkIcon/> Raise Complaints & Tracking <DoneIcon/></li>
+            <li onClick={()=>handleWasteQuery()}><LinkIcon/> Waste Pickup & Tracking <DoneIcon/></li>
             <li onClick={()=>navigate('/gallery')}><LinkIcon/> Recent Activity By Gallery <DoneIcon/></li>
-            <li onClick={()=>handleWasteQuery()}><LinkIcon/> Waste Pickup & Track With Your Tracking Id <DoneIcon/></li>
+            <br />
+            <li onClick={()=>navigate('/view-contact')}><LinkIcon/> Get All Officials Contact <DoneIcon/></li>
             <li onClick={()=>handleSalesProduct()}><LinkIcon/> Market Place For Formers & Buyers <DoneIcon/></li>
             <li onClick={()=>navigate('/view-announcement')}><LinkIcon/> Government Announcements <DoneIcon/></li>
             <li onClick={()=>handleDashboard()}><LinkIcon/>Officials Login <LockPersonIcon/></li>

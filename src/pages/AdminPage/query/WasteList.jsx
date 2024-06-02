@@ -4,16 +4,20 @@ import {
   MaterialReactTable,
   useMaterialReactTable,
 } from 'material-react-table';
-import { format, subDays } from 'date-fns';
-import DeleteIcon from "@mui/icons-material/Delete";
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import axios from 'axios'
-import {API_URL} from '../../App'
-import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { API_URL } from '../../../App';
+import toast from 'react-hot-toast';
+import { format, subDays } from 'date-fns';
 import PreviewRoundedIcon from '@mui/icons-material/PreviewRounded';
 
-function ComplaintList() {
+function WasteList() {
+
+    const navigate = useNavigate()
+
+    const [data,setData] = useState([])
+    const token = localStorage.getItem('token')
 
   const today = new Date();
   const formattedToday = format(today, 'yyyy-MM-dd');
@@ -24,58 +28,40 @@ function ComplaintList() {
   const dayBefore = subDays(today, 2);
   const formattedDayBefore = format(dayBefore, 'yyyy-MM-dd');
 
-  const [data, setData] = useState([]);
-  const navigate = useNavigate();
-  const token = localStorage.getItem('token');
-    
-
-      const fetchComplaints = async()=>{
-        try {
-          let res = await axios.get(`${API_URL}/complaints`, {
+    const fetchWasteQueries = async()=>{
+      try {
+        let res = await axios.get(`${API_URL}/waste`, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}` 
             }
         })
-          setData(res.data.complaint)
-        } catch (error) {
-          console.log(error);
-        }
-      } 
-
-      useEffect(()=>{
-        fetchComplaints();
-      },[])
-
-      const handleEdit=async(row)=>{
-        navigate(`/dashboard/assign-complaint/${row._id}`)
-      }
-
-      const handleDelete=async(row)=>{
-      try {
-        let res = await axios.delete(`${API_URL}/complaints/${row._id}`, {
-          headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': `Bearer ${token}` 
-          }
-      })
-        toast.success(res.data.message)
+        setData(res.data.waste)
       } catch (error) {
         console.log(error);
       }
+    }
 
-      }
+    useEffect(()=>{
+       fetchWasteQueries();
+    },[data])
+
+
+
+    const handleEdit = async(row)=>{
+      navigate(`/dashboard/assign-waste-query/${row._id}`)
+    }
 
       const columns = useMemo(
         () => [
           {
-            accessorKey: 'userName', 
-            header: 'Complainter Name',
-            muiTableHeadCellProps: { sx: { color: 'green' } },
+            accessorKey: 'userName',
+            header: 'Query Person',
+            muiTableHeadCellProps: { sx: { color: 'green' } }, 
           },
           {
-            accessorKey: 'title', 
-            header: 'Complaint',
+            accessorKey: 'type', 
+            header: 'Query',
             muiTableHeadCellProps: { sx: { color: 'green' } },
           },
           {
@@ -102,13 +88,8 @@ function ComplaintList() {
             muiTableHeadCellProps: { sx: { color: 'green' } },
           },
           {
-            accessorKey: 'department', 
-            header: 'Departmant',
-            muiTableHeadCellProps: { sx: { color: 'green' } },
-          },
-          {
-            accessorKey: 'locality', 
-            header: 'Village',
+            accessorKey: 'district', 
+            header: 'District',
             muiTableHeadCellProps: { sx: { color: 'green' } },
           },
           {
@@ -137,9 +118,9 @@ function ComplaintList() {
           {
             accessorFn: (row) => (
               <div>
-                <DriveFileRenameOutlineIcon onClick={()=>handleEdit(row)} className="delete-icon" />
+                <PreviewRoundedIcon className="edit-icon" onClick={()=>navigate(`/dashboard/waste-detailed-view/${row._id}`)} />
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <PreviewRoundedIcon onClick={()=>navigate(`/dashboard/complaint-detailed-view/${row._id}`)} className='edit-icon'/>
+                <DriveFileRenameOutlineIcon onClick={()=>handleEdit(row)} className="delete-icon" />
               </div>
             ),
             header: "Action",
@@ -158,7 +139,6 @@ function ComplaintList() {
       });
 
   return <>
-  <div className='muiTable'>
   <MaterialReactTable
         columns={columns}
         data={data}
@@ -183,9 +163,8 @@ function ComplaintList() {
           maxSize: 9,
           size: 180,
         }}
-      />  </div>      
+      />        
   </>
 }
 
-export default ComplaintList
-
+export default WasteList

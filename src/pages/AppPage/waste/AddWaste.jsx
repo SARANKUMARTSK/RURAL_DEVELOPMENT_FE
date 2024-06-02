@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import Topbar from '../../../components/TopBar'
 import '../app.css'
 import { useNavigate } from 'react-router-dom'
-import Navbar from '../../../components/Navbar'
 import axios from 'axios'
 import { API_URL } from '../../../App'
 import toast from 'react-hot-toast'
+import BallotIcon from '@mui/icons-material/Ballot';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+
 function AddWaste() {
 
   const navigate = useNavigate()
@@ -68,7 +70,16 @@ function AddWaste() {
 
   return <>
     <Topbar/>
-    <Navbar/>
+    
+    <div className="complaint-top">
+    <h2>Register Your Complaint Here...</h2>
+    <div className="button-container">
+    <button className='home-button' onClick={()=>navigate(`/your-queries/${userId}`)}><BallotIcon/>Your Queries</button>
+    <button className='home-button' onClick={()=>navigate('/landing-page')}><HomeOutlinedIcon/>Home</button>
+    </div>
+   </div>
+
+
     <h2 className='heading-top'>Simply Add Your Waste Dedatils For Pickup</h2>
     <div className='add-waste-page'>
       <form onSubmit={handleSubmit}>
@@ -94,8 +105,9 @@ function AddWaste() {
                   <option value="Plastic-Waste">Plastic-Waste</option>
                   <option value="Electrical-Waste">Electrical-Waste</option>
                   <option value="Agro-Waste">Agro-Waste</option>
+                  <option value="Bin-Collection">Bin-Collection</option>
                 </select>
-                <textarea onChange={(e)=>setDescription(e.target.value)}  className='add-waste-desc' placeholder='Enter About Waste Material Including Your Address'></textarea>
+                <textarea onChange={(e)=>setDescription(e.target.value)}  className='add-waste-desc' placeholder='Enter About Waste Material Including Your Address / Waste Bin - Number'></textarea>
                 <input onChange={(e)=>setQuantity(e.target.value)}  type="text" placeholder='Quantity' />
                 <select onChange={(e)=>setDistrict (e.target.value)} >
                   <option value="">Select District</option>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { API_URL } from '../../App';
+import { API_URL } from '../../../App';
 import FastRewindIcon from '@mui/icons-material/FastRewind';
 
 function ComplaintView() {

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import TopBar from '../../../components/TopBar'
-import '../app.css'
 import { useMemo } from 'react';
 import {
   MaterialReactTable,
@@ -12,12 +10,13 @@ import axios from 'axios'
 import {API_URL} from '../../../App'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../../components/Navbar';
 
-function Contacts() {
 
-  const [data,setData] = useState([])
+function ContactList() {
+
+   
   const token = localStorage.getItem('token')
+  const [data,setData] = useState([])
   const navigate = useNavigate()
   const fetchContactDetails = async()=>{
      let res = await axios.get(`${API_URL}/contacts`, {
@@ -50,7 +49,12 @@ function Contacts() {
 
   const handleEdit = async(row)=>{
     try {
-      navigate(`/edit-contact/${row._id}`)
+      navigate(`/dashboard/edit-contact/${row._id}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
     } catch (error) {
       console.log(error);
     }
@@ -94,7 +98,7 @@ let columns = [
   },
 ];
 
-if (role === "admin") {
+if (role === "Admin") {
   columns.push({
     accessorFn: (row) => (
       <div>
@@ -118,10 +122,9 @@ const memoizedColumns = useMemo(() => columns, [role]);
 
 
   return <>
-  <TopBar/>
-  <Navbar/>
-  <div className="contact-page">
-    <p> Your Complete Directory for Rural Development Contacts</p>
+ 
+  <div className="add-contact-button">
+    <button onClick={()=>navigate('/dashboard/add-contact')}>+ Add Contact</button>
   </div>
   
   <div className="contact-page">
@@ -154,4 +157,4 @@ const memoizedColumns = useMemo(() => columns, [role]);
   </>
 }
 
-export default Contacts
+export default ContactList

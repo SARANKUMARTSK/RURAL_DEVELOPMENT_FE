@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import Topbar from '../../../components/TopBar';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import AttachEmailIcon from '@mui/icons-material/AttachEmail';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import FaxIcon from '@mui/icons-material/Fax';
 import BadgeIcon from '@mui/icons-material/Badge';
-import Navbar from '../../../components/Navbar';
 import axios from 'axios';
 import { API_URL } from '../../../App';
 import toast from 'react-hot-toast';
@@ -77,8 +75,9 @@ function AddContact() {
 
   return (
     <>
-      <Topbar />
-      <Navbar />
+     <nav className='button-end'>
+          <button onClick={()=>navigate('/dashboard/contacts')}>Back</button>
+     </nav>
       <div className="add-contact-page">
         <div className="add-contact-left-container">
           <img
