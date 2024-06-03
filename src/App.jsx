@@ -37,8 +37,9 @@ import AssignWaste from './pages/AdminPage/query/AssignWaste'
 import WasteView from './pages/AdminPage/query/WasteView'
 import AddContact from './pages/AdminPage/contact/AddContact'
 import EditContact from './pages/AdminPage/contact/EditContact'
-
-
+import CustomerCare from './pages/AppPage/customerCare/CustomerCare'
+import ViewQueries from './pages/AdminPage/customerCare/ViewQueries'
+import DetailedCustomerCare from './pages/AdminPage/customerCare/DetailedCustomerCare'
 
 export  const API_URL ="http://localhost:8001"
 // export const API_URL = "https://rural-development-be.onrender.com"
@@ -64,6 +65,8 @@ function App() {
         <Route path='waste-detailed-view/:id' element={<WasteView/>}/>
         <Route path='add-contact' element={<AddContact/>}/>
         <Route path='edit-contact/:id' element={<EditContact/>}/>
+        <Route path='customer-care-queries' element={<ViewQueries/>}/>
+        <Route path='detailed-view-customer-care/:id' element={<DetailedCustomerCare/>}/>
         <Route path='' element={<Navigate to={"home"}/>}/>
       </Route>
 
@@ -85,6 +88,9 @@ function App() {
       <Route path='/edit-waste/:id' element={<EditWaste/>}/>
       <Route path='/track-waste/:referenceLink' element={<TrackWaste/>}/>
       <Route path='/your-queries/:id' element={<YourQueries/>}/>
+
+      {/* Customer Care*/}
+      <Route path='view-customer-care' element={<CustomerCare/>}/>
 
       {/* Product Pages  */}
       <Route path='/add-sales-product/:id' element={<AddSales/>}/>

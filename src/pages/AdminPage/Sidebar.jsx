@@ -9,6 +9,7 @@ import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
+import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import toast from 'react-hot-toast';
 
 function Sidebar() {
@@ -46,6 +47,11 @@ function Sidebar() {
         <li onClick={()=>navigate('/dashboard/waste-collection')} >
             <i><AutoDeleteIcon/></i>
             <p>Waste Collection</p>
+        </li>
+
+        <li onClick={()=>navigate('/dashboard/customer-care-queries')} >
+            <i><SupportAgentOutlinedIcon/></i>
+            <p>Customer Care</p>
         </li>
 
         <hr className='sidebar-hr'/>

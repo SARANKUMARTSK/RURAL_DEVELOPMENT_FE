@@ -66,10 +66,11 @@ function Specification() {
             <li onClick={()=>handleComplaint()}><LinkIcon/> Raise Complaints & Tracking <DoneIcon/></li>
             <li onClick={()=>handleWasteQuery()}><LinkIcon/> Waste Pickup & Tracking <DoneIcon/></li>
             <li onClick={()=>navigate('/gallery')}><LinkIcon/> Recent Activity By Gallery <DoneIcon/></li>
+            <li onClick={()=>navigate('/view-customer-care')}><LinkIcon/> 24/7 Customer Care Support <DoneIcon/></li>
             <br />
-            <li onClick={()=>navigate('/view-contact')}><LinkIcon/> Get All Officials Contact <DoneIcon/></li>
-            <li onClick={()=>handleSalesProduct()}><LinkIcon/> Market Place For Formers & Buyers <DoneIcon/></li>
+       
             <li onClick={()=>navigate('/view-announcement')}><LinkIcon/> Government Announcements <DoneIcon/></li>
+            <li onClick={()=>handleSalesProduct()}><LinkIcon/> Market Place For Formers & Buyers <DoneIcon/></li>
             <li onClick={()=>handleDashboard()}><LinkIcon/>Officials Login <LockPersonIcon/></li>
             
           </ul>

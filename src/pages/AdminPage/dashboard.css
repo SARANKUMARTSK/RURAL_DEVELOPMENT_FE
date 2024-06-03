@@ -528,5 +528,65 @@
     }
 }
 
+/* Customer Care  */
+.customer-care-complaint{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1024px;
+}
+.customer-care-complaint>div{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+.customer-care-complaint>div>div>input{
+    border: 3px double var(--blue-color);
+    padding: 15px;
+    border-radius: 5px;
+    min-width: 280px;
+    color: var(--blue-color);
+    font-weight: 600;
+}
+.customer-care-complaint>input{
+    min-width: 100%;
+    margin-top: 10px;
+    border: 3px double var(--blue-color);
+    padding: 15px;
+    border-radius: 5px;
+    color: var(--blue-color);
+    font-weight: 600;
+}
+.customer-care-complaint>textarea{
+    border: 3px double var(--blue-color);
+    min-width: 100%;
+    min-height: 100px;
+    color: var(--blue-color);
+    font-weight: 600;
+}
+.customer-care-complaint>button{
+    margin-top: 10px;
+    border: 2px solid red;
+    border-radius: 5px;
+    color: red;
+    font-weight: 900;
+    padding: 5px 10px;
+    background-color: white;
+}
+.customer-care-complaint>button:hover{
+    box-shadow: 0px 0px 5px ;
+}
+.customer-care-complaint>div>div{
+    position: relative;
+}
+.customer-care-complaint>div>div>svg{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: red;
+}
+
+
 
 
