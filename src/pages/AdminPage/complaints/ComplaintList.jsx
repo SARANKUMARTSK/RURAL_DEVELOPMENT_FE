@@ -11,6 +11,7 @@ import {API_URL} from '../../../App'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import PreviewRoundedIcon from '@mui/icons-material/PreviewRounded';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 function ComplaintList() {
 
@@ -26,7 +27,7 @@ function ComplaintList() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-    
+  const role = localStorage.getItem('role')
 
       const fetchComplaints = async()=>{
         try {
@@ -44,7 +45,8 @@ function ComplaintList() {
 
       useEffect(()=>{
         fetchComplaints();
-      },[])
+      },[data])
+
 
       const handleEdit=async(row)=>{
         navigate(`/dashboard/assign-complaint/${row._id}`)
@@ -139,6 +141,8 @@ function ComplaintList() {
                 <DriveFileRenameOutlineIcon onClick={()=>handleEdit(row)} className="delete-icon" />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <PreviewRoundedIcon onClick={()=>navigate(`/dashboard/complaint-detailed-view/${row._id}`)} className='edit-icon'/>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <DeleteOutlineIcon onClick={()=>handleDelete(row)} className="delete-icon" />
               </div>
             ),
             header: "Action",

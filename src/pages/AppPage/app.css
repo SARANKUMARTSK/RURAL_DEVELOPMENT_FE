@@ -1119,246 +1119,6 @@
     font-weight: 600;
     font-size: 19px;
 }
-
-/* Add Announcement  */
-.add-announcement-page{
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-}
-.add-announcement-page>form{
-   display: flex;
-   margin-top: 25px;
-   flex-direction: column; 
-   gap: 15px;
-   min-width: 1024px;
-}
-.add-announcement-page>form>input{
-    padding: 15px;
-    border: none;
-    border-bottom: 2px solid var(--blue-color);
-    outline: none;
-}
-.add-announcement-page>form>textarea{
-    border: 1px solid var(--blue-color);
-    padding: 15px;
-    width: 100%;
-}
-.announcement-date-container>input{
-    padding: 20px;
-    border: 2px solid gray;
-    outline: none;
-    border-radius: 5px;
-}
-.announcement-delete-icon{
-    border: none !important;
-    background-color: transparent !important;
-    padding: none !important;
-    color: red !important;
-}
-.announcement-date-container{
-    height: 70px;
-    padding: 20px;
-    width: auto;
-    border-radius: 10px;
-}
-.space-between-center{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
-.space-between-center>input{
-    box-shadow: 0px 0px 3px var(--blue-color) inset;
-    height: 70px;
-    padding: 20px;
-    width: 250px;
-    border-radius: 10px;
-}
-.add-announcement-page>form>button{
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--blue-color);
-    width: 150px;
-    color: white;
-    font-weight: 900;
-}
-@media screen and (max-width:1100px) {
-    .add-announcement-page>form{
-        min-width: 600px !important;
-        padding: 15px;
-     }
-}
-@media screen and (max-width:675px) {
-    .add-announcement-page>form{
-        width: auto;
-    }
-}
-
-/* View Announcement  */
-.announcement-page{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    padding: 20px;
-    min-height: 60vh;
-}
-.announcement-link-container{
-    display: flex;
-    padding: 20px;
-    color: var(--blue-color);
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-}
-.announcement-link-container>button{
-    padding: 10px 20px;
-    border: 2px double var(--blue-color);
-    color: white;
-    background-color: var(--blue-color);
-    font-weight: 600;
-    border-radius: 5px;
-}
-.announcement-link-container>button>a{
-    color: inherit;
-}
-
-.announcement-link-container>button:hover{
-    background-color: white;
-    box-shadow: 0px 0px 5px var(--blue-color);
-    text-decoration: underline;
-    cursor: pointer;
-    color: red;
-}
-
-/* Detailed Announcement View  */
-.announcement-detailed-view{
-    display: flex;
-}
-.left-announcement-container{
-    flex: 1;
-}
-.right-announcement-container{
-    flex: 1;
-}
-.left-announcement-container>img{
-    height: 100%;
-    width: 100%;
-}
-
-/* Donation Page  */
-.add-donation-page{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.add-donation-page>form{
-    display: flex;
-    max-width: 1024px;
-    justify-content: center;
-    align-items: center;
-}
-.add-donation-left>img{
-    flex: 1;
-   margin: 10px;
-   height: 100%;
-   width: 100%;
-   border-radius: 20px;
-   box-shadow: 0px 0px 5px var(--blue-color);
-}
-.add-donation-right{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-}
-.add-donation-right>div>input,select,.add-donation-right>input{
-    padding: 15px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0px 0px 5px var(--blue-color);
-    min-width: 280px;
-    margin: 5px;
-    color: gray;
-    font-weight: 600;
-    outline: none;
-}
-.add-donation-right>textarea{
-    box-shadow: 0px 0px 5px var(--blue-color);
-    width: 96%;
-    margin: 5px;
-    color: gray;
-    font-weight: 600;
-}
-
-/* Library page  */
-.view-library{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-direction: column;
-}
-.library-books-list{
-    height: 320px;
-    max-width: 1320px; 
-    display: flex; 
-    overflow: auto;
-    gap: 15px;
-}
-.library-book{
-    border: 1px solid black;
-    min-width:240px;
-    border-radius: 12px;
-    border: 5px solid gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    cursor: pointer;
-}
-.library-book>img{
-    height: 98%;
-    width: 98%;
-    border-radius: 8px;
-}
-.library-book>img:hover{
-    opacity: 0.5;
-}
-.library-book-specifications{
-    position: absolute;
-    z-index: 1;
-    color: white;
-    text-shadow: 1px 1px 1px black;
-    bottom: 10px;
-    backdrop-filter: blur(10px);
-    border-radius: 5px;
-    min-width: 220px;
-    padding: 5px;
-}
-.view-library>h2{
-    color: green;
-    text-shadow: 1px 1px 1px black;
-}
-.library-book-see-more{
-    min-width: 100px;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2px 15px 15px 2px;
-    color: white;
-    font-weight: 900;
-    background-color: var(--blue-color);
-    cursor: pointer;
-}
-
-
 /* Customer Care  */
 .customer-care-nav{
     display: flex;
@@ -1504,5 +1264,51 @@
     font-size: 30px;
     top: 9px;
     right: 30px;
+}
+
+/* Announcement Page  */
+.detailed-announcement-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+.detailed-announcement-view{
+    margin: 20px;
+    max-width: 1024px;
+    border: none;
+    border-top: 15px solid var(--blue-color);
+    border-bottom: 15px solid var(--blue-color);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0px 0px 5px;
+    padding-bottom: 40px;
+}
+.announcement-image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.announcement-image-container>img{
+    width: 100%;
+    height: 400px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px black;
+}
+.detailed-announcement-view{
+    color: var(--blue-color);
+    text-shadow: 0px 0px 1px black;
+}
+.detailed-announcement-view>h3>span,.detailed-announcement-view>h4>span,.detailed-announcement-view>div>div>span{
+    color: black;
+    font-weight: 900;
+}
+.detailed-announcement-view>div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 

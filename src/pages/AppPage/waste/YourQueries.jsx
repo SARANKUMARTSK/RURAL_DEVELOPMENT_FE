@@ -62,7 +62,8 @@ function YourQueries() {
   return <>
   <TopBar/>
   <nav className='button-end'>
-      <button onClick={()=>navigate(`/add-waste/${userId}`)}>Back</button>
+      <button onClick={()=>navigate(`/add-waste/${userId}`)}>+Add Query</button>
+      <button onClick={()=>navigate(`/landing-page`)}>Home</button>
   </nav>
   <div className="your-queries-page">
       {

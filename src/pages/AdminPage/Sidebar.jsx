@@ -65,7 +65,7 @@ function Sidebar() {
             <p>Contacts</p>
         </li>
 
-        <li onClick={()=>navigate('/view-announcement')} >
+        <li onClick={()=>navigate('/dashboard/announcements')} >
             <i><NewReleasesIcon/></i>
             <p>Announcement</p>
         </li>

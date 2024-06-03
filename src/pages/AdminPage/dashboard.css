@@ -587,6 +587,95 @@
     color: red;
 }
 
+/* Add Announcement  */
+.flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+.add-announcement-page{
+    display: flex;
+    justify-content: center;
+}
+.add-announcement{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    max-width: 1024px;
+}
+.add-announcement>input{
+    padding: 15px;
+    border-radius: 5px;
+    border: 3px double var(--blue-color);
+    margin-bottom: 10px;
+    outline: none;
+    color: var(--blue-color);
+    width: 100%;
+}
+.add-announcement>h2{
+    color: gray;
+    font-size: 19px;
+}
+.schemeDetails, .eligibility-criteria{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.schemeDetails>input,.eligibility-criteria>input{
+    border: 3px double var(--blue-color);
+    padding: 15px;
+    border-radius: 5px;
+    min-width: 280px;
+    outline: none;
+    color: var(--blue-color) !important;
+}
+.space-evenly-inputs{
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 900;
+}
+.space-evenly-inputs>input,.space-evenly-inputs>div>input{
+    padding: 15px;
+    border: 3px double var(--blue-color);
+    border-radius: 5px;
+}
+.howToAvail{
+    height: 100px;
+    width: 100%;
+    margin-bottom: 10px;
+    color: var(--blue-color);
+}
+.add-announcement-button{
+    display: flex;
+    justify-content: center;
+}
+.add-announcement-button>button{
+    border: 2px solid var(--blue-color);
+    padding: 8px 20px;
+    color: var(--blue-color);
+    font-weight: 600;
+    background-color: white;
+    border-radius: 5px;
+    min-width: 200px;
+    min-height: 40px;
+    transition: all 500ms;
+}
+.add-announcement-button>button:hover{
+    background-color: var(--blue-color);
+    color: white;
+    box-shadow: 0px 0px 5px var(--blue-color);
+}
+.edit-announcement-image{
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+}
+.edit-announcement-image>img{
+    height: 200px;
+    width: 285px;
+    border-radius: 5px;
+}
+
+
 
 
 

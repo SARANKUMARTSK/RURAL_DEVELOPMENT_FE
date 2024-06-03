@@ -41,7 +41,7 @@ function YourComplaints() {
   <TopBar/>
   <nav className='button-end' >
     <button onClick={()=>navigate('/landing-page')}><HomeIcon/>Home</button>
-    <button onClick={()=>navigate(`/add-complaint/${id}`)}><FastRewindIcon/>Back</button>
+    <button onClick={()=>navigate(`/add-complaint/${id}`)}>+Add Complaint</button>
   </nav>
 
   <div className="your-complaints">

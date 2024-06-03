@@ -28,7 +28,7 @@ import Navbar from '../../../components/Navbar';
           }
       })
         toast.success(res.data.message)
-        navigate('/landing-page')
+        navigate('/gallery')
       } catch (error) {
         console.log(error);
         toast.error(error.response.data.message)

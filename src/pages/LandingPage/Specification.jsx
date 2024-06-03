@@ -23,7 +23,7 @@ function Specification() {
 
   const handleComplaint = ()=>{
     if(userId){
-      navigate(`/add-complaint/${userId}`)
+      navigate(`/your-complaints/${userId}`)
       toast.success(`Welcome ${userName} , Register Your Complaint Here...`)
     }else{
       toast.error("Please LOGIN to Regiter Complaint  ")
@@ -32,7 +32,7 @@ function Specification() {
   }
   const handleWasteQuery =()=>{
     if(userId){
-      navigate(`/add-waste/${userId}`)
+      navigate(`/your-queries/${userId}`)
       toast.success(`Welcome ${userName} , Register Your Waste Pickup Here...`)
     }else{
       toast.error("Please LOGIN to Raise a Waste Pickup Query")
@@ -67,12 +67,8 @@ function Specification() {
             <li onClick={()=>handleWasteQuery()}><LinkIcon/> Waste Pickup & Tracking <DoneIcon/></li>
             <li onClick={()=>navigate('/gallery')}><LinkIcon/> Recent Activity By Gallery <DoneIcon/></li>
             <li onClick={()=>navigate('/view-customer-care')}><LinkIcon/> 24/7 Customer Care Support <DoneIcon/></li>
-            <br />
-       
             <li onClick={()=>navigate('/view-announcement')}><LinkIcon/> Government Announcements <DoneIcon/></li>
-            <li onClick={()=>handleSalesProduct()}><LinkIcon/> Market Place For Formers & Buyers <DoneIcon/></li>
-            <li onClick={()=>handleDashboard()}><LinkIcon/>Officials Login <LockPersonIcon/></li>
-            
+            <li onClick={()=>handleDashboard()}><LinkIcon/>Officials Login <LockPersonIcon/></li> 
           </ul>
         </div>
 
