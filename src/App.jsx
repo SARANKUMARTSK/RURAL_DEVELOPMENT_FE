@@ -10,19 +10,12 @@ import DefaultPage from './components/DefaultPage'
 import Dashboard from './pages/AdminPage/Dashboard'
 import TrackComplaint from './pages/AppPage/complaint/TrackComplaint'
 import EditComplaint from './pages/AppPage/complaint/EditComplaint'
-import AddSales from './pages/AppPage/salesProducts/AddSales'
-import ViewSales from './pages/AppPage/salesProducts/ViewSales'
-import EditSales from './pages/AppPage/salesProducts/EditSales'
 import AddWaste from './pages/AppPage/waste/AddWaste'
 import EditWaste from './pages/AppPage/waste/EditWaste'
 import TrackWaste from './pages/AppPage/waste/TrackWaste'
-import AddAnnouncement from './pages/AppPage/announcement/AddAnnouncement'
-import EditAnnouncement from './pages/AppPage/announcement/EditAnnouncement'
-import ViewAnnouncement from './pages/AppPage/announcement/ViewAnnouncement'
+import AddAnnouncement from './pages/AdminPage/announcement/AddAnnouncement'
 import AddImage from './pages/AppPage/gallery/AddImage'
 import ViewImage from './pages/AppPage/gallery/ViewImage'
-import DetailedAnnouncement from './pages/AppPage/announcement/DetailedAnnouncement'
-import UserProduct from './pages/AppPage/salesProducts/UserProduct'
 import Home from './pages/AdminPage/Home'
 import ComplaintList from './pages/AdminPage/complaints/ComplaintList'
 import WasteList from './pages/AdminPage/query/WasteList'
@@ -40,9 +33,13 @@ import EditContact from './pages/AdminPage/contact/EditContact'
 import CustomerCare from './pages/AppPage/customerCare/CustomerCare'
 import ViewQueries from './pages/AdminPage/customerCare/ViewQueries'
 import DetailedCustomerCare from './pages/AdminPage/customerCare/DetailedCustomerCare'
+import ViewAnnouncement from './pages/AppPage/announcement/ViewAnnouncement'
+import DetailedAnnouncement from './pages/AppPage/announcement/DetailedAnnouncement'
+import Announcement from './pages/AdminPage/announcement/Announcement'
+import EditAnnouncement from './pages/AdminPage/announcement/EditAnnouncement'
 
-export  const API_URL ="http://localhost:8001"
-// export const API_URL = "https://rural-development-be.onrender.com"
+// export  const API_URL ="http://localhost:8001"
+export const API_URL = "https://rural-development-be.onrender.com"
 
 
 function App() {
@@ -67,6 +64,9 @@ function App() {
         <Route path='edit-contact/:id' element={<EditContact/>}/>
         <Route path='customer-care-queries' element={<ViewQueries/>}/>
         <Route path='detailed-view-customer-care/:id' element={<DetailedCustomerCare/>}/>
+        <Route path='add-announcement' element={<AddAnnouncement/>}/>
+        <Route path='edit-announcement/:id' element={<EditAnnouncement/>}/>
+        <Route path='announcements' element={<Announcement/>}/>
         <Route path='' element={<Navigate to={"home"}/>}/>
       </Route>
 
@@ -92,23 +92,14 @@ function App() {
       {/* Customer Care*/}
       <Route path='view-customer-care' element={<CustomerCare/>}/>
 
-      {/* Product Pages  */}
-      <Route path='/add-sales-product/:id' element={<AddSales/>}/>
-      <Route path='/view-sales-product/:id' element={<ViewSales/>}/>
-      <Route path='/edit-sales-product/:id' element={<EditSales/>}/>
-      <Route path='/user-sales-product/:id' element={<UserProduct/>}/>
-
-
-
-      {/* Announcement Page  */}
-      <Route path='/add-announcement' element={<AddAnnouncement/>}/>
-      <Route path='/edit-announcement' element={<EditAnnouncement/>}/>
-      <Route path='/view-announcement' element={<ViewAnnouncement/>}/>
-      <Route path='/view-announcement/:id' element={<DetailedAnnouncement/>}/>
-
-       {/* Gallery  */}
+      {/* Gallery  */}
       <Route path='/add-image' element={<AddImage/>}/>
       <Route path='/gallery' element={<ViewImage/>}/>
+
+      {/* Announcement Page  */}
+      <Route path='/view-announcement' element={<ViewAnnouncement/>}/>
+      <Route path='/detailed-announcement-view/:id' element={<DetailedAnnouncement/>}/>
+
 
       {/* Default Routes  */}
       <Route path='' element={<Navigate to={'/landing-page'}/>}/>
