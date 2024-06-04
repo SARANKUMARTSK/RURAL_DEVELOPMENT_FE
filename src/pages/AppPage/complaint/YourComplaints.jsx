@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import TopBar from '../../../components/TopBar'
 import HomeIcon from '@mui/icons-material/Home';
-import FastRewindIcon from '@mui/icons-material/FastRewind';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../../App';
@@ -13,24 +12,25 @@ function YourComplaints() {
     const token = localStorage.getItem('token')
     const [data,setData] = useState([])
 
+    const fetchCoplaints = async()=>{
+        try {
+          let res = await axios.get(`${API_URL}/complaints`, {
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+                  'Authorization': `Bearer ${token}` 
+              }
+          })
+          let data = res.data.complaint
+          setData(data.filter((data)=>data.userId===id))
+          
+        } catch (error) {
+          console.log(error);
+        }
+     }
+
     useEffect(()=>{
-       const fetchCoplaints = async()=>{
-          try {
-            let res = await axios.get(`${API_URL}/complaints`, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'Authorization': `Bearer ${token}` 
-                }
-            })
-            let data = res.data.complaint
-            setData(data.filter((data)=>data.userId==id))
-            
-          } catch (error) {
-            console.log(error);
-          }
-       }
        fetchCoplaints()
-    },[data])
+    },[])
 
     const handleDelete =(e)=>{
         let res = axios.delete(`${API_URL}/complaints/${e._id}`, {
