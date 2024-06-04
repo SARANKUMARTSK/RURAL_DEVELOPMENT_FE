@@ -1311,4 +1311,8 @@
     flex-direction: column;
     gap: 5px;
 }
+.color-black{
+    color: black !important;
+    font-weight: 600;
+}
 
