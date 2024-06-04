@@ -121,7 +121,8 @@ function WasteList() {
             accessorFn: (row) => {
               return (
                 <div className={`complaint-date-div ${row.status=="Assigned"?"backgroundcolor-green":""}
-                ${row.status=="Registered"?"backgroundcolor-orange":""}`}>
+                ${row.status=="Registered"?"backgroundcolor-orange":""}
+                ${row.status=="Solved"?"color-black":""}`}>
                   {row.status}
                 </div>
               );
