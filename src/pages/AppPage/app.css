@@ -1050,6 +1050,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 }
 @media screen and (max-width:850px) {
     .your-queries{
@@ -1093,6 +1094,7 @@
 .your-queries-left>img{
     height: 100%;
     width: 100%;
+    min-width: 300px;
     border-radius: 5px;
 }
 .query-sub-container{
