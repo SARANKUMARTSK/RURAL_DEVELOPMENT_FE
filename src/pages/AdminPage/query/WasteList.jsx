@@ -11,6 +11,7 @@ import { API_URL } from '../../../App';
 import toast from 'react-hot-toast';
 import { format, subDays } from 'date-fns';
 import PreviewRoundedIcon from '@mui/icons-material/PreviewRounded';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 function WasteList() {
 
@@ -18,6 +19,7 @@ function WasteList() {
 
     const [data,setData] = useState([])
     const token = localStorage.getItem('token')
+    const role = localStorage.getItem('role')
 
   const today = new Date();
   const formattedToday = format(today, 'yyyy-MM-dd');
@@ -45,6 +47,24 @@ function WasteList() {
     useEffect(()=>{
        fetchWasteQueries();
     },[data])
+    const handleDelete =async(e)=>{
+      if(role==='Admin'){
+        try {
+          let res = await axios.delete(`${API_URL}/waste/${e._id}`, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}` 
+            }
+        })
+          toast.success(res.data.message)
+        } catch (error) {
+          console.log(error);
+          toast.error(error.response?.data?.message||"Something Went Wrong")
+        }
+      }else{
+        toast.error('You Are Not Allowed')
+      }
+    }
 
 
 
@@ -121,6 +141,8 @@ function WasteList() {
                 <PreviewRoundedIcon className="edit-icon" onClick={()=>navigate(`/dashboard/waste-detailed-view/${row._id}`)} />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <DriveFileRenameOutlineIcon onClick={()=>handleEdit(row)} className="delete-icon" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <DeleteOutlineIcon onClick={()=>handleDelete(row)} className="delete-icon" />
               </div>
             ),
             header: "Action",

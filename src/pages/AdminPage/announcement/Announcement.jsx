@@ -15,6 +15,7 @@ import { format, subDays } from 'date-fns';
 
 function Announcement() {
     const navigate = useNavigate()
+    const role = localStorage.getItem('role')
     const today = new Date();
     const formattedToday = format(today, 'yyyy-MM-dd');
   
@@ -47,15 +48,28 @@ function Announcement() {
       },[data])
   
       const handleDelete=async(row)=>{
-        try {
-            let res = await axios.delete(`${API_URL}/announcement/${row._id}`)
+        if(role==="Admin"){
+          try {
+            let res = await axios.delete(`${API_URL}/announcement/${row._id}`, {
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+                  'Authorization': `Bearer ${token}` 
+              }
+          })
             toast.success(res.data.message||"Deleted Successfully")
         } catch (error) {
             toast.error(error.response.data.message)
         }
+        }else{
+          toast.error('You Are Not Allowed')
+        }
       }
       const handleEdit=async(e)=>{
-        navigate(`/dashboard/edit-announcement/${e._id}`)
+        if(role==="Admin"){
+          navigate(`/dashboard/edit-announcement/${e._id}`)
+        }else{
+          toast.error('You are not allowed')
+        }
       }
   
     
@@ -127,7 +141,9 @@ function Announcement() {
         });
   return <>
   <nav className='button-end'>
-    <button onClick={()=>navigate('/dashboard/add-announcement')}>+ Add New</button>
+    {
+      role==="Admin"&&<button onClick={()=>navigate('/dashboard/add-announcement')}>+ Add New</button>
+    }
     <button onClick={()=>navigate('/dashboard/home')}>Back</button>
   </nav>
    <div style={{maxWidth:"1300px"}}>

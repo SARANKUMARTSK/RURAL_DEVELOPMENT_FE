@@ -19,6 +19,8 @@ function Sidebar() {
         navigate('/landing-page')
         toast.success('Logout Successfull')
     }
+    const role = localStorage.getItem('role')
+
   return <>
   <div className="sidebar">
     <ul>
@@ -76,10 +78,12 @@ function Sidebar() {
                 User
         </div>
 
-        <li onClick={()=>navigate('/dashboard/users')}>
+        {
+            role==='Admin'&&<li onClick={()=>navigate('/dashboard/users')}>
             <i><PersonSearchIcon/></i>
             <p>Users</p>
         </li>
+        }
 
         <li onClick={()=>navigate('/landing-page')}>
             <i><HomeIcon/></i>

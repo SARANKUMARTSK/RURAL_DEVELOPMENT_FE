@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 function ContactList() {
 
    
+  const role = localStorage.getItem('role')
   const token = localStorage.getItem('token')
   const [data,setData] = useState([])
   const navigate = useNavigate()
@@ -31,7 +32,6 @@ function ContactList() {
     fetchContactDetails();
   },[data])
 
-  const role = localStorage.getItem('role')
 
   const handleDelete = async(row)=>{
     try {
@@ -124,7 +124,9 @@ const memoizedColumns = useMemo(() => columns, [role]);
   return <>
  
   <div className="add-contact-button">
-    <button onClick={()=>navigate('/dashboard/add-contact')}>+ Add Contact</button>
+    {
+      role==="Admin"&&<button onClick={()=>navigate('/dashboard/add-contact')}>+ Add Contact</button>
+    }
   </div>
   
   <div className="contact-page">

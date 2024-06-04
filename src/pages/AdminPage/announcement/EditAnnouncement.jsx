@@ -31,7 +31,12 @@ function EditAnnouncement() {
   const {id} = useParams()
   const fetchAnnouncementData = async()=>{
     try {
-      let res = await axios.get(`${API_URL}/announcement/${id}`)
+      let res = await axios.get(`${API_URL}/announcement/${id}`, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    })
       let data = res.data.announcement
       setDepartment(data.department)
       setConcernDistrict(data.concernDistrict)

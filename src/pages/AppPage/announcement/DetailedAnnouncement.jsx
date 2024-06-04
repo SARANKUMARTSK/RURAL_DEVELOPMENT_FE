@@ -8,10 +8,16 @@ function DetailedAnnouncement() {
    const navigate = useNavigate();
    const { id } = useParams();
    const [data, setData] = useState({});
+   const token = sessionStorage.getItem('token')
 
    const fetchAnnouncements = async () => {
       try {
-         const res = await axios.get(`${API_URL}/announcement/${id}`);
+         const res = await axios.get(`${API_URL}/announcement/${id}`, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}` 
+            }
+        });
          const announcement = res.data.announcement;
          setData(announcement);
       } catch (error) {

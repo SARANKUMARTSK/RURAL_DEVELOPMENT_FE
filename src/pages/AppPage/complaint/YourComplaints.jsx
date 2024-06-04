@@ -33,7 +33,12 @@ function YourComplaints() {
     },[data])
 
     const handleDelete =(e)=>{
-        let res = axios.delete(`${API_URL}/complaints/${e._id}`)
+        let res = axios.delete(`${API_URL}/complaints/${e._id}`, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}` 
+            }
+        })
         toast.success('Your Complaint Deleted Successfully')
     }
 
@@ -46,7 +51,7 @@ function YourComplaints() {
 
   <div className="your-complaints">
     {
-        !data.length&& <div>No Data Found</div>
+        !data.length&& <div>No Complaints Found</div>
     }
      {
         data.map((e,i)=>{

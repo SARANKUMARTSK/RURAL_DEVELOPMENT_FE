@@ -4,7 +4,6 @@ import {
   useMaterialReactTable,
 } from 'material-react-table';
 import { format, subDays } from 'date-fns';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import axios from 'axios'
 import {API_URL} from '../../../App'
 import toast from 'react-hot-toast';
@@ -46,9 +45,6 @@ function ViewQueries() {
         fetchCustomerQueries();
       },[data])
 
-      const handleEdit=async(row)=>{
-        navigate(`/dashboard/assign-complaint/${row._id}`)
-      }
 
       const handleDelete=async(row)=>{
       try {

@@ -3,7 +3,7 @@ import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import WaterIcon from '@mui/icons-material/Water';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import iconImage from '/public/worldImage.png'
+import iconImage from '/worldImage.png'
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import EditRoadIcon from '@mui/icons-material/EditRoad';
 import LocalHospitalOutlinedIcon from '@mui/icons-material/LocalHospitalOutlined';
@@ -40,18 +40,8 @@ function Specification() {
     }
   }
   
-  const handleSalesProduct = ()=>{
-    if(userId){
-      navigate(`/view-sales-product/${userId}`)
-    }else{
-      toast.error("Please LOGIN to Add Sales Product")
-      navigate('/login')
-    }
-  }
-
-
   const handleDashboard = ()=>{
-    if(role==="Admin"){
+    if(role==="Admin"||role==="staff"){
       navigate('/dashboard')
     }else{
       toast.error('You Are Not Allowed')

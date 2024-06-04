@@ -53,17 +53,22 @@ function ComplaintList() {
       }
 
       const handleDelete=async(row)=>{
-      try {
-        let res = await axios.delete(`${API_URL}/complaints/${row._id}`, {
-          headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': `Bearer ${token}` 
+        if(role==="Admin"){
+          try {
+            let res = await axios.delete(`${API_URL}/complaints/${row._id}`, {
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+                  'Authorization': `Bearer ${token}` 
+              }
+          })
+            toast.success(res.data.message)
+          } catch (error) {
+            console.log(error);
           }
-      })
-        toast.success(res.data.message)
-      } catch (error) {
-        console.log(error);
-      }
+        }else{
+          toast.error('You Are Not Allowed')
+        }
+      
 
       }
 

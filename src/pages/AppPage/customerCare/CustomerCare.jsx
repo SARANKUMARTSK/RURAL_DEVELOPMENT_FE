@@ -19,6 +19,7 @@ import { API_URL } from '../../../App';
 
 function CustomerCare() {
   const navigate = useNavigate();
+  const token = localStorage.getItem('token')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -48,7 +49,12 @@ function CustomerCare() {
     }
 
     try {
-      const res = await axios.post(`${API_URL}/customerCare`, formData);
+      const res = await axios.post(`${API_URL}/customerCare`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` 
+        }
+    });
       toast.success(res.data.message || 'Thank you for reaching out. We will get back to you soon.');
       setFormData({
         name: '',

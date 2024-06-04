@@ -18,10 +18,16 @@ function DetailedCustomerCare() {
     const [query, setQuery] = useState('');
     const [pincode, setPincode] = useState('');
     const { id } = useParams();
+    const token = localStorage.getItem('token')
 
     const fetchCustomerQuery = async () => {
         try {
-            let res = await axios.get(`${API_URL}/customerCare/${id}`);
+            let res = await axios.get(`${API_URL}/customerCare/${id}`, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}` 
+                }
+            });
             let data = res.data.query;
             setName(data.name);
             setEmail(data.email);
@@ -46,7 +52,12 @@ function DetailedCustomerCare() {
         e.preventDefault();
         try {
             let payload = {status}
-            let edited = await axios.put(`${API_URL}/customerCare/${id}`, payload);
+            let edited = await axios.put(`${API_URL}/customerCare/${id}`, payload, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}` 
+                }
+            });
             toast.success(edited.data.message);
             navigate('/dashboard/customer-care-queries');
         } catch (error) {
