@@ -50,11 +50,14 @@ function DetailedCustomerCare() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
-            let payload = {status}
+            let payload = {
+                name , email , phoneNumber , title , query , createdAt ,city , district , status , pincode
+            }
             let edited = await axios.put(`${API_URL}/customerCare/${id}`, payload, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}` 
                 }
             });
@@ -79,7 +82,7 @@ function DetailedCustomerCare() {
                         <div><input type="text" readOnly value={city} /></div>
                         <div><input type="text" readOnly value={district} /></div>
                         <div><input type="text" readOnly value={pincode} /></div>
-                        <div><DriveFileRenameOutlineIcon/><input placeholder='status' type="text" value={status} onChange={(e) => setStatus(e.target.value)} /></div>
+                        <div><DriveFileRenameOutlineIcon/><input placeholder='status' type="text" value={status} onChange={(e) => setStatus(e.target.value)} required/></div>
                         <div><input type="date" readOnly value={createdAt ? createdAt.split('T')[0] : ""} /></div>
                     </div>
                     <input type="text" readOnly value={title} />
