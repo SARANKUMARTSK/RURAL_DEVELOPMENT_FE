@@ -30,7 +30,7 @@ function YourComplaints() {
 
     useEffect(()=>{
        fetchCoplaints()
-    },[])
+    },[data])
 
     const handleDelete =(e)=>{
         let res = axios.delete(`${API_URL}/complaints/${e._id}`, {

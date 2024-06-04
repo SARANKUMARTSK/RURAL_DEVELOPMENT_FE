@@ -51,21 +51,21 @@ function CustomerCare() {
     try {
       const res = await axios.post(`${API_URL}/customerCare`, formData, {
         headers: {
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}` 
         }
     });
-      toast.success(res.data.message || 'Thank you for reaching out. We will get back to you soon.');
-      setFormData({
-        name: '',
-        email: '',
-        phoneNumber: '',
-        query: '',
-        city: '',
-        district: '',
-        pincode: '',
-        title: '',
-      });
+    setFormData({
+      name: '',
+      email: '',
+      phoneNumber: '',
+      query: '',
+      city: '',
+      district: '',
+      pincode: '',
+      title: '',
+    });
+    toast.success(res.data.message || 'Thank you for reaching out. We will get back to you soon.');
     } catch (error) {
       toast.error(error.response?.data?.message || 'Error while submitting');
     } finally {
