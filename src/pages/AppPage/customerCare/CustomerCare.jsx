@@ -15,11 +15,13 @@ import PersonIcon from '@mui/icons-material/Person';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import SignpostIcon from '@mui/icons-material/Signpost';
+
 import { API_URL } from '../../../App';
 
 function CustomerCare() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token')
+  const userName = localStorage.getItem('name')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -73,9 +75,14 @@ function CustomerCare() {
     }
   };
 
+  const handleChat =()=>{
+    userName==='Help Line'?navigate('/chat-support'):navigate('/user-chat')
+  }
+
   return (
     <>
       <TopBar />
+      <div className='relative'>
       <nav className="customer-care-nav">
         <div className="customer-care-title">
           <SupportAgentIcon /> 24*7 Customer Care Support By Rural Development
@@ -125,6 +132,13 @@ function CustomerCare() {
           </form>
         </div>
 
+
+
+            
+
+
+
+
         <div className="customer-care-contact">
           <div className="customer-care-left-contact">
             <span>
@@ -155,7 +169,24 @@ function CustomerCare() {
           </div>
         </div>
       </div>
+      
+
+
+
+
+
+     
+      <div className='chat-support-logo'>
+          <img onClick={()=>handleChat()} src="https://cdn3d.iconscout.com/3d/premium/thumb/customer-support-8593390-6805648.png?f=webp" />
+      </div>
+
+
+
+
+
       <Footer />
+
+      </div>
     </>
   );
 }

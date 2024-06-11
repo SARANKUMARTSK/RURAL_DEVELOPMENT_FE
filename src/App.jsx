@@ -37,6 +37,8 @@ import ViewAnnouncement from './pages/AppPage/announcement/ViewAnnouncement'
 import DetailedAnnouncement from './pages/AppPage/announcement/DetailedAnnouncement'
 import Announcement from './pages/AdminPage/announcement/Announcement'
 import EditAnnouncement from './pages/AdminPage/announcement/EditAnnouncement'
+import ChatSupport from './pages/AppPage/customerCare/ChatSupport'
+import UserChat from './pages/AppPage/customerCare/UserChat'
 
 // export  const API_URL ="http://localhost:8001"
 export const API_URL = "https://rural-development-be.onrender.com"
@@ -90,7 +92,9 @@ function App() {
       <Route path='/your-queries/:id' element={<YourQueries/>}/>
 
       {/* Customer Care*/}
-      <Route path='view-customer-care' element={<CustomerCare/>}/>
+      <Route path='/view-customer-care' element={<CustomerCare/>}/>
+      <Route path='/chat-support' element={<ChatSupport/>}/>
+      <Route path='/user-chat' element={<UserChat/>}/>
 
       {/* Gallery  */}
       <Route path='/add-image' element={<AddImage/>}/>
