@@ -135,11 +135,11 @@ function ChatSupport() {
             ) : (
               <span className="noConversationText">
                 Open a conversation to start a chat. 
-                {conversations==[] && (
+                {conversations!=[]? (
                   <button onClick={createConversation} className='open-conversation-button'>
-                    Click Here
-                  </button>
-                )}
+                    New Chat
+                  </button> 
+                ):<small></small>}
               </span>
             )}
           </div>
